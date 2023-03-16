@@ -1,0 +1,7 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "klaviyo/sdk": "1.0.2.20220329",
+        "klaviyo/php-sdk": "^2.3"
+    }
+}

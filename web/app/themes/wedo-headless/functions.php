@@ -22,13 +22,6 @@
 		add_filter( 'wpseo_metabox_prio', function() { return 'low';});
 		add_image_size( 'gallery-thumb', 300, 240, true );
 		add_image_size( 'post-feature', 900, 450, true );
-    add_filter('woocommerce_add_to_cart_redirect', 'wedo_add_to_cart_redirect');
-    add_filter( 'woocommerce_product_single_add_to_cart_text', 'wedo_cart_button_text' );
-    add_filter( 'woocommerce_product_add_to_cart_text', 'wedo_cart_button_text' );
-    add_filter('gettext', 'wedo_change_cart_string', 100, 3);
-    add_filter( 'woocommerce_cart_item_permalink', '__return_null' );
-    add_filter( 'woocommerce_cart_item_thumbnail', '__return_false' );
-    add_filter( 'woocommerce_persistent_cart_enabled', '__return_false' );
 	}
 
 	get_template_part('functions/include', 'adminstyle');
@@ -57,5 +50,5 @@
 	    return 'AIzaSyBR5bX6m_CEPwitun65XjrFWYZVRtzqADA';
 	});
 
-	
+
 ?>
