@@ -1,11 +1,11 @@
 <?php
-	function register_my_menus() {
-	  register_nav_menus(
-		array( 'mobile-menu' 	=> __( 'Mobile Menu' ),
-			   'footer-menu' 	=> __( 'Footer Menu' ),
-			   'header-menu' 	=> __( 'Header Menu' ),
-			   'signposts'	 	=> __( 'Signposts' )
-			 )
+	function wedo_menus() {
+	  register_nav_menus(array( 
+				'header'      => __( 'Header Menu' ),
+				'footer'      => __( 'Footer Menu' ),
+				'footer-info' => __( 'Footer Menu Info' ),
+				'footer-cat'  => __( 'Footer Menu Cat' )
+			)
 	  );
 	}
 ?>

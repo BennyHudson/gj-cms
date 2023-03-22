@@ -239,7 +239,7 @@
 		);
 
 		register_post_type( 
-			'podcast', [
+			'podcasts', [
 				'labels' => [
 					'name' 								=> 'Podcasts',
 					'singular_name' 			=> 'Podcast',
