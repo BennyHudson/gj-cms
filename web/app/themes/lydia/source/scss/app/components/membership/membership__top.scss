@@ -1,0 +1,86 @@
+/**
+* Site Info
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+
+.c-membership {
+
+  &-top {
+    @include rem(margin-bottom, 95px);
+
+    @include mq($until: tablet) {
+      @include rem(padding, 3rem 24px 0);
+      @include rem(margin-bottom, 50px);
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: fit-content(61%) 1fr;
+      @include rem(grid-column-gap, 52px);
+      @include rem(grid-row-gap, 24px);
+
+      @include mq($until: netbook) {
+        grid-template-columns: 1fr 1fr;
+        border: none;
+        padding: 0;
+
+        @include mq($until: tablet) {
+          display: block;
+        }
+      }
+    }
+
+
+    .c-membership__feed {
+      grid-template-columns: repeat(2, 1fr);
+      @include rem(grid-column-gap, 31px);
+      @include rem(grid-row-gap, 50px);
+
+      @include mq($until: tablet) {
+        @include rem(padding, 0);
+      }
+    }
+  }
+
+  &__latest {
+    border-right: 1px solid $mercury;
+    @include rem(padding-right, 52px);
+
+    @include mq($until: tablet) {
+      border-right: none;
+      @include rem(padding-right, 0)
+    }
+
+    .c-membership-card {
+
+      &__title {
+        @include fontSize(41);
+        line-height: 1.1;
+        text-transform: none;
+        letter-spacing: -0.95px;
+        max-width: 100%;
+        @include rem(margin-bottom, 20px);
+
+        @include mq($until: tablet) {
+          @include fontSize(29);
+        }
+      }
+
+      &__info {
+        @include mq($until: tablet) {
+          @include rem(margin-bottom, 65px);
+        }
+      }
+
+      &__btn {
+        @include mq($until: tablet) {
+          display: none;
+        }
+      }
+    }
+  }
+}

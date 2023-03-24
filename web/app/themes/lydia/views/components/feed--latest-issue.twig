@@ -1,0 +1,53 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{#
+* Set Var
+* --------
+* @since 3.0
+* @version 1.0
+#}
+
+{% set headerInfo = {'title': 'New: ' ~ currentIssue.name, 'subtitle' : 'Take a look inside the latest issue of Gentleman’s Journal with ' ~ currentIssue.issue_cover_star } %}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+
+<section class="o-post-group o-post-group--latest-issue{{ border ? ' o-post-group--border' : '' }}{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+
+    {% include 'components/feed__header.twig' with { header : headerInfo } %}
+
+    {% include 'components/latest-issue-gallery.twig' %}
+
+    <div class="o-post-group--latest-issue__info-group">
+        <h2 class="o-post-group--latest-issue__title">{{ currentIssue.issue_cover_star }}</h2>
+        <div class="o-post-group--latest-issue__subtext">{{ currentIssue.content }}</div>
+        <a href="{{ Post(74300).link }}" class="o-post-group--latest-issue__btn o-btn o-btn--solid o-btn--dark-on-light o-post-feed__btn">Subscribe</a>
+    </div>
+
+
+    {% if currentIssue.issue_selected_stories %}
+        <div class="o-post-group__header">
+            <h2 class="o-post-group__title">Selected stories from the latest issue</h2>
+        </div>
+
+        <div class="o-post-feed o-post-feed--standard">
+            {% for post in currentIssue.issue_selected_stories %}
+                {% set post = Post(post) %}
+
+                {% include 'components/post-thumb.twig' with { thumbFeedStandard : true } %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {# <a href="{{ currentIssue.link }}" class="o-btn o-btn--solid o-btn--light o-post-feed__btn o-post-feed__btn--loadmore">View {{ currentIssue.name }}</a> #}
+
+</section>

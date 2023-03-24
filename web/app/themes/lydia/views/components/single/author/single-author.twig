@@ -1,0 +1,26 @@
+{% if post.author.nickname and post.author.description %}
+  {% set gravatar = post.author.author_image %}
+  {% set alternateAvatar = post.author.more_info_profile_image %}
+  {% set hasAvatar = gravatar or alternateAvatar %}
+  {% set authorAvatar = post.author.author_image
+    ? Image(post.author.author_image)|resize(170, 170)
+    : Image(post.author.more_info_profile_image)|resize(170, 170)
+  %}
+  {% set placeholder = theme.link ~ '/assets/img/woo-placeholder.png' %}
+  <section class="single-author o-wrapper o-wrapper--inner">
+    <a href="{{ post.author.link }}"
+      class="single-author__container o-wrapper o-wrapper--reading o-wrapper--reading-left">
+      <img src="{{ hasAvatar ? authorAvatar : placeholder }}"
+        alt="{{ post.author.nickname }}"
+        class="single-author__avatar" />
+      <div class="single-author__content">
+        <h4 class="single-author__name">
+          {{ post.author.nickname }}
+        </h4>
+        <p class="single-author__bio">
+          {{ post.author.description }}
+        </p>
+      </div>
+    </a>
+  </section>
+{% endif %}

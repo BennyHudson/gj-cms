@@ -1,0 +1,58 @@
+{#
+* Membership : EDITOR’S PICK
+* ---------
+* @package components/membership
+#}
+<section class="c-membership-pick o-wrapper o-wrapper--inner">
+
+    <div class="c-membership-pick__header">
+        {% include 'objects/title.twig' with {
+            el: 'h2',
+            class: 'c-membership-pick',
+            title: 'EDITOR’S PICK',
+        } %}
+        {% include 'objects/button.twig' with {
+            el: 'a',
+            cta: 'READ INTERVIEW',
+            class : 'c-membership-pick-mobile',
+            link : '/?gentleman=dermot-oleary',
+            after: '<span class="c-membership-pick__arrow fa fa-angle-right"></span>',
+            target: true,
+        } %}
+    </div>
+
+    <div class="c-membership-pick__items">
+        <div class="c-membership-pick__item">
+            <img src="/wp-content/themes/lydia/assets/img/woo-placeholder.png">
+            <div class="c-membership-pick__about">
+                <h3 class="c-membership-pick__title-person"><a href="" >NICK WOODMAN</a></h3>
+                <p class="c-membership-pick__speciality">— MODEL AND ACTOR</p>
+            </div>
+        </div>
+        <div class="c-membership-pick__item">
+            <img src="/wp-content/themes/lydia/assets/img/woo-placeholder.png">
+            <div class="c-membership-pick__about">
+                <p class="c-membership-pick__category">HOTEL</p>
+                <h3 class="c-membership-pick__title-place"><a href="#">Little Beach House Barcelona</a></h3>
+                <p class="c-membership-pick__description"><i>Barcelona, Spain</i></p>
+            </div>
+        </div>
+        <div class="c-membership-pick__item">
+            <img src="/wp-content/themes/lydia/assets/img/woo-placeholder.png">
+            <div class="c-membership-pick__about">
+                <p class="c-membership-pick__category">RESTAURANT</p>
+                <h3 class="c-membership-pick__title-place"><a href="#">The Grill at Hotel-Du-Cap</a></h3>
+                <p class="c-membership-pick__description"><i>Antibes, France</i></p>
+            </div>
+        </div>
+        <div class="c-membership-pick__item">
+            <img src="/wp-content/themes/lydia/assets/img/woo-placeholder.png">
+            <div class="c-membership-pick__about">
+                <p class="c-membership-pick__category">BARS</p>
+                <h3 class="c-membership-pick__title-place"><a href="#">Little Beach House Malibu</a></h3>
+                <p class="c-membership-pick__description"><i>Malibu, U.S</i></p>
+            </div>
+        </div>
+    </div>
+
+</section>

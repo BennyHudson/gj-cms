@@ -1,0 +1,23 @@
+/**
+* Animations
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+* Fade in
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+.u-animate-fadein {
+    animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

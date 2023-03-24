@@ -1,0 +1,15 @@
+{#
+* Main Site Navigation
+* -------
+* @package GJ
+* @since GJ 1.0
+#}
+<section class="c-nav-subscribe-mobile">
+        <div class="c-nav-subscribe-mobile-issue c-nav-subscribe-mobile-issue__container">
+            <a href="{{ Post(74300).link }}">
+                <img class="c-nav-subscribe-mobile-issue__img" src="{{ Image(currentIssue.issue_cover).src|resize(90, 120, 'center') }}" alt="Latest Issue out now with {{ currentIssue.issue_cover_star }}" />
+                <h2 class="c-nav-subscribe-mobile-issue__title"><span class="c-nav-subscribe-mobile-issue__lead">Out Now</span>{{ currentIssue.issue_cover_star }}</h2>
+            </a>
+        </div>
+        <a href="{{ Post(74300).link }}" class="o-btn o-btn--dark-on-light c-nav-subscribe-mobile__button">Subscribe</a>
+</section>

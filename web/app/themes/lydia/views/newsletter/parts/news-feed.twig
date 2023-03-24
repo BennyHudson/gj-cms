@@ -1,0 +1,55 @@
+{#
+* News feed
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.items %}
+    <div class="c-nf">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-nf__items">
+            <tbody>
+                <tr>
+                    <td align="center" valign="top" colspan="2" class="c-nf__header">
+                        <h2 class="c-nf__main-title">{{ object.title }}</h2>
+                    </td>
+                </tr>
+                {% for news in object.items %}
+
+                    <tr class="c-nf__item{{ loop.last ? ' c-nf__item--last' : '' }}">
+                        <td align="left" valign="top" class="c-nf__spacer c-nf__spacer--img">
+                            <div class="c-nf__image-wrap">
+                                {% if news.link %}
+                                <a class="c-nf__link" href="{{ news.link }}" target="_blank">
+                                {% endif %}
+                                    <img class="c-nf__image" src="{{ Image(news.image).src|resize(284, 284) }}" alt="{{ news.title }}" width="142px" height="142px">
+                                {% if news.link %}
+                                </a>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td align="left" valign="top" class="c-nf__spacer c-nf__spacer--content">
+                            <div class="c-nf__info-wrap">
+                                <h2 class="c-nf__title">
+                                    {% if news.link %}
+                                    <a class="c-nf__link" href="{{ news.link }}" target="_blank">
+                                    {% endif %}
+                                        {{ news.title }}
+                                    {% if news.link %}
+                                    </a>
+                                    {% endif %}
+                                </h2>
+                                <p class="c-nf__excerpt">{{ news.excerpt }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

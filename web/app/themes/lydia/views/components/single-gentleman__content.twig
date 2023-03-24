@@ -1,0 +1,18 @@
+{#
+* Single Gentleman Content
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+<div class="c-post-gentleman__question--block">
+
+    {% if item.extra_question %}
+        <p><strong>{{ item.extra_question }}</strong></p>
+    {% else %}
+        <p><strong>{{ item.title }}</strong></p>
+    {% endif %}
+
+    <p>{{ item.answer }}</p>
+
+</div>

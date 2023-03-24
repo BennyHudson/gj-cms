@@ -1,0 +1,37 @@
+.sessions-tease {
+  margin-bottom: 60px;
+  width: 100%;
+  @include mq($until: tablet) {
+    margin-bottom: 40px;
+  }
+  &__image {
+    width: 100%;
+    margin-bottom: 25px;
+    @include mq($until: tablet) {
+      margin-bottom: 10px;
+    }
+  }
+  &__info {
+    margin-bottom: 6px;
+    @include font($font--cera);
+    @include fontSize(11);
+    span {
+      color: $fog;
+    }
+  }
+  &__title {
+    @include font($font--cond-chronicle);
+    @include fontSize(41);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    @include mq($until: tablet) {
+      @include fontSize(22);
+    }
+  }
+  &__content {
+    @include font($font--cera);
+    @include fontSize(16);
+    color: $fog;
+    line-height: 1.25em;
+  }
+}

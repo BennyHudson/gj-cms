@@ -1,0 +1,68 @@
+/**
+* Shame for Launch
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.woocommerce {
+    .woocommerce-form-login,
+    .woocommerce-ResetPassword {
+        max-width: 420px;
+        padding: 24px;
+
+        input {
+            border: 1px solid $app-grey;
+            padding: 24px;
+            margin-bottom: 24px;
+
+            &[type=submit] {
+                padding: 12px;
+                @extend .o-btn, .o-btn--solid;
+            }
+        }
+    }
+}
+
+.woocommerce .woocommerce-ResetPassword  {
+    p {
+        margin-bottom: 12px;
+    }
+}
+
+.c-page {
+    @include mq($until: laptop) {
+        padding: 3rem 24px 0;
+
+        &--clubhouse {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    &--clubhouse {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: rgba(255,255,255,0.6);
+
+
+            .logged-in & {
+                display: none;
+            }
+        }
+    }
+}
+
+.vjs-youtube-mobile .vjs-big-play-button {
+display: flex !important;
+}
+.vjs-youtube-mobile.vjs-has-started .vjs-big-play-button {
+display: none !important;
+}

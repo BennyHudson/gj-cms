@@ -1,0 +1,96 @@
+.gifting-guide {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 100px;
+  @include mq($until: tablet) {
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 60px;
+  }
+
+  &__first-tease {
+    min-height: calc(100vh - 112px);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding-top: 40px;
+    padding-right: 70px;
+    padding-left: 60px;
+    position: sticky;
+    top: 112px;
+    margin-right: 40px;
+    width: 100%;
+  }
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $black;
+    opacity: 0.4;
+  }
+  &__info {
+    max-width: 570px;
+    padding-bottom: 40px;
+    border-left: solid 1px $dove-gray;
+    padding-left: 20px;
+    position: relative;
+  }
+  &__category {
+    @include font($font--cera);
+    @include fontSize(14);
+    text-transform: uppercase;
+    color: $white;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    margin-bottom: 80px;
+  }
+  &__title {
+    @include font($font--text-chronicle);
+    @include fontSize(39);
+    line-height: 0.97em;
+    text-transform: uppercase;
+    color: $white;
+    font-weight: 400;
+    margin-bottom: 25px;
+  }
+  &__content {
+    @include font($font--text-chronicle);
+    @include fontSize(16);
+    color: $white;
+    margin-bottom: 120px;
+  }
+  &__link {
+    display: inline-block;
+    @include font($font--cera);
+    @include fontSize(11);
+    text-transform: uppercase;
+    color: $black;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    background-color: $white;
+    border-radius: 25px;
+    padding: 13px 30px;
+    letter-spacing: 0.01em;
+  }
+  &--desktop {
+    @include mq($until: tablet) {
+      display: none;
+    }
+  }
+  &--mobile {
+    @include mq($from: tablet) {
+      display: none;
+    }
+  }
+  &__articles {
+    max-width: 340px;
+    @include mq($until: tablet) {
+      max-width: 100%;
+    }
+  }
+}

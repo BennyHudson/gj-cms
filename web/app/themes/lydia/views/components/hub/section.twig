@@ -1,0 +1,34 @@
+{#
+* Hub Section
+* ---------
+* @component hub
+* @version 1
+#}
+
+<section class="c-hub-section">
+    <div class="c-hub-section__inner">
+
+        <div class="c-hub-section__header">
+            <div class="c-hub-section__header-inner">
+
+                {% include 'objects/title.twig' with {
+                    el: 'h2',
+                    class: 'c-hub-section',
+                    title: section.title,
+                } %}
+
+                <div class="c-hub-section__description">{{ section.description }}</div>
+            </div>
+        </div>
+
+
+        {% include "components/hub/featured.twig" with { article : Post(section.featured) } %}
+        {% include "components/hub/articles.twig" with { articles : section.articles } %}
+        {% include 'components/ads.twig' with {
+            gpt : {
+                type : 'billboard',
+                code : 'GJ_970x250_00' ~ loop.index
+            }
+        } %}
+    </div>
+</section>

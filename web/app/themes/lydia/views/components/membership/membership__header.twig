@@ -1,0 +1,19 @@
+{#
+* Membership : Big bottom
+* ---------
+* @package components/membership
+#}
+<header class="c-archive-header">
+    <div class="c-archive-header__inner o-wrapper o-wrapper--inner">
+
+        <div class="c-archive-header__container">
+            <div class="c-archive-header__intro">
+                <h1 class="c-archive-header__title">{{ title }}</h1>
+                {% if archive.description %}
+                    <p class="c-archive-header__subtitle">{{ archive.description }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</header>

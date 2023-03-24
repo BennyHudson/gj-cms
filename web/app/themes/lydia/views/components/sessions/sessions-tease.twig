@@ -1,0 +1,17 @@
+{% for tease in posts %}
+  <a href="{{ tease.link }}"
+    class="sessions-tease ajax__tease ajax__tease--ajaxed">
+    <img src="{{ tease.thumbnail.src|resize(606, 406) }}"
+      alt=""
+      class="sessions-tease__image" />
+    <div class="sessions-tease__info">
+      Sunday Playlist<span>&#8213; {{ tease.post_date_gmt|time_ago|replace({'mins' : 'minutes'}) }}</span>
+    </div>
+    <h3 class="sessions-tease__title">
+      {{ tease.title }}
+    </h3>
+    <div class="sessions-tease__content">
+      {{ tease.post_excerpt }}
+    </div>
+  </a>
+{% endfor %}

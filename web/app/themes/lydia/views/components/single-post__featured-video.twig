@@ -1,0 +1,25 @@
+{#
+* Single Post Header
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if post.thumbnail %}
+    <figure class="c-post__featured-video c-post__featured-video-container">
+        <div class="o-wrapper o-wrapper--inner c-post__featured-video-inner">
+
+            <div class="c-post__featured-video-wrap" id="js-featured-video">
+                {% include 'components/video-player.twig' with {
+                    src : post.video_url,
+                    thumb : {
+                        src : post.thumbnail.src,
+                        width : 1296,
+                        height : 768
+                    }
+                 } %}
+            </div>
+
+            {% include 'components/video-playlist.twig' %}
+        </div>
+    </figure>
+{% endif %}

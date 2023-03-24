@@ -1,0 +1,131 @@
+.subscription-perk {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: solid 1px $app-grey;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  &__container {
+    background-color: #202020;
+    min-height: 620px;
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+
+    &--left {
+      background-position: right center;
+    }
+
+    &--right {
+      background-position: left center;
+    }
+  }
+  &__image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include mq($until: tablet) {
+      height: 310px;
+      background-size: contain;
+    }
+
+    &--left {
+      grid-column: col-start / span 8;      
+      background-position: left center;
+
+      @include mq($until: tablet) {
+        grid-column: col-start / span 12;
+        background-position: center center;
+      }
+    }
+
+    &--right {
+      grid-column: col-start 5 / span 8;
+      background-position: right center;
+      grid-row: 1;
+
+      @include mq($until: tablet) {
+        background-position: center center;
+        grid-column: col-start / span 12;
+      }
+    }
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    padding: rem(48px);
+
+    &--left {
+      grid-column: col-start / span 4;
+      @include mq($until: tablet) {
+        grid-column: col-start / span 12;
+      }
+    }
+    &--right {
+      grid-column: col-start 9 / span 4;
+      @include mq($until: tablet) {
+        grid-column: col-start / span 12;
+      }
+    }
+    &--light {
+      color: $white;
+    }
+    &--dark {
+      color: $app-black--text;
+    }
+  }
+  &__mobile {
+    margin-bottom: 30px;
+    @include mq($from: tablet) {
+      display: none;
+    }
+  }
+  &__title {
+    @include font($font--cond-chronicle);
+    font-size: 38px;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: -0.61px;
+    margin-bottom: 40px;
+    line-height: 1.2em;
+  }
+  &__content {
+    @include font($font--cera);
+    font-size: 17px;
+    letter-spacing: -0.35px;
+    font-weight: 400;
+  }
+  &__link {
+    @include fontSize(12);
+    @include font($font--cera);
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    border-radius: 2px;
+    white-space: nowrap;
+    letter-spacing: unset;
+    margin-top: 35px;
+    &--light {
+      border: solid 1px $white;
+      color: $white;
+      &:hover {
+        color: $app-black--text;
+        background-color: $white;
+      }
+
+      @include mq($until: tablet) {
+        color: $app-black--text;
+        border-color: inherit;
+      }
+    }
+    &--dark {
+      color: $app-black--text;
+      border: solid 1px $app-black--text;
+      &:hover {
+        color: $white;
+        background-color: $app-black--text;
+      }
+    }
+  }
+}

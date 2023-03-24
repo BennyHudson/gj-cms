@@ -1,0 +1,85 @@
+/**
+ * Popular Posts
+ * ---------
+ * @component components/widgets
+ * @version 1
+*/
+.c-widget-pop-post {
+    grid-column: span 3;
+    border-top: 1px solid $fog;
+    @include rem(padding-top, 12px);
+    display: flex;
+    flex-direction: column;
+
+    @include mq($until: 900px) {
+        grid-column: span 6;
+
+        @include mq($until: phablet) {
+            @include rem(padding, 12px);
+        }
+    }
+
+    &__title {
+        @include fontSize(14);
+        font-weight: $font-app-cera-w--semibold;
+        text-transform: uppercase;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    &__controls {
+        @include rem(padding-left, 12px);
+        margin-left: auto;
+        display: flex;
+    }
+
+    &__btn {
+        @include rem(padding, 0 6px);
+        font-weight: $font-app-cera-w--regular;
+        color: $fog;
+        border-right: 1px solid $fog;
+
+        &:last-of-type {
+            border: none;
+        }
+
+        &:hover,
+        &.is-active {
+            color: $shogun;
+        }
+    }
+
+    &__posts {
+        margin-top: auto;
+        @include rem(padding-top, 36px);
+    }
+
+    &__items {
+        list-style-position: outside;
+        margin-left: rem(16px);
+    }
+
+    &__item {
+        @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+        color: $fog;
+        @include fontSize(15);
+        padding-left: rem(12px);
+        @include rem(margin-bottom, 8px);
+        // white-space: nowrap;
+        // overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover,
+        &:focus {
+            color: $black;
+        }
+
+        &-index {
+            @include rem(margin-right, 12px);
+            display: inline-block;
+        }
+    }
+}

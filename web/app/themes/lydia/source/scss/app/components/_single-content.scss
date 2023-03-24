@@ -1,0 +1,136 @@
+/**
+* Single Content
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+// Scope Post Content
+.s-post-content {
+
+    // Headings
+    h1,
+    h2 {
+        @include font($font--cera, $font-app-cera-w--bold);
+        @include fontSize(22);
+    }
+
+    h3 {
+        @include font($font--cera, $font-app-cera-w--bold);
+        @include fontSize(20);
+    }
+
+    h4, h5, h6 {
+        @include font($font--cera, $font-app-cera-w--semibold);
+        @include fontSize(18);
+    }
+
+    // Font Sizes
+    p, ul, ol, dl {
+        @include fontSize(20);
+        line-height: 1.55;
+        @include font($font--chronicle, $font-app-chronicle-w--regular);
+    }
+
+    a {
+        display: inline;
+        font-weight: $font-app-chronicle-w--semibold;
+        background-image: linear-gradient(to bottom, $app-grey 50%, rgba(0,0,0,0) 50%);
+        background-repeat: repeat-x;
+        @include rem(background-size, 2px 6px);
+        @include rem(background-position, 0 22px);
+
+        &:hover {
+            background-image: linear-gradient(to bottom, $app-black 50%, rgba(0,0,0,0) 50%);
+        }
+
+        &:active {
+            background-image: linear-gradient(to bottom, lighten($app-black, 50%) 50%, rgba(0,0,0,0) 50%);
+        }
+    }
+
+    // Remove In-line Styles
+    p span[style] {
+        text-decoration: none !important;
+    }
+
+    table {
+        @include fontSize(16);
+    }
+
+    // Spacing
+    h1, h2, h3, h4, h5, h6 {
+        @include rem(margin-bottom, 24px);
+    }
+
+    p,
+    ul,
+    ol,
+    dd,
+    table,
+    blockquote,
+    pre,
+    .o-post-video,
+    .o-post-img {
+        @include rem(margin-bottom, 36px);
+    }
+
+    // Ensure Child Lists do no inherit border bottom
+    ul ul,
+    ol ol,
+    ul ol,
+    ol ul {
+        margin-bottom: 0;
+    }
+
+    .wp-caption-text {
+        @include font($font--cera, $font-app-cera-w--regular);
+        @include fontSize(14);
+        color: $app-grey--text;
+    }
+
+    // Embeds
+    .twitter-tweet,
+    .instagram-media,
+    .o-post-video iframe {
+        display: block;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    blockquote {
+        @include rem(padding-top, 12px);
+        @include rem(margin-bottom, 48px);
+
+        p {
+            @include fontSize(35);
+            line-height: 1.28;
+            @include font($font--cera, $font-app-cera-w--semibold);
+        }
+    }
+
+}
+
+.c-post {
+
+    &__content--legacy {
+        // Drop Cap on First Paragraph
+        p:first-of-type:first-letter {
+            @include fontSize(63);
+            @include lineHeight(60);
+            @include font($font--chronicle, $font-app-chronicle-w--semibold);
+            float: left;
+            @include rem(padding, 2px 6px 0 0);
+        }
+
+        // Remove Drop Cap from Blockquote
+        blockquote p:first-of-type:first-letter {
+            @include fontSize(35);
+            line-height: 1.28;
+            float: none;
+            padding: 0;
+            @include font($font--cera, $font-app-cera-w--semibold);
+        }
+    }
+}

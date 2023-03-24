@@ -1,0 +1,24 @@
+{#
+* Page
+* --------
+* @package GJ
+* @since GJ 1.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+    <article class="c-page c-page--{{ post.slug }} {{ hasFeaturedImg }}" id="c-page--{{ post.ID }}">
+
+
+        <header class="c-clubhouse-logo">
+          <div  class="c-clubhouse-logo__text">welcome to the</div>
+        {{ source('assets/img/clubhouse.svg') }}
+        </header>
+
+        <section class="o-wrapper o-wrapper--full">
+            {% block pageContent %}
+                {% include 'components/page__content.twig'%}
+            {% endblock %}
+        </section>
+    </article>
+{% endblock %}

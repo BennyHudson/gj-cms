@@ -1,0 +1,74 @@
+/**
+* Logo
+*
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.o-logo {
+    position: relative;
+    line-height: 0;
+
+    &__group {
+        width: 100%;
+        transition: opacity 0.2s ease-out;
+    }
+
+    // Prime Logo in the header of the site
+    &--prime {
+        @include rem(max-width, 252px);
+        @include rem(padding, 0 24px);
+
+        @include mq($until: netbook) {
+            @include rem(padding, 0 12px);
+            margin: auto;
+        }
+
+        & .o-logo__wordmark {
+            fill: $shogun;
+
+            @include mq($until: phablet) {
+                transition: fill 0.4s ease-out;
+            }
+        }
+    }
+
+    &--foundation {
+        @include rem(max-width, 288px);
+        margin-right: auto;
+        //@include rem(padding, 0 24px);
+
+        & .o-logo__wordmark {
+            fill: $app-white;
+        }
+    }
+
+    &--icon {
+        fill: $shogun;
+        opacity: 0;
+        @include rem(min-width, 24px);
+        @include rem(max-height, 32px);
+        position: absolute;
+        @include rem(left, 36px);
+        top: 0;
+        transition: opacity 0.2s ease-out;
+
+        @include mq($until: netbook) {
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        @include mq($until: mobile) {
+            @include rem(max-height, 24px);
+        }
+    }
+}
+
+.has-mob-menu-active .o-logo--prime .o-logo__wordmark,
+.has-mob-menu-active .o-logo--icon .o-logo--icon__letter {
+    @include mq($until: phablet) {
+        fill: $app-white;
+    }
+}

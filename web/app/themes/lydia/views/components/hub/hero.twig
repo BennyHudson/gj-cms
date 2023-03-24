@@ -1,0 +1,52 @@
+<section class="c-hub-hero">
+
+    {% include 'objects/image.twig' with {
+        class: 'c-hub-hero__media',
+        alt : post.title,
+        img : {
+            base : {
+                obj : post.thumbnail,
+                w   : '1920',
+                h   : '1080',
+                c   : 'center'
+            },
+            tablet : {
+                obj : post.meta('mobile_image') ? Image(post.meta('mobile_image')) : post.thumbnail,
+                w   : '768',
+                h   : '528',
+                c   : 'top',
+            },
+            mobile : {
+                obj : post.meta('mobile_image') ? Image(post.meta('mobile_image')) : post.thumbnail,
+                w   : '468',
+                h   : '528',
+                c   : 'top',
+            }
+        }
+    } %}
+
+    <div class="c-hub-hero__container">
+
+        <div class="c-hub-hero__lead">
+            {% include 'objects/title.twig' with {
+                el: 'h1',
+                class: 'c-hub-hero',
+                title: post.meta('alternate_title'),
+            } %}
+            {{ icon('far', 'times', 'c-hub-hero__times') }}
+            <img src="{{ Image(hub.intro.logo) }}" alt="{{ post.title }}" class="c-hub-hero__logo"/>
+        </div>
+
+        <div class="c-hub-hero__excerpt">
+            {{ post.preview.read_more('')|striptags }}
+        </div>
+
+        <div class="c-hub-hero__scroller">
+            {{ icon('fas', 'chevron-down', 'c-hub-hero__chevron') }}
+            {{ icon('fas', 'chevron-down', 'c-hub-hero__chevron') }}
+            {{ icon('fas', 'chevron-down', 'c-hub-hero__chevron') }}
+        </div>
+
+
+    </div>
+</section>

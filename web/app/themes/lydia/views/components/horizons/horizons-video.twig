@@ -1,0 +1,18 @@
+<section class="horizons-video">
+  <div class="horizons-video__container">
+    {% include 'objects/video-player.twig' with {
+      className: 'horizons-video__player',
+      controls: true,
+      src: post.horizons_video,
+      thumb: {
+        src: Image(post.horizons_video_thumbnail),
+        w: 1040,
+        h: 585
+      },
+      size: {
+        w: 1040,
+        h: 585
+      }
+    } %}
+  </div>
+</section>

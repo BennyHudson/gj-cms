@@ -1,0 +1,26 @@
+{#
+* Masthead
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-mh-light">
+        <tbody>
+            <tr>
+                <td class="c-mh-light__item c-mh-light__item--logo" align="center" valign="middle">
+                    <a href="{{ site.url }}" target="_blank">
+                        <img class="c-mh-light__logo" src="https://gallery.mailchimp.com/be77c5006ebd55787abce2788/images/e3414910-1b47-4c83-9e04-3c4867deddd0.png" width="191px" height="30.5px" alt="{{ site.title }}" />
+                        {% if newsletter.config.tagline %}
+                            <span class="c-mh-light__tagline">{{ newsletter.config.tagline }}</span>
+                        {% endif %}
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

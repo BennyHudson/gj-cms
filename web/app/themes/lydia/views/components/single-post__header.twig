@@ -1,0 +1,71 @@
+{#
+* Single Post Header
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<header class="c-post__header o-wrapper o-wrapper--single o-wrapper--left">
+  <h1 class="c-post__title">
+    {{ post.title }}
+  </h1>
+  {% if post.standfirst %}
+    <p class="c-post__standfirst">
+      {{ post.standfirst }}
+    </p>
+  {% endif %}
+
+  {% if post.type == 'house-note' %}
+    <div class="c-post__house-note-authors">
+      {% if (post.article_type|sanitize) == 'quote' and stylised %}
+        <div class="c-post__house-note-author">
+          <span>(Seen in)</span>
+          <div>
+            {{ post.title }}
+          </div>
+        </div>
+      {% elseif (post.article_type|sanitize) == 'podcast' %}
+        <div class="c-post__house-note-author">
+          <span>(Interviewed by)</span>
+          <div>
+            {{ post.article_type_podcast_interviewer }}
+          </div>
+        </div>
+        {% if stylised %}
+          <button class="c-post__house-note-button">Listen now</button>
+        {% endif %}
+      {% elseif (post.article_type|sanitize) == 'topic' %}
+        <div class="c-post__house-note-author">
+          <span>(With)</span>
+          <div>
+            {{ post.article_type_topic_guest }}
+          </div>
+        </div>
+      {% elseif post.author == post.photographer_name %}
+        <div class="c-post__house-note-author">
+          <span>(Words and photography by)</span>
+          <div>
+            {{ post.author }}
+          </div>
+        </div>
+      {% else %}
+        {% if post.author %}
+          <div class="c-post__house-note-author">
+            <span>(Words by)</span>
+            <div>
+              {{ post.author }}
+            </div>
+          </div>
+        {% endif %}
+        {% if post.photographer_name %}
+          <div class="c-post__house-note-author">
+            <span>(Photography by)</span>
+            <div>
+              {{ post.photographer_name }}
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+</header>

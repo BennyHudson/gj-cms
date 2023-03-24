@@ -1,0 +1,42 @@
+{#
+* Sessions Video
+* ---------
+* @component Sessions
+* @version 1
+#}
+
+<div class="sessions-videos">
+	<div class="sessions-videos__container o-wrapper o-wrapper--inner">
+
+		{% include 'components/sessions/sessions-title.twig' with {
+            title: 'Latest Performers',
+            inverted: true
+        } %}
+
+		<figure class="sessions-videos__wrapper">
+			<div class="sessions-videos__featured">
+				{% include 'components/sessions/sessions-featured.twig' with {
+                    session: playlist[:1].0
+                } %}
+			</div>
+
+			<section class="sessions-videos__playlist" id="js-video-playlist">
+				<h2 class="sessions-videos__heading">Watch Next <span class="far fa-long-arrow-right sessions-videos__swipe"></span></h2>
+
+				<div class="sessions-videos__list">
+					{% for video in playlist[1:] %}
+						<div attribute-id="{{ video.ID }}" class="sessions-videos__tease">
+							<img src="{{ video.thumbnail|resize(464, 314) }}" alt="" class="sessions-videos__thumbnail"/>
+							<p class="sessions-videos__category">{{ video.category }}</p>
+                            {% include 'objects/title.twig' with {
+                                el: 'h2',
+                                class: 'sessions-videos',
+                                title: video.title
+                            } %}
+						</div>
+					{% endfor %}
+				</div>
+			</section>
+		</figure>
+	</div>
+</div>

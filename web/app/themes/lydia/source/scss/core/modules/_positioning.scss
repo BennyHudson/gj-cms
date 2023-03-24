@@ -1,0 +1,22 @@
+/**
+* Positioning
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+* Clearfix
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+@mixin clearfix() {
+    &::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}

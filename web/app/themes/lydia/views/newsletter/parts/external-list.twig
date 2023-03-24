@@ -1,0 +1,62 @@
+{#
+* Gallery
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.item %}
+
+    <div class="c-ex">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-ex__items">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" colspan="3" class="c-ex__header">
+                        <h2 class="c-ex__main-title">{{ object.title }}</h2>
+                    </td>
+                </tr>
+
+                <tr class="c-ex__row">
+                    <td class="c-ex__item" align="left" valign="top">
+                            <div class="c-ex__items">
+                                {% for external in object.item %}
+                                    <div class="c-ex__part">
+
+
+                                            <span class="c-ex__index">{{ loop.index }}</span>
+
+                                            <div class="c-ex__content">
+
+                                                <h2 class="c-ex__title">
+                                                {% if external.link %}
+                                                <a class="c-ex__link" target="_blank" href="{{ external.link }}">
+                                                {% endif %}
+
+                                                {{ external.title }}
+
+                                                {% if external.link %}
+                                                    </a>
+                                                {% endif %}
+
+                                                </h2>
+
+                                                {% if external.source %}
+                                                    <p class="c-ex__source">{{ external.source }}</p>
+                                                {% endif %}
+                                            </div>
+
+
+                                    </div>
+                                {% endfor %}
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+/*
+Google Maps
+
+@package GJ
+@since GJ 2.0
+@version 1.0
+*/
+
+.c-acf-map {
+    width: 100%;
+    @include rem(height, 492px);
+
+    img {
+        max-width: inherit !important;
+    }
+}

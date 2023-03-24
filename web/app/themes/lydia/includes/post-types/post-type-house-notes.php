@@ -1,0 +1,46 @@
+<?php
+
+add_action('init', function() {
+    register_post_type('house-note', [
+        'label'                 => __( 'House Notes', 'lydia' ),
+        'description'           => __( 'House Notes Club Profiles', 'lydia' ),
+        'labels' => [
+            'name'                => _x( 'House Notes', 'Post Type General Name', 'lydia' ),
+            'singular_name'       => _x( 'House Note', 'Post Type Singular Name', 'lydia' ),
+            'menu_name'           => __( 'House Notes', 'lydia' ),
+            'name_admin_bar'      => __( 'House Notes', 'lydia' ),
+            'parent_item_colon'   => __( 'Parent House Notes:', 'lydia' ),
+            'all_items'           => __( 'All House Notes', 'lydia' ),
+            'add_new_item'        => __( 'Add New House Note', 'lydia' ),
+            'add_new'             => __( 'Add New', 'lydia' ),
+            'new_item'            => __( 'New House Note', 'lydia' ),
+            'edit_item'           => __( 'Edit House Note', 'lydia' ),
+            'update_item'         => __( 'Update House Note', 'lydia' ),
+            'view_item'           => __( 'View House Note', 'lydia' ),
+            'search_items'        => __( 'Search House Notes', 'lydia' ),
+            'not_found'           => __( 'No House Notes found', 'lydia' ),
+            'not_found_in_trash'  => __( 'No House Notes found in Trash', 'lydia' )
+        ],
+        'supports'              => ['title', 'editor', 'author', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', 'post-formats'],
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 4,
+        'menu_icon'             => 'dashicons-edit',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+        'rest_base'             => 'house-note',
+        'rest_controller_class' => 'WP_REST_Posts_Controller',
+        'rewrite'               => ['slug' => 'house-note', 'with_front' => false],
+        'show_in_graphql'       => true,
+        'graphql_single_name' => 'houseNote',
+        'graphql_plural_name' => 'houseNotes',
+    ]);
+});

@@ -1,0 +1,51 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{#
+* Set Var
+* --------
+* @since 3.0
+* @version 1.0
+#}
+
+{% set category = Term(catID) %}
+{% if category.title %}
+{% set posts = Post(category.get_posts( categoriesArgs )) %}
+{% set headerInfo = {
+    'title': category.name,
+    'subtitle' : category.description,
+    'link' : category.link
+} %}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+<section class="o-post-group o-post-group--{{ category.name|lower }}{{ border ? ' o-post-group--border' : '' }}{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+
+    {% include 'components/feed__header.twig' with { header : headerInfo } %}
+
+    <div class="o-post-feed o-post-feed--standard">
+        {% for post in posts %}
+            {% include 'components/post-thumb.twig' with {
+                style : 'standard',
+                feat  : {
+                    base : {
+                        w: '297',
+                        h: '200',
+                        c: 'center'
+                    }
+                }
+            } %}
+        {% endfor %}
+
+    </div>
+
+</section>
+{% endif %}

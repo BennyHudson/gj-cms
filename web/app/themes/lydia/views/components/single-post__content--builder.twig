@@ -1,0 +1,188 @@
+{#
+* Single Post Content
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<section class="c-post__content c-post__content--builder c-post__content--{{ post.id }} c-post__content--{{ post.post_type }} s-wysiwg-content o-wrapper o-wrapper--inner o-wrapper--left" id="js-post-content">
+
+        {% include 'components/sidebar--single.twig' %}
+
+        <div class="c-content-builder">
+            {% for item in contentBuilder %}
+
+                {% set type = item.acf_fc_layout %}
+                {% set wrapperSingle     = 'o-wrapper o-wrapper--single' %}
+                {% set wrapperSinglePull = 'o-wrapper o-wrapper--single o-wrapper--left' %}
+                {% set wrapperInner      = 'o-wrapper o-wrapper--inner' %}
+                {% set wrapperReading    = 'o-wrapper o-wrapper--reading o-wrapper--reading-left' %}
+
+                {% if item.pull %}
+                    {% set pullClass = 'pull' %}
+                    {% set wrapperReading = wrapperSinglePull %}
+                {% endif %}
+
+                {% if item.image_size == 'standard--full' %}
+                    {% set wrapperReading = wrapperInner %}
+                {% endif %}
+
+                {# Heading #}
+                {% if type == 'heading' %}
+                    {% set type = item.select_heading_type %}
+                    <{{ type }} class="c-content-builder__header c-content-builder__header--{{ type }} {% if item.pull %}c-content-builder__header--{{ pullClass }}{% endif %} {{ wrapperReading }}">{{ item.heading }}</{{ type }}>
+                {% endif %}
+
+                {# Paragraph #}
+                {% if type == 'paragraph' %}
+                    <div class="c-content-builder__paragraph {% if item.pull %}c-content-builder__paragraph--{{ pullClass }}{% endif %} {{ wrapperReading }}">
+                        {{ item.paragraph }}
+                    </div>
+
+                {% endif %}
+
+                {# Blockquote #}
+                {% if type == 'blockquote' %}
+                    <blockquote class="c-content-builder__blockquote {{ wrapperReading }}">
+                        <p class="c-content-builder__blockquote-text">{{ item.text }}</p>
+                    </blockquote>
+                {% endif %}
+
+                {# List #}
+                {% if type == 'list' %}
+                    {% if item.list_title %}
+                        <h2 class="c-content-builder__list-title {{ wrapperReading }}">{{item.list_title}}</h2>
+                    {% endif %}
+                    <ul class="c-content-builder__list {{ wrapperReading }}">
+                        {% for line in item.list %}
+                            <li class="c-content-builder__list-item">{{ line.list_item }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {# Image #}
+                {% if type == 'image' %}
+                    {% include 'components/content-builder/image.twig' with { wrapper : wrapperReading } %}
+                {% endif %}
+
+                {# Video #}
+                {% if type == 'video_embed' %}
+                    {% include 'components/content-builder/embed.twig' with { wrapper : wrapperReading } %}
+                {% endif %}
+
+                {# Gallery #}
+                {% if type == 'image_gallery'%}
+                    {% include 'components/content-builder/gallery.twig' with { wrapper : wrapperInner } %}
+                {% endif %}
+
+                {# Gallery Masonry #}
+                {% if type == 'masonry_gallery' %}
+                    {% include 'components/content-builder/gallery--masonry.twig' with { wrapper : wrapperInner } %}
+                {% endif %}
+
+                {# Gallery Slider #}
+                {% if type == 'image_slider' %}
+                    {% include 'components/content-builder/sponsored/gallery--slider.twig' with { modifier: 'article' } %}
+                {% endif %}
+
+                {# Button Info-Block #}
+                {% if type == 'button_info_block' %}
+                    {% include 'components/content-builder/button-info-block.twig' with { wrapper : wrapperReading } %}
+                {% endif %}
+
+                {# Products Woocommerce  #}
+                {% if type == 'recommended_products' %}
+                    {% include 'components/content-builder/products--woo.twig' with { wrapper : wrapperInner } %}
+                {% endif %}
+
+                {# Products Affiliate #}
+                {% if type == 'affiliate_products' %}
+                    {% include 'components/content-builder/products--affiliates.twig' with { wrapper : wrapperInner } %}
+                {% endif %}
+
+                {# Single Affiliate #}
+                {% if type == 'single_affiliate' %}
+                    {% include 'components/content-builder/products--affiliate-single.twig' with { wrapper : wrapperReading } %}
+                {% endif %}
+
+                {% if type == 'podcast_player' %}
+                    <div class="o-wrapper {{ wrapperReading }}">
+                        <h2 class="c-content-builder__header--4">{{item.title}}</h2>
+                        <section class="c-podcast-player">
+                            {% filter shortcodes %}
+                                [audio mp3="{{ item.source.podcast_meta_media_audio }}" preload="metadata" autoplay="0"]
+                            {% endfilter %}
+                        </section>
+                    </div>
+                {% endif %}
+
+                {# Affiliate Button #}
+                {% if type == 'affiliate_button' %}
+                    <div class="c-content-builder__affiliate-btn-group {{ wrapperReading }}">
+                        <a class="c-content-builder__affiliate-btn o-btn o-btn--solid" href="{{ item.url }}" target="_blank">{{ item.text ? item.text : 'Buy Now' }}</a>
+                    </div>
+                {% endif %}
+
+                {# Form #}
+                {% if type == 'competition_form' %}
+                    <div class="c-content-builder__form {{ wrapperReading }}">
+                    {{ item.form_shortcode }}
+                    </div>
+                {% endif %}
+
+                {# Podcast #}
+                {% if type == 'podcast' %}
+                    <div class="c-content-builder__podcast">
+                        {% filter shortcodes %}
+                            [audio mp3="{{ item.media.audio }}" preload="metadata" autoplay="0"]
+                        {% endfilter %}
+                    </div>
+                {% endif %}
+
+                {# Code Snippet #}
+                {% if type == 'code_snippet' %}
+                    <div class="c-content-builder__code-snippet {{ wrapperReading }}">
+                        {{ item.ad_code|raw }}
+                    </div>
+                {% endif %}
+
+                {# Ads MPU #}
+                {% if loop.index == 9 %}
+                    {% include 'components/ads.twig' with {
+                        gpt : {
+                            type : 'mpu',
+                            code : 'GJ_300x250_001'
+                        }
+                    } %}
+                {% endif %}
+
+                {# Ads Int #}
+                {% if loop.index == 4 %}
+                    {% include 'components/ads.twig' with {
+                        gpt : {
+                            type : 'int',
+                            code : 'GJ_INT_001'
+                        }
+                    } %}
+                {% endif %}
+
+
+                {#
+                * Legacy Content Blocks
+                * --------
+                * @package GJ
+                * @since GJ 3.0
+                #}
+
+                {# Heading 2 #}
+                {% if type == 'heading_2' %}
+                    <h2 class="c-content-builder__header--2 {{ wrapperReading }}">{{ item.heading_2 }}</h2>
+                {% endif %}
+
+                {# Heading 3 #}
+                {% if type == 'heading_3' %}
+                    <h3 class="c-content-builder__header--3 {{ wrapperReading }}">{{ item.heading_3 }}</h3>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+</section>

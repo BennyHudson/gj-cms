@@ -1,0 +1,37 @@
+{#
+* Newsletter
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<section class="c-newsletter{{ class ? ' ' ~ class : '' }}" {{ image == true ? 'style="background-image:url('~ post.thumbnail ~')"' : '' }}>
+
+    <div class="c-newsletter__group o-wrapper o-wrapper--inner">
+
+        <div class="c-newsletter__header">
+            <h1 class="c-newsletter__title">Keep up with {{ site.name }}</h1>
+            <p class="c-newsletter__subtitle">Sign up to our newsletter and follow us on social media</p>
+        </div>
+        <p class="c-newsletter__message js-newsletter-form__message"></p>
+        <form class="c-newsletter__form" method="post" name="c-newsletter__form" id="js-newsletter-form" accept-charset="utf-8">
+
+           <div class="c-newsletter__fieldset">
+                <div class="c-newsletter__input-group">
+                    <div class="c-newsletter__status">
+                        <span class="c-newsletter__status-icon far fa-envelope"></span>
+                    </div>
+                    <input class="c-newsletter__input c-newsletter__input--email js-newsletter-form__email" type="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <input class="c-newsletter__btn c-newsletter__btn--submit" type="submit" value="Sign up">
+            </div>
+        </form>
+
+        {% if not image %}
+
+            {% include 'objects/social.twig' %}
+
+        {% endif %}
+
+    </div>
+
+</section>

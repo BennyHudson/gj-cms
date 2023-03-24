@@ -1,0 +1,9 @@
+{% set clubhousePerks = clubhouse.meta('club_subscription_perks') %}
+<div class="subscription-perks">
+  <div class="subscription-perks__title">
+    Scroll to see the perks
+  </div>
+  {% for perk in clubhousePerks %}
+    {% include 'components/subscription/subscription-perk.twig' %}
+  {% endfor %}
+</div>

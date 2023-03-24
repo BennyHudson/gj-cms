@@ -1,0 +1,13 @@
+<div class="subscription-plan" data-price="{{ price }}" data-title="{{ title }}">
+  <div class="subscription-plan__sub">
+    {{ content }}
+  </div>
+  <div class="subscription-plan__price">
+    £{{ price }}
+  </div>
+  <form action="{{ action }}"
+    method="post"
+    enctype="multipart/form-data">
+    <button role="submit" class="subscription-plan__submit o-btn o-btn--animated o-btn--solid o-btn--dark">Select</button>
+  </form>
+</div>

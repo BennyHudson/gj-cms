@@ -1,0 +1,29 @@
+{#
+* Widget -- Read Next
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if watchNext %}
+    <aside class="c-widget-read-next">
+        <h2 class="c-widget-read-next__title">Watch next:</h2>
+        {% for post in watchNext %}
+        {% set posted = post.post_date_gmt|time_ago|replace({'mins' : 'minutes'}) %}
+            <article class="c-widget-read-next__post">
+                <a href="{{ post.link }}" class="c-widget-read-next__link">
+                    {% if post.thumbnail %}
+                        <div class="c-widget-read-next__featured">
+                            <img src="{{ post.thumbnail.src|resize(191, 127, 'center') }}" alt="" class="c-widget-read-next__img">
+                            <div class="o-post-thumb__video-play"><span class="o-post-thumb__video-play-icon far fa-play"></span></div>
+                        </div>
+                    {% endif %}
+                    <div class="c-widget-read-next__info">
+                        <p class="c-widget-read-next__category">{{ post.category }}  &#8213;
+                        <span class="c-widget-read-next__posted">{{ posted }}</span></p>
+                    </div>
+                    <h1 class="c-widget-read-next__post-title">{{ post.title }}</h1>
+                </a>
+            </article>
+        {% endfor %}
+    </aside>
+{% endif %}

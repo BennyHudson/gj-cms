@@ -1,0 +1,109 @@
+{#
+* Masthead
+* --------
+* @version 1.0.0
+#}
+
+
+   {# Masthead #}
+    .c-mh {
+        background-color: #111111;
+    }
+
+    .c-mh__item {
+        padding: 12px 12px 12px 24px;
+    }
+    @media only screen and (max-width: 360px) {
+        .c-mh__item {
+            display: block;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .c-mh__item--logo {
+            padding-bottom: 0;
+        }
+    }
+
+    .c-mh__logo {
+        width: 40px;
+        line-height: 100%;
+    }
+
+    .c-mh__item--logo a {
+        display: inline-block;
+        vertical-align: inherit;
+    }
+
+    @media only screen and (max-width: 360px) {
+        .c-mh__item--logo a {
+            display: block;
+            width: 40px;
+            margin: 0 auto 12px;
+        }
+    }
+
+    .c-mh__tagline {
+        color: #ffffff;
+        font-size: 10px;
+        font-style: italic;
+        display: inline-block;
+        margin-bottom: 0;
+        margin-left: 6px;
+    }
+
+    @media only screen and (max-width: 360px) {
+        .c-mh__tagline {
+            margin-left: 0;
+        }
+    }
+
+    .c-mh__menu {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .c-mh__menu-item {
+        display: inline-block;
+        font-size: 10px;
+        letter-spacing: 2.2px;
+        padding: 7px 12px;
+        text-transform: uppercase;
+    }
+
+    @media only screen and (max-width: 360px) {
+        .c-mh__menu-item {
+            padding: 7px;
+        }
+    }
+
+    .c-mh__menu-link {
+        color: #fff !important;
+    }
+
+    {# Masthead Light #}
+    .c-mh-light {
+        background-color: #ffffff;
+    }
+
+    .c-mh-light__tagline {
+        text-transform: uppercase !important;
+        color: #000 !important;
+        padding-top: 12px;
+        font-weight: bold;
+        font-size: 12px;
+        letter-spacing: 0.25px;
+        display: block;
+    }
+
+    .c-mh-light__item {
+        padding: 24px;
+    }
+
+    .c-mh-light__item--logo a {
+        display: inline-block;
+        vertical-align: inherit;
+    }

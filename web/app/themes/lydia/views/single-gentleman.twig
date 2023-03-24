@@ -1,0 +1,15 @@
+{#
+* Single Gentleman
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% do action('before_single_article_content') %}
+
+    {% include 'components/single-gentleman.twig' %}
+
+{% endblock %}

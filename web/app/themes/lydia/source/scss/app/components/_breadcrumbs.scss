@@ -1,0 +1,85 @@
+/**
+* Breadcrumbs
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-crumbs {
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: $app-grey--text-light;
+    @include font($font--cera, $font-app-cera-w--regular);
+    @include rem(margin-bottom, 24px);
+    @include rem(margin-top, 24px);
+
+    @include mq($until: laptop) {
+        @include rem(padding-left, 24px);
+    }
+
+    span {
+        display: inline-block;
+        @include fontSize(10);
+    }
+
+    &__separator {
+        vertical-align: middle;
+        @include rem(margin, 0 4px);
+    }
+
+    a {
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $app-black;
+        }
+
+        &:active {
+            color: lighten($app-black, 40%);
+        }
+    }
+}
+
+.has-background--dark {
+    .c-crumbs {
+
+        a {
+            &:hover {
+                color: $app-white;
+            }
+
+            &:active {
+                color: darken($app-white, 40%);
+            }
+        }
+    }
+}
+.single {
+    .c-crumbs {
+        .breadcrumb_last {
+            @include rem(width, 144px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 0.9;
+
+            @include mq($until: tablet) {
+                position: absolute !important;
+                height: 1px !important;
+                width: 1px !important;
+                border: 0 !important;
+                clip: rect(0 0 0 0) !important;
+                margin: -1px !important;
+                padding: 0 !important;
+                overflow: hidden !important;
+            }
+        }
+    }
+}
+.single-podcasts {
+    .c-crumbs {
+        text-align: center;
+    }
+}

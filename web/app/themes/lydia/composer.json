@@ -1,0 +1,64 @@
+{
+    "name": "bmas/lydia",
+    "type": "project",
+    "description": "Lydia, a BMAS wordpress framework",
+    "keywords": [
+        "lydia",
+        "wordpress",
+        "boilerplate",
+        "bmas"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "role": "Founder",
+            "name": "Alexander Hawkings-Byass",
+            "email": "alexander@bmas.agency",
+            "homepage": "https://bmas.agency"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://pivvenit.github.io/acf-composer-bridge/composer/v3/wordpress-muplugin/"
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.com/bmas/"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor",
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2",
+        "drewm/mailchimp-api": "*",
+        "stoutlogic/acf-builder": "*",
+        "anthonybudd/wp_mail": "*",
+        "timber/timber": "*",
+        "mindkomm/timmy": "*",
+        "mindkomm/timber-integration-woocommerce": "^0.5.2",
+        "illuminate/support": "^8.7",
+        "sendgrid/sendgrid": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "BMAS\\": "library/"
+        }
+    }
+}

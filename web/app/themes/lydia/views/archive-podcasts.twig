@@ -1,0 +1,31 @@
+{#
+* Archive Templates
+* -------
+* @package Nurformix
+* @since GJ 1.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% include 'components/podcast/podcast__hero.twig' %}
+
+    {% include 'components/podcast/podcast__overview.twig' %}
+
+    {% include 'components/ads.twig' with {
+        gpt : {
+            type : 'billboard',
+            code : 'GJ_970x250_001'
+        }
+    } %}
+
+    {% include 'components/podcast/podcast__featured.twig' with {
+        selected : podcastGlobal.featured.featured,
+        title : 'Featured'
+    }%}
+
+    {% include 'components/podcast/podcast__newsletter.twig' %}
+
+    {% include 'components/podcast/podcast__archive.twig' %}
+
+{% endblock %}

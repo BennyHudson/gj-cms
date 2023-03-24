@@ -1,0 +1,15 @@
+.landing-page {
+  background: $wild-sand;
+  color: $midnight;
+
+  &__content {
+    padding: 70px 30px;
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+
+    @include mq($until: tablet) {
+      padding: 30px;
+    }
+  }
+}

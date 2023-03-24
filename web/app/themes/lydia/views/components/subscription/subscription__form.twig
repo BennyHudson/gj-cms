@@ -1,0 +1,156 @@
+{#
+* Subscription forms
+* --------
+* @package GJ
+* @since GJ 5.0
+* @version 1.0
+#}
+
+<div class="subscription-page" id="subscription__signup-form">
+
+    {# INTRO #}
+    <div class="subscription-page__intro o-wrapper o-wrapper--inner">
+        <h1 class="subscription-page__intro-title">{{ post.alternate_title ? post.alternate_title : post.title }}</h1>
+        <div class="subscription-page__intro-text">{{ post.content }}</div>
+    </div>
+
+    {# FORMS #}
+    <div class="subscription-page__products-group o-wrapper o-wrapper--inner">
+
+        {% for product in products %}
+
+            {% set imgFeatured = Image(product.thumbnail).src | resize(460) %}
+            {% set imgNormal = Image(product.thumbnail).src | resize(306) %}
+            {% set subLength   = product.terms('pa_subscription-length') %}
+            {% set subPayment  = product.terms('pa_payment-schedule') %}
+
+            {% set variations = fn('get_variation_data_from_variation_id', product.ID) %}
+
+            <form class="subscription-form subscription-form__form{{ product.ID == vipProduct ? ' subscription-form--featured' : '' }}" method="post" action="{{ site.url }}/cart?add-to-cart={{ product.ID }}" id="subscription-form">
+
+                {# HEADER #}
+                <div class="subscription-form__header">
+                    <h2 class="subscription-form__title">{{ product.title|split(' ')[0] }}</h2>
+                    {% if page.thumbnail.src %}
+                        <img class="subscription-form__img" src="{{ product.ID == vipProduct ? imgFeatured : imgNormal }}" alt="{{ product.thumbnail.alt }}"/>
+                    {% endif %}
+                </div>
+
+                {# PRICE #}
+                <div class="subscription-form__price-group">
+                    {% if product.ID == vipProduct %}
+                        <div class="subscription-form__price-vip">
+                            <p class="subscription-form__price">£{{ product._regular_price }}</p>
+                            <span class="subscription-form__price-discount"></span>
+                        </div>
+                        <p class="subscription-form__price-info">
+                            <span class="subscription-form__price-info">per year</span>
+                        </p>
+                    {% elseif product.ID == standardProduct %}
+                        <p class="subscription-form__price">£{{ product._regular_price }}</p>
+                        <p class="subscription-form__price-info">
+                            <span class="subscription-form__price-info-year">per year</span>
+                        </p>
+                    {% elseif product.ID == digitalProduct %}
+                        <p class="subscription-form__price">£{{ product._regular_price }}</p>
+                        <p class="subscription-form__price-info">per month</p>
+                    {% endif %}
+                </div>
+
+                {# PERKS #}
+                <ul class="subscription-form__perks">
+                    {% for perk in product.get_field('subscription_perks') %}
+                        <li class="subscription-form__perk">{{perk.subscription_perk}}</li>
+                    {% endfor %}
+                </ul>
+
+                {# ISSUE SELECT #}
+                {% if subLength %}
+                    <div class="subscription-form__length">
+                        <select class="subscription-form__length-select">
+                            {% for length in subLength %}
+                                <option data-length="{{ length.slug }}" name="subscription">
+                                    <span>{{ length.name | raw }}</span>
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}
+
+                {# Payment SELECT if VIP #}
+                {% if subPayment %}
+                    <div class="subscription-form__payment">
+                        <div class="subscription-form__payment-select">
+                            {% for payment in subPayment %}
+                                <label for="{{ payment.slug }}">Pay
+                                    {{ payment.name }}</label>
+                                <input class="subscription-form__payment-radio" id="{{ payment.slug }}" data-payment="{{ payment.slug }}" value="{{ payment.slug }}" name="paymentRadio" type="radio" {% if loop.index == 2 %} checked="checked" {% endif %}>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {# PRICE #}
+                <div class="subscription-form__price-group subscription-form__price-group--mobile">
+
+                    {% if product.ID == vipProduct %}
+
+                        <div class="subscription-form__price-vip">
+                            <p class="subscription-form__price">£{{ product._regular_price }}</p>
+                            <span class="subscription-form__price-discount"></span>
+                        </div>
+
+                        <p class="subscription-form__price-info">
+                            <span class="subscription-form__price-info">per year</span>
+                        </p>
+
+                    {% elseif product.ID == standardProduct %}
+
+                        <p class="subscription-form__price">£{{ product._regular_price }}</p>
+                        <p class="subscription-form__price-info">
+                            <span class="subscription-form__price-info-year">per year</span>
+                        </p>
+
+                    {% elseif product.ID == digitalProduct %}
+
+                        <p class="subscription-form__price">£{{ product._regular_price }}</p>
+                        <p class="subscription-form__price-info">per month</p>
+
+                    {% endif %}
+
+                </div>
+
+                {#  Hidden data fields for Cart URL #}
+                <div class="subscription-form__data" style="display: none;">
+
+                    {#  If has dropdown and is variable product #}
+                    {% if subLength %}
+
+                        {% for variation in variations %}
+
+                            <span
+                                data-length="{% for attribute in variation.attributes | slice(0, 1) %}{{ attribute }}{% endfor %}"
+                                {% if subPayment %}
+                                data-payment="{% for attribute in variation.attributes | slice(1, 2) %}{{ attribute }}{% endfor %}"
+                                {% endif %}
+                                data-id="{% for length in subLength | slice(0, 1) %}{{ length.ID }}{% endfor %}"
+                                data-price="{{ variation.display_price }}"
+                                data-url="?add-to-cart={{ product.ID }}&variation_id={{variation.variation_id}}&{% for key, attribute in variation.attributes %}{{key}}={{ attribute }}{% if not loop.last %}&{% endif %}{% endfor %}"></span>
+                        {% endfor %}
+
+                        {#  If is single product #}
+                    {% else %}
+
+                        <span data-url="?add-to-cart={{ product.ID }}" data-price="{{ product._regular_price }}"></span>
+
+                    {% endif %}
+
+                </div>
+
+                {# BUY NOW #}
+                <input class="subscription-form__btn o-btn" type="submit" value="Buy Now">
+            </form>
+
+        {% endfor %}
+    </div>
+</div>

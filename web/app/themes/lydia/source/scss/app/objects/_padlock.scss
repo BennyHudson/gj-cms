@@ -1,0 +1,22 @@
+/**
+* Members Padlock
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-padlock {
+
+    &__lock,
+    &__base {
+        transition: transform 0.15s ease-out, fill 0.2s ease-out;
+    }
+
+    &:hover {
+
+        .c-padlock__lock {
+            transform: translateY(-3px);
+        }
+    }
+}

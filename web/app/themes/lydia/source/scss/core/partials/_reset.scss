@@ -1,0 +1,119 @@
+/**
+* Reset
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 2.0
+* @version 1.0
+*/
+
+/**!
+* http://meyerweb.com/eric/tools/css/reset/
+* v2.0 | 20110126
+* License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+main, nav, output, ruby, section, summary,
+time, mark, audio, video, button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+// HTML5 display-role reset for older browsers
+article, aside, details, figcaption, figure,
+footer, header, main, nav, section, picture {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+    &::before, &::after, {
+        content: '';
+        content: none;
+    }
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/**
+* Custom Reset
+* -----
+* @since Lydia 2.0
+* @version 1.0
+*/
+
+//force redraw on IE8, fix outline/scroll bug on Firefox 3.6, remove unnecessary margin
+object {
+    outline: none;
+    display: block;
+    overflow: hidden;
+}
+
+textarea {
+    overflow: auto;
+}
+
+iframe {
+    border: 0;
+}
+
+sup, sub {
+    line-height: 0;
+    font-size: 75%;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+// Removes browser outline styles
+button {
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+// Speed up the delay on touch devices
+a,
+area,
+button,
+[role="button"],
+input:not([type=range]),
+label,
+select,
+summary,
+textarea {
+    @include mq($until: tablet) {
+        touch-action: manipulation;
+    }
+}

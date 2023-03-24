@@ -1,0 +1,79 @@
+{#
+* Feed Video Home
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if videos %}
+<section class="c-video-hero">
+
+        <header class="c-video-hero__header">
+
+            <div class="c-video-hero__info">
+                <h1 class="c-video-hero__title">Video</h1>
+            </div>
+
+            {% include 'objects/button.twig' with {
+                el: 'a',
+                class: 'c-video-hero',
+                cta: 'View all',
+                link: header.link,
+                style: 'minimal',
+                after: '<span class="fas fa-chevron-right"></span>'
+            } %}
+
+        </header>
+
+    <div class="c-video-hero-slider">
+
+        <div class="c-video-hero-slider__main" js="js-video-hero-slider--main">
+
+            {% for video in videos %}
+
+                {% include 'components/video/video__card.twig' with {
+                    card : video,
+                    img : {
+                        base : {
+                            obj : video.thumbnail,
+                            w   : '2000',
+                            h   : '890',
+                            c   : 'center'
+                        },
+                        mobile : {
+                            obj : video.thumbnail,
+                            w   : '768',
+                            h   : '800',
+                            c   : 'center',
+                        }
+                    },
+                    meta : true,
+                    style : 'hero'
+                } %}
+
+            {% endfor %}
+        </div>
+
+        <nav class="c-video-hero-slider__nav">
+            <ul class="c-video-hero-nav" js="js-podcast-hero-slider--nav">
+
+                <span class="c-video-hero-nav__marker"></span>
+
+                {% for video in videos %}
+
+                    <li class="c-video-hero-nav__item {{ loop.first ? 'is-current' : '' }}" data-slick-nav-index="{{ loop.index0 }}">
+                        <span class="c-video-hero-nav__index">{{ loop.index }}</span>
+                        <div class="c-video-hero-nav__details">
+                            <span class="c-video-hero-nav__title">{{ video.title }}</span>
+                            <span class="c-video-hero-nav__guest">{{ video.preview.length(16).force(true).read_more('')|striptags }}</span>
+                        </div>
+                    </li>
+
+                {% endfor %}
+            </ul>
+
+        </nav>
+
+    </div>
+
+</section>
+{% endif %}

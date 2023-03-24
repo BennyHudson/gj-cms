@@ -1,0 +1,18 @@
+{% if post.sessions_sponsor_background_image %}
+  <div class="sessions-sponsor"
+    style="background-image: url('{{ Image(
+      post.sessions_sponsor_background_image
+    )|resize(1920, 560) }}')">
+    <div class="sessions-sponsor__container o-wrapper o-wrapper--inner">
+      <img src="{{ Image(post.sessions_sponsor_logo_alt)|resize(400, 0) }}"
+        class="sessions-sponsor__logo"/>
+      <div class="sessions-sponsor__content">
+        <h2 class="sessions-sponsor__title">Listen and believe</h2>
+      </div>
+      <a href="{{ post.meta('sessions_sponsor_link') }}"
+        class="sessions-sponsor__link">
+        {{ post.meta('sessions_sponsor_button_text') }}
+      </a>
+    </div>
+  </div>
+{% endif %}

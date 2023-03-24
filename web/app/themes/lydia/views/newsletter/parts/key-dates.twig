@@ -1,0 +1,50 @@
+{#
+* Gallery
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.dates %}
+    <div class="c-gly">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-gly__items">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" colspan="3" class="c-gly__header">
+                        <h2 class="c-kd__main-title">Dates for your Diary</h2>
+                    </td>
+                </tr>
+
+                <tr class="c-gly__row">
+                {% for date in object.dates %}
+                    <td class="c-gly__item" align="left" valign="top">
+                        <div class="c-gly__image-wrap{{ loop.last ? ' c-gly__image-wrap--last' : '' }}">
+
+                            <div class="c-kd-item">
+                                <h2 class="c-kd-item__bigdate">{{ date.date|date('jS') }}</h2>
+
+                                {% if date.description %}
+                                    <p class="c-kd-item__description">{{ date.description }}</p>
+                                {% endif %}
+
+                                <p class="c-kd-item__fulldate">{{ date.date|date('D jS F') }}</p>
+
+                                {% if date.cta %}
+                                    <a class="c-kd-item__cta" target="_blank" href="{{ date.link }}">{{ date.cta }}</a>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+                    </td>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

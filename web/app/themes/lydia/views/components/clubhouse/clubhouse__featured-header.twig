@@ -1,0 +1,36 @@
+{#
+* Featured Header
+* ---------
+* @package components/clubhouse
+#}
+<section class="c-club-partner-featured">
+
+    {% if clubhousePartners.featured_image %}
+        {% set featured = Image(clubhousePartners.featured_image) %}
+
+        {% include 'objects/image.twig' with {
+            class: 'c-club-partner-featured__feat',
+            img : {
+                base : {
+                    obj : featured,
+                    w   : '2000',
+                    h   : '680',
+                    c   : 'center'
+                },
+                tablet : {
+                    obj : featured,
+                    w   : '768',
+                    h   : '512',
+                    c   : 'right'
+                },
+                mobile : {
+                    obj : featured,
+                    w   : '375',
+                    h   : '406',
+                    c   : 'right'
+                },
+            }
+        } %}
+    {% endif %}
+
+</section>

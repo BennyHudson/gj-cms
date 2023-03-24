@@ -1,0 +1,27 @@
+<section class="gifting-discover">
+  <div class="gifting-discover__wrapper o-wrapper o-wrapper--inner">
+    <div class="gifting-discover__header">
+      <h3 class="gifting-discover__heading">
+        {{ post.featured_brands_title }}
+      </h3>
+      <a href="{{ post.featured_brands_link }}" class="gifting-discover__link">
+        View all <span class="fas fa-chevron-right"></span>
+      </a>
+    </div>
+    <div class="gifting-discover__container">
+      {% for tease in post.meta('featured_brands') %}
+        <a href="{{ tease.link }}" class="gifting-discover__tease">
+          <div class="gifting-discover__image">
+            <img src="{{ Image(tease.image)|resize(604, 798) }}" alt="" />
+            <div class="gifting-discover__overlay">
+              <span>Discover</span>
+            </div>
+          </div>
+          <h3 class="gifting-discover__title">
+            {{ tease.name }}
+          </h3>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

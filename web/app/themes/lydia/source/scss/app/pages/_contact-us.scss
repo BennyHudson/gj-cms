@@ -1,0 +1,52 @@
+/**
+* Contact Us
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-page--contact-us {
+
+}
+
+.c-contact-info {
+    @include rem(margin-left, 48px);
+
+    &__title {
+        color: $app-black--text;
+        @include fontSize(17);
+        line-height: 1.29;
+        font-weight: $font-app-cera-w--bold;
+    }
+
+    &__info {
+        color: $app-grey--text;
+        font-weight: $font-app-cera-w--semibold;
+        @include fontSize(15);
+        line-height: 1.72;
+        @include rem(margin-bottom, 24px);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        a {
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: darken($app-grey--text, 30%);
+            }
+
+            &:active {
+                color: darken($app-grey--text, 10%);
+            }
+        }
+    }
+}
+
+.c-acf-map {
+    @include mq($until: tablet) {
+        display: none;
+    }
+}

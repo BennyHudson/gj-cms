@@ -1,0 +1,45 @@
+<section class="subscription-perk">
+  <div class="subscription-perk__container {{
+    perk.text_alignement == 'Left'
+      ? 'subscription-perk__container--left'
+      : 'subscription-perk__container--right'
+  }}">
+    <div class="subscription-perk__image {{
+      perk.text_alignement == 'Left'
+        ? 'subscription-perk__image--right'
+        : 'subscription-perk__image--left'
+      }}" style="background-image:url({{ Image(perk.background_image) }})"></div>
+    <div class="subscription-perk__wrapper {{
+      perk.text_color == 'Light'
+        ? 'subscription-perk__wrapper--light'
+        : 'subscription-perk__wrapper--dark'
+      }} {{
+      perk.text_alignement == 'Left'
+        ? 'subscription-perk__wrapper--left'
+        : 'subscription-perk__wrapper--right'
+      }} ">
+      <div>
+        <h1 class="subscription-perk__title">
+          {{ perk.title }}
+        </h1>
+        <div class="subscription-perk__content">
+          {{ perk.content }}
+        </div>
+        {% if perk.has_link %}
+          <a href="{{ perk.link.url }}"
+            class="subscription-perk__link o-btn o-btn--animated subscription-perk__link--{{
+            perk.text_color == 'Light'
+              ? 'light'
+              : 'dark'
+            }} o-btn--outline"
+            {{ perk.link.target ? 'target="__blank"' }}>
+            {{ perk.link.title }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% if 'brand' in (perk.title|sanitize) %}
+    {% include 'components/subscription/subscription-brands.twig' %}
+  {% endif %}
+</section>

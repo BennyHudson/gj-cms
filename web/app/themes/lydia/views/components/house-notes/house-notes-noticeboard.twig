@@ -1,0 +1,14 @@
+<div class="house-notes-noticeboard">
+  {% for post in latestPosts %}
+    <div class="house-notes-noticeboard__column">
+      {% if loop.index == 2 %}
+        <div class="house-notes-noticeboard__title">
+          (Noticeboard)
+        </div>
+      {% endif %}
+      {% include 'components/house-notes/house-notes-tease.twig' with {
+        largeHeader: loop.index == 2
+      } %}
+    </div>
+  {% endfor %}
+</div>

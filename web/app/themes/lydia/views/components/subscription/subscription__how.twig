@@ -1,0 +1,53 @@
+{#
+* Subscription How
+* ---------
+* @component Subscription
+* @version 1
+#}
+<section class="c-subscription-how">
+
+    {% if post.content %}
+        <div class="c-subscription-how__intro">
+            {{ post.content }}
+        </div>
+    {% endif %}
+
+    <div class="c-subscription-how__steps">
+        {% include 'objects/title.twig' with {
+            el: 'h2',
+            title: 'How it works',
+            class: 'c-subscription-how'
+        } %}
+
+        <div class="c-subscription-how__items c-how-items">
+
+        {% for how in club.how.item %}
+
+            <div class="c-how-items__item">
+
+                {% include 'objects/image.twig' with {
+                    class: 'c-how-items__picture',
+                    img : {
+                        base : {
+                            obj : Image(how.img),
+                            w   : '124'
+                        }
+                    }
+                } %}
+
+                <div class="c-how-items__info">
+                    {% include 'objects/title.twig' with {
+                        el: 'h3',
+                        title: how.title,
+                        class: 'c-how-items'
+                    } %}
+                    <p class="c-how-items__description">{{ how.description }}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+
+        </div>
+    </div>
+
+</section>

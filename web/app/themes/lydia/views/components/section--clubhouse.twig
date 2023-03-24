@@ -1,0 +1,54 @@
+{#
+* Section Clubhouse
+* --------
+* @package components/section
+* @version 1.0.0
+#}
+
+<section class="c-section--club">
+
+    <div class="c-section-club">
+
+        {% include 'objects/image.twig' with {
+            class: 'c-section-club__card',
+            alt : 'Join the Clubhouse',
+            img : {
+                base : {
+                    obj : clubhouse.card,
+                    w   : '480',
+                    h   : '0'
+                }
+            }
+        } %}
+
+        <div class="c-section-club__info">
+
+            {% include 'objects/title.twig' with {
+                el: 'h2',
+                class: 'c-section-club',
+                title: '<span class="c-section-club__pretitle">Introducing</span> Clubhouse',
+            } %}
+
+            <p class="c-section-club__description">{{ clubhouse.description }}</p>
+
+            {% include 'objects/button.twig' with {
+                el: 'a',
+                class: 'c-section-club__link',
+                cta: 'Join the Club',
+                link: clubhouse.link,
+                style: 'solid',
+            } %}
+
+            {% include 'objects/button.twig' with {
+                el: 'a',
+                class: 'c-section-club__link',
+                cta: 'Member Experiences',
+                link: fn('get_post_type_archive_link', 'clubhouse-partners'),
+                style: 'outline',
+            } %}
+
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,288 @@
+/**
+ * Single Sponsored Content
+ * ---------
+ * @component single/sponsored
+ * @version 1
+*/
+
+.c-single-sponsored-content {
+    padding: rem(60px) 0;
+
+    .c-content-builder__paragraph,
+    .c-content-builder__header,
+    .c-content-builder__affiliate-btn-group,
+    .c-content-builder__blockquote  {
+        @include mq($until: tablet) {
+            padding-left: rem(12px);
+            padding-right: rem(12px);
+        }
+    }
+
+
+    .c-content-builder__blockquote {
+        text-align: center;
+    }
+
+    .c-content-builder__gallery {
+        padding-top: rem(48px);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            z-index: 1;
+            background-color: $app-grey--light;
+
+            @include mq($until: tablet) {
+                height: 25%;
+            }
+        }
+
+        &-inner {
+            z-index: 1;
+            position: relative;
+        }
+    }
+
+    .c-content-builder__gallery {
+        padding-top: rem(48px);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            z-index: 1;
+            background-color: $app-grey--light;
+
+            @include mq($until: tablet) {
+                height: 25%;
+            }
+        }
+
+        &-inner {
+            z-index: 1;
+            position: relative;
+        }
+    }
+
+    .c-content-builder-slider-full,
+    .c-content-builder-slider-products {
+
+        .c-content-builder-slider {
+
+            &__controls {
+                display: flex;
+                @include wrapper($g-wrapper--netbook, true);
+                margin-bottom: rem(24px);
+                justify-content: flex-end;
+                padding: 0 rem(24px)
+            }
+
+            &__img-container {
+                padding: rem(12px);
+            }
+        }
+    }
+
+    .c-content-builder-slider-products {
+        margin-bottom: rem(48px);
+
+        .slick-track {
+            margin: auto;
+        }
+    }
+
+    .c-content-builder__product-media {
+        max-width: 100%;
+    }
+
+    .c-content-builder__prod-wide {
+        background-color: $app-grey--light;
+        display: grid;
+        grid-template-columns: 65% 1fr;
+        margin: rem(48px) 0;
+
+        @include mq($until: tablet) {
+            grid-template-columns: 1fr;
+        }
+
+        &-media {
+
+            &-img {
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__info {
+            align-self: center;
+            padding: rem(24px);
+            max-width: rem(480px);
+        }
+
+        &__pretitle {
+            @include upper;
+            display: block;
+            font-weight: $font--semibold;
+            margin-bottom: rem(12px);
+        }
+
+        &__title {
+            @include upper;
+            @include font($font--cond-chronicle, $font-app-chronicle-w--semibold);
+            margin-bottom: rem(12px);
+        }
+
+        &__description {
+            @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+            @include fontSize(14);
+            margin-bottom: rem(24px);
+        }
+
+        &__btn {
+            display: inline-block;
+            color: $app-black--text;
+
+            &:hover,
+            &:focus {
+                background-color: $app-grey--text;
+            }
+
+        }
+    }
+
+    .c-content-builder__podcast {
+        padding-top: rem(24px);
+        margin-bottom: rem(48px);
+    }
+
+    .c-content-builder__mediatext {
+        background-color: $app-grey--light;
+        display: grid;
+        grid-template-columns: 65% 1fr;
+        margin: rem(60px 0 120px);
+        position: relative;
+
+        @include mq($until: tablet) {
+            grid-template-columns: 100%;
+            margin-bottom: rem(48px);
+        }
+
+        &.has-align--right {
+            grid-template-columns: 1fr 65%;
+
+            @include mq($until: tablet) {
+                grid-template-columns: 100%;
+            }
+
+            .c-content-builder__mediatext {
+
+                &__media {
+                    grid-row: 1;
+                    grid-column: 2;
+                    padding: rem(60px 48px 0 24px);
+
+                    @include mq($until: tablet) {
+                        grid-row: initial;
+                        grid-column: initial;
+
+                        padding: 0;
+                    }
+                }
+
+                &__info {
+                    grid-row: 1;
+                    grid-column: 1;
+                    justify-self: center;
+
+                    @include mq($until: tablet) {
+                        grid-row: initial;
+                        grid-column: initial;
+                        justify-self: self-start;
+                    }
+                }
+            }
+        }
+
+        &__media {
+            padding: rem(60px 24px 0 48px);
+            margin-bottom: rem(-60px);
+
+            @include mq($until: tablet) {
+                padding: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        &-media {
+
+            &-img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        &__info {
+            align-self: center;
+            padding: rem(24px);
+            max-width: rem(480px);
+        }
+
+        &__pretitle {
+            @include upper;
+            display: block;
+            font-weight: $font--semibold;
+            margin-bottom: rem(36px);
+        }
+
+        &__title {
+            @include upper;
+            line-height: 1.1;
+            @include font($font--cond-chronicle, $font-app-chronicle-w--semibold);
+            margin-bottom: rem(12px);
+        }
+
+        &__description {
+            @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+            @include fontSize(20);
+            margin-bottom: rem(36px);
+        }
+
+        &__btn {
+            margin-bottom: rem(24px);
+            display: inline-block;
+        }
+
+        &__controls {
+            display: flex;
+            color: $app-black--text;
+
+            .c-content-builder__mediatext__control-prev,
+            .c-content-builder__mediatext__control-next {
+                margin: rem(0 6px);
+            }
+
+            button {
+                padding: 0;
+                width: rem(48px);
+                height: rem(48px);
+                border: 1px solid $app-grey--text;
+                border-radius: 50%;
+
+                &:hover,
+                &:focus {
+                    background-color: $white;
+                    border-color: $white;
+                }
+            }
+        }
+    }
+}

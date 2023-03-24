@@ -1,0 +1,49 @@
+/**
+* Sponsored By
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+.c-sponsored-by {
+
+    &--single {
+        @include rem(margin-bottom, 24px);
+
+        .c-sponsored-by {
+
+            &__logo {
+                @include rem(max-width, 142px);
+            }
+        }
+    }
+
+    &--podcast {
+        color: $app-white;
+        text-align: left;
+        border-bottom: 1px solid $app-black--text;
+        @include rem(margin-bottom, 24px);
+
+        @include mq($until: tablet) {
+            @include rem(min-width, 100px);
+        }
+
+        .c-sponsored-by {
+
+            &__intro {
+                @extend %sm-caps;
+                @include rem(margin-bottom, 12px);
+            }
+
+            &__logo {
+                @include rem(margin-bottom, 24px);
+            }
+        }
+    }
+
+    &__intro {
+        @include fontSize(10);
+        @include rem(margin-bottom, 6px);
+        font-weight: $font-app-cera-w--bold;
+    }
+}

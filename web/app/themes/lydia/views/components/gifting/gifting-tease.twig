@@ -1,0 +1,11 @@
+<a href="{{ tease.link }}" class="gifting-tease">
+  <img src="{{ Image(tease.thumbnail|resize(836, 602)) }}"
+    alt="{{ tease.title }}"
+    class="gifting-tease__image" />
+  <div class="gifting-tease__category">
+    {{ tease.category }}
+  </div>
+  <h3 class="gifting-tease__title">
+    {{ tease.title }}
+  </h3>
+</a>

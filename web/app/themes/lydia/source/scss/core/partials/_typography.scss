@@ -1,0 +1,347 @@
+/**
+* Typography
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+* Text Selection
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+::selection {
+    background: $color-accent;
+    color: #fff;
+}
+
+/**
+* Headings
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+h1,
+%u-h1,
+h2,
+%u-h2,
+h3,
+%u-h3,
+h4,
+%u-h4,
+h5,
+%u-h5,
+h6,
+%u-h6 {
+    display: block;
+}
+
+h1,
+%u-h1,
+h2,
+%u-h2,
+h3,
+%u-h3, {
+
+    & small {
+        font-size: 70%;
+        color: lighten($color-base, 40%);
+    }
+}
+
+h1,
+%u-h1 {
+    @include font($font--h1, $font-w--h1);
+    @include fontSize(30);
+
+    @include mq($from: phablet) {
+        @include fontSize(34);
+    }
+}
+
+h2,
+%u-h2 {
+    @include font($font--h2, $font-w--h2);
+    @include fontSize(24);
+
+    @include mq($from: phablet) {
+        @include fontSize(28);
+    }
+}
+
+h3,
+%u-h3 {
+    @include font($font--h3, $font-w--h3);
+    @include fontSize(18);
+
+    @include mq($from: phablet) {
+        @include fontSize(22);
+    }
+}
+
+h4,
+%u-h4 {
+    @include font($font--h4, $font-w--h4);
+    @include fontSize(14);
+
+    @include mq($from: phablet) {
+        @include fontSize(18);
+   }
+}
+
+h5,
+%u-h5 {
+    @include font($font--h5, $font-w--h5);
+    @include fontSize(10);
+
+    @include mq($from: phablet) {
+        @include fontSize(14);
+    }
+}
+
+h6,
+%u-h6 {
+    @include font($font--h6, $font-w--h6);
+    @include fontSize(8);
+
+    @include mq($from: phablet) {
+        @include fontSize(12);
+    }
+}
+
+/**
+* Content
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+p {
+    @include font($font--para, $font-w--para);
+}
+
+%lead {
+    @include fontSize(18);
+}
+
+small,
+%small,
+%caption {
+    font-size: 80%;
+}
+
+em,
+i,
+%italic {
+    font-style: italic;
+}
+
+strong,
+b,
+%bold {
+    font-weight: $font--bold;
+}
+
+/**
+* Links
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:focus {
+        outline: none;
+    }
+
+    /**
+    * Links
+    * --------
+    * @since Lydia 1.0
+    * @version 1.0
+    */
+    &[href^="http"]:empty::before,
+    &[href^="https"]:empty::before {
+        content: attr(href);
+    }
+
+    & img {
+        border: none;
+    }
+}
+
+/**
+* Typographic Alterations
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+ins {
+    text-decoration: underline;
+}
+
+del,
+.del,
+s,
+strike {
+    text-decoration: line-through;
+}
+
+mark,
+%mark {
+    background-color: transparentize($color-accent, 0.4);
+    @include rem(padding, 2px 3px);
+    box-decoration-break: clone;
+}
+
+/**
+* Section Breaks
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+hr {
+    border: 0;
+    margin: 0;
+    clear: both;
+    @include rem(padding, 12px 0);
+    background-position: 0 50%;
+    background-repeat: repeat-x;
+    background-size: 100% 0.15rem;
+    background-image: linear-gradient(to left, $color-base, $color-base, $color-base);
+}
+
+/**
+* Code Snippets
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+code {
+    @include font($font--code);
+    line-height: 1;
+    color: $color-base;
+    background-color: lighten($color-base, 80%);
+    border: 1px solid $color-base;
+    @include rem(padding, 2.5px 4px 1px);
+    @include rem(border-radius, 3px);
+}
+
+pre {
+    position: relative;
+    white-space: pre;
+    @include font($font--code);
+    color: $color-base;
+
+    & .u-pre--scrollable {
+        @include rem(max-height, 350px);
+        overflow-y: scroll;
+    }
+
+    & code {
+        display: block;
+        line-height: 1.4;
+        overflow-x: auto;
+        @include rem(padding, 12px);
+
+        &::-webkit-scrollbar {
+            @include rem(height, 1px); // horizontal scrollbars
+        }
+    }
+}
+
+/**
+* Keyboard
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+kbd,
+.u-keystroke {
+    font-family: $font--code;
+    font-size: inherit;
+    @include rem(padding, 2px 3px 0);
+    margin: 0;
+    background-color: #ededed;
+    border: 1px solid #d6d6d6;
+    @include border-radius(3);
+    @include rem(box-shadow, 0 1px 0 transparentize($color-base, 0.1));
+
+    & & {
+        font-weight: $font--bold;
+        padding: 0;
+        box-shadow: none;
+    }
+}
+
+/**
+* Blockquotes
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+blockquote {
+    position: relative;
+    @include rem(padding, 0 50px);
+
+    & cite {
+        display: block;
+        color: lighten($color-base, 30%);
+        text-align: right;
+
+        a,
+        a:visited {
+            color: $color-base;
+        }
+    }
+
+    & p:last-child,
+    & p:last-of-type,
+    & ul:last-child,
+    & ul:last-of-type,
+    & ol:last-child,
+    & ol:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+cite {
+   color: lighten($color-base, 30%);
+}
+
+/**
+* Abbreviations
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+abbr,
+acronym {
+    cursor: help;
+    border-bottom: 1px dotted;
+
+    &:hover,
+    &:focus {
+        opacity: .75;
+    }
+}
+
+/**
+* Font Style modifiers
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+%caps {
+    text-transform: uppercase;
+    @include rem(letter-spacing, 1.2px);
+}
+
+%sm-caps {
+    @extend %caps;
+    font-size: 80%;
+}

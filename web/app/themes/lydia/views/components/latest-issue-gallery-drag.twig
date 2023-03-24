@@ -1,0 +1,23 @@
+{#
+* Latest Issue Gallery
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<div class="c-issue-gallery-drag">
+
+    {# Gallery #}
+    <div class="c-issue-gallery-drag__slider-container">
+        <div class="c-issue-gallery-drag__slider" id="js-issue-slider-drag">
+            <div class="c-issue-gallery-drag__img-holder">
+                <img class="c-issue-gallery-drag__img-cover" src="{{ Image(currentIssue.issue_cover).src|resize(349, 458, 'center') }}" alt="Preview of {{ currentIssue.name }}" />
+            </div>
+            {% for image in currentIssue.gallery %}
+                <div class="c-issue-gallery-drag__img-holder">
+                    <img class="c-issue-gallery-drag__img-preview" src="{{ Image(image).src|resize(697, 458, 'center') }}" alt="Preview of {{ currentIssue.name }}" />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>

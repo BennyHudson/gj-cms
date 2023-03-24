@@ -1,0 +1,31 @@
+{#
+* Related Posts Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+<section class="o-post-group {{ wrapper(wrapper) }}">
+
+    {% include 'components/feed__header.twig' with { header : {'title': 'Further Reading' } } %}
+
+    <div class="o-post-feed o-post-feed--related">
+        {% for category in post.terms('category') %}
+            {% set posts = Post(category.get_posts( relatedArgs )) %}
+        {% endfor %}
+
+        {% for post in posts %}
+            {% include 'components/post-thumb.twig' with {
+                style : 'related',
+                feat  : {
+                    base : {
+                        w: '630',
+                        h: '420',
+                        c: 'center'
+                    }
+                }
+            } %}
+        {% endfor %}
+
+    </div>
+</section>

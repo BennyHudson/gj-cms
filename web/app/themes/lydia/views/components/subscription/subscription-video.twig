@@ -1,0 +1,65 @@
+{#
+* Subscription Video
+* ---------
+* @component Subscription
+* @version 1
+#}
+
+<section class="c-subscription-video">
+  {% if club.video.url %}
+    {% include 'objects/video-player.twig' with {
+      src: club.video.url,
+      thumb: {
+        src: post.thumbnail.src,
+        width: '1800',
+        height: '1125'
+      },
+      attr: 'playsinline muted',
+      style: 'subscription'
+    } %}
+  {% else %}
+    {% include 'objects/image.twig' with {
+      class: 'c-subscription-video__feat',
+      img: {
+        base: {
+          obj: post.thumbnail,
+          w: '1800',
+          h: '1125',
+          c: 'center'
+        },
+        mobile: {
+          obj: post.thumbnail,
+          w: '768',
+          h: '904',
+          c: 'center'
+        }
+      }
+    } %}
+  {% endif %}
+
+  <div class="c-subscription-video__modal">
+    {% if club.video.title %}
+      <div class="c-subscription-video__info">
+        <h1 class="c-subscription-video__title">
+          {{ club.video.title }}
+        </h1>
+        <div class="c-subscription-video__subtitle">
+          {{ club.video.subtitle }}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="c-subscription-video__buttons">
+
+      <a href="/clubhouse-partners"
+        class="o-btn o-btn--animated o-btn--light c-subscription-video__btn c-subscription-video__btn--primary">Member Experiences</a>
+
+       {% if club.video.url %}
+        <button id="js-subscription-video--play"
+          class="o-btn o-btn--animated o-btn--light o-btn--outline c-subscription-video__btn c-subscription-video__btn--secondary">
+          <span class="fas fa-play"></span> View Perks
+        </button>
+      {% endif %}
+    </div>
+  </div>
+</section>

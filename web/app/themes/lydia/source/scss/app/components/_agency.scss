@@ -1,0 +1,15 @@
+/**
+* Site Info
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-agency {
+
+    &__logo {
+        fill: $app-white;
+        @include rem(max-width, 24px);
+    }
+}

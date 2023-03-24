@@ -1,0 +1,49 @@
+{#
+* Gallery
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.items %}
+    <div class="c-gly">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-gly__items">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" colspan="3" class="c-gly__header">
+                        <h2 class="c-gly__main-title">{{ object.title }}</h2>
+                    </td>
+                </tr>
+
+                <tr class="c-gly__row{{ object.border ? ' c-gly__row--border' : '' }}">
+                {% for gallery in object.items %}
+                    <td class="c-gly__item" align="left" valign="top">
+                        <div class="c-gly__image-wrap{{ loop.last ? ' c-gly__image-wrap--last' : '' }}">
+
+                            {% if gallery.link %}
+                            <a class="c-gly__link" href="{{ gallery.link }}" target="_blank">
+                            {% endif %}
+
+                                <img class="c-gly__image" src="{{ Image(gallery.image).src|resize(400) }}" alt="{{ gallery.caption }}" width="160px">
+
+                            {% if gallery.link %}
+                            </a>
+                            {% endif %}
+
+                            {% if gallery.caption %}
+                                <p class="c-gly__caption">{{ gallery.caption }}</p>
+                            {% endif %}
+
+                        </div>
+                    </td>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

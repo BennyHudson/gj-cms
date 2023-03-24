@@ -1,0 +1,26 @@
+<div class="gifting-widget">
+  <div class="gifting-widget__header">
+    <h3 class="gifting-widget__heading">
+      Popular gifts
+    </h3>
+    <div class="gifting-widget__pagination">
+      <span class="gifting-widget__count"></span> / {{ items|length }}
+    </div>
+  </div>
+
+  <div class="gifting-widget__slider">
+    {% for item in items %}
+      <a href="{{ item.gift_link }}" target="_blank" class="gifting-widget__slide">
+        <img src="{{ Image(item.thumbnail)|letterbox(600, 400, '#F8F8F8') }}"
+          alt=""
+          class="gifting-widget__image" />
+        <div class="gifting-widget__title">
+          {{ item.title }}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <button class="gifting-widget__prev far fa-long-arrow-left"></button>
+  <button class="gifting-widget__next far fa-long-arrow-right"></button>
+</div>

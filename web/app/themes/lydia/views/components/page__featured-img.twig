@@ -1,0 +1,14 @@
+{#
+* Page Header
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if post.thumbnail %}
+    <figure class="c-page-featured-img c-page-featured-img__container">
+        <picture>
+            <source media="(max-width: 768px)" srcset="{{ post.thumbnail.src|resize(768, 526) }} 1x">
+            <img class="c-page-featured-img__img" src="{{ post.thumbnail.src|resize(1800, 526, 'center top') }}" alt="{{ post.thumbnail.alt }}"/>
+        </picture>
+    </figure>
+{% endif %}

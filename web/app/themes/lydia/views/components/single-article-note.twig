@@ -1,0 +1,41 @@
+{#
+* Social Icons
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% set note = fn('get_field', 'article_notice', 'components') %}
+{% if note %}
+<div class="o-wrapper o-wrapper--inner">
+<aside class="c-article-note o-wrapper o-wrapper--reading o-wrapper--reading-left">
+
+        {% include 'objects/image.twig' with {
+            class: 'c-article__image',
+            alt : '',
+            img : {
+                base : {
+                    obj : Image(note.image),
+                    w   : '180',
+                    h   : '0',
+                }
+            }
+        } %}
+
+
+    <div class="c-article-note__content">
+
+        <p>{{ note.content }}</p>
+
+        {% include 'objects/button.twig' with {
+            el: 'a',
+            cta: note.link.title,
+            link: note.link.url,
+            class: 'c-article-note__btn',
+            style: 'solid'
+        } %}
+
+    </div>
+
+</aside>
+</div>
+{% endif %}

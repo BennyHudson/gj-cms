@@ -1,0 +1,385 @@
+/**
+* Single Product - Woocommerce
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-product-header {
+    color: $app-white;
+    width: 100%;
+    @include rem(padding, 40px 0 40px);
+    text-align: center;
+    background-color: $app-black;
+    @include rem(margin-bottom, 60px);
+
+    &__header {
+        text-align: center;
+        @include rem(margin-bottom, 48px);
+    }
+
+    &__title {
+        color: $app-white;
+        @include font($font--cera, $font-app-cera-w--semibold);
+        @include fontSize(30);
+        @extend %caps;
+        @include rem(margin, 0 24px 14px);
+    }
+
+    &__subtitle {
+        color: $app-grey--text-black;
+        @include fontSize(16);
+        @include font($font--cera, $font-app-cera-w--regular);
+        max-width: 50%;
+        @extend %u-center--block;
+
+
+        @include mq($until: tablet) {
+            @include fontSize(14);
+            max-width: 80;
+        }
+    }
+}
+
+.c-product__gallery {
+    @include mq($until: laptop) {
+        @include rem(padding, 0 48px);
+    }
+}
+
+.c-product-featured-img {
+    &__img {
+        @extend %u-center--block;
+        @include rem(margin-bottom, 48px);
+    }
+}
+
+.c-product-magazine {
+
+    &__intro {
+        text-align: center;
+    }
+
+    &__coverstar {
+        @include font($font--chronicle, $font-app-chronicle-w--bold);
+        @include fontSize(55);
+        color: $app-black--text;
+
+        @include mq($until: phablet) {
+            @include fontSize(31);
+        }
+    }
+
+    .woocommerce-product-details__short-description {
+        @include rem(margin-bottom, 36px);
+    }
+
+    &__description {
+        @include fontSize(18);
+        color: $app-grey--text;
+        max-width: 50%;
+        @extend %u-center--block;
+        @include rem(margin-bottom, 36px);
+
+        @include mq($until: tablet) {
+            max-width: 100%;
+            @include fontSize(16);
+        }
+    }
+}
+
+.c-product__summary {
+    @include rem(margin-bottom, 48px);
+    @include rem(padding, 0 24px);
+    border-bottom: 1px solid $app-grey--light-border;
+
+    .single-product & {
+        @include rem(padding, 0 24px 48px);
+    }
+
+    &-actions {
+        max-width: 50%;
+        @extend %u-center--block;
+        text-align: center;
+
+        @include mq($until: tablet) {
+            max-width: 90%;
+        }
+    }
+
+    .product_title {
+        @include fontSize(24);
+        font-weight: $font-app-cera-w--semibold;
+        @include rem(margin-bottom, 12px);
+    }
+
+    .onsale {
+        color: $woocommerce-message-error;
+    }
+
+    .variations {
+
+        .label {
+            @include rem(margin-top, 12px);
+            display: block;
+            text-align: center;
+            @include fontSize(9);
+            @extend %sm-caps;
+            font-weight: $font-app-cera-w--semibold;
+            padding: 0;
+        }
+
+        .value {
+            display: block;
+            @include rem(margin-bottom, 12px);
+
+            select {
+                margin: auto;
+                @include rem(width, 220px);
+                border: 1px solid $app-grey;
+                @include rem(padding, 6px);
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        .reset_variations {
+            text-align: center;
+            display: block;
+            @include rem(margin-top, 12px);
+        }
+    }
+
+    .price {
+        display: block;
+        @include fontSize(22);
+        color: $app-grey--text;
+        @include font($font--chronicle, $font-app-chronicle-w--semibold);
+        @include rem(margin-bottom, 12px);
+
+        del {
+            @include fontSize(20);
+            color: $app-grey--text-light;
+        }
+
+        ins {
+            text-decoration: none;
+            color: $woocommerce-message-error;
+        }
+    }
+
+    .quantity {
+        @include rem(margin-bottom, 36px);
+
+        label {
+            @include fontSize(9);
+            @extend %sm-caps;
+            font-weight: $font-app-cera-w--semibold;
+            @include rem(margin-bottom, 4px);
+            display: block;
+        }
+        input {
+            @extend %u-center--block;
+            border: 1px solid $app-grey;
+            @include rem(max-width, 48px);
+            @include rem(padding, 6px);
+        }
+    }
+
+    .button,
+    .out-of-stock {
+        display: inline-block;
+        @extend .o-btn,
+                .o-btn--solid,
+                .o-btn--light;
+    }
+
+    .out-of-stock {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.c-product {
+    &__selected-stories {
+        border-bottom: 1px solid $app-grey--light-border;
+        @include rem(margin-bottom, 48px);
+
+        @include mq($until: laptop) {
+            @include rem(padding, 0 24px);
+        }
+    }
+}
+
+.c-magazine-archive {
+
+    &__title {
+        color: $app-black;
+        @include font($font--cera, $font-app-cera-w--bold);
+        @include fontSize(21);
+        @extend %caps;
+        text-align: center;
+        @include rem(margin-bottom, 48px);
+    }
+
+    &__feed {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        text-align: center;
+        @include rem(margin-bottom, 48px);
+        @include rem(padding, 0 12px);
+
+        @include mq($until: phablet) {
+            width: 100%;
+        }
+    }
+
+    &__cover-cont {
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: background-color 0.2s ease-out;
+        }
+
+        &::after {
+            content: 'Preview';
+            position: absolute;
+            top: 70%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            color: $app-white;
+            text-align: center;
+            margin: auto;
+            @include fontSize(14);
+            @extend %sm-caps;
+            font-weight: $font-app-cera-w--bold;
+            opacity: 0;
+            transition: 0.2s ease-in;
+            z-index: 1;
+        }
+
+        &:hover,
+        &:focus {
+            &::before {
+                background-color: rgba(0,0,0,.5);
+            }
+
+            &::after {
+                opacity: 1;
+                top: 50%;
+            }
+        }
+    }
+
+    &__cover {
+        @extend %u-center--block;
+        @include rem(margin-bottom, 12px);
+    }
+
+    &__item-title {
+        @include fontSize(18);
+        @include font($font--chronicle, $font-app-chronicle-w--semibold);
+        @include rem(margin-bottom, 6px);
+    }
+
+    &__stock-status {
+        @include fontSize(10);
+        @extend %sm-caps;
+        color: $app-grey--text;
+        font-weight: $font-app-cera-w--bold;
+    }
+}
+
+.c-product {
+
+    &__img {
+        display: block;
+        margin: auto;
+    }
+
+    &--teaser {
+        @include rem(padding, 0 24px);
+
+        @include mq($until: phablet) {
+            width: 100%;
+        }
+
+        .c-product__summary {
+            border-bottom: none;
+        }
+
+        .c-product__title {
+            @include rem(margin-bottom, 12px);
+        }
+
+        .c-product__img-cont {
+            position: relative;
+            @include rem(margin-bottom, 12px);
+
+            &::before {
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                transition: background-color 0.2s ease-out;
+            }
+
+            &::after {
+                content: 'Preview';
+                position: absolute;
+                top: 70%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                color: $app-white;
+                text-align: center;
+                margin: auto;
+                @include fontSize(14);
+                @extend %sm-caps;
+                font-weight: $font-app-cera-w--bold;
+                opacity: 0;
+                transition: 0.2s ease-in;
+                z-index: 1;
+            }
+
+            &:hover,
+            &:focus {
+                &::before {
+                    background-color: rgba(0,0,0,.5);
+                }
+
+                &::after {
+                    opacity: 1;
+                    top: 50%;
+                }
+            }
+        }
+    }
+
+    &__teaser-content {
+        text-align: center;
+    }
+}
+
+.c-shop-feed {
+    display: flex;
+    flex-wrap: wrap;
+    @include rem(padding-top, 48px);
+}

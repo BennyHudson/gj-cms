@@ -1,0 +1,30 @@
+{#
+* Podcast : Featured
+* ---------
+* @package components/podcast
+#}
+{% set cardMeta = card.get_field('podcast_meta') %}
+
+<article class="c-podcast-card c-podcast-card--{{ style }}" id="podcast--{{ card.ID }}" data-play="{{ card.post_views_count[0] }}">
+
+    <div class="c-podcast-card__inner">
+
+    <div class="c-podcast-card__feat-bg" {{ 'hero' in style ? 'style="background-color:' ~ cardMeta.media.theme.image ~ '"' : '' }}>
+        {% include 'objects/image.twig' with {
+            class: 'c-podcast-card__feat'
+        } %}
+    </div>
+
+        {% include 'components/podcast/podcast__card__header.twig' %}
+
+        {% if meta %}
+        <div class="c-podcast-card__play">
+            <a href="{{ card.link }}" class="c-podcast-card__play__circle">
+                <span class="c-podcast-card__play__icon fas fa-play" {{ style == 'hero' ? 'style="color:' ~ cardMeta.media.theme.image ~ '"' : '' }}></span>
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+
+</article>

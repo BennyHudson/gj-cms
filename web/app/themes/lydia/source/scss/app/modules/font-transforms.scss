@@ -1,0 +1,11 @@
+/**
+* Font Transforms
+* --------
+* @component app/modules
+* @version 1.0
+*/
+
+@mixin font-caps--cera {
+    text-transform: uppercase;
+    @include rem(letter-spacing, 1.5px);
+}

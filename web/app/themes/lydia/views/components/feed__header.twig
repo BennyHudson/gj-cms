@@ -1,0 +1,29 @@
+{#
+* Feed Header
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if header is not empty %}
+    <header class="o-post-group__header">
+
+        <div class="o-post-group__info">
+            <h1 class="o-post-group__title">{{ header.title }}</h1>
+            {% if header.subtitle is not empty %}
+            <p class="o-post-group__subtitle">{{ header.subtitle }}</p>
+            {% endif %}
+        </div>
+
+        {% if header.link %}
+            {% include 'objects/button.twig' with {
+                el: 'a',
+                class: 'o-post-group',
+                cta: 'View all',
+                link: header.link,
+                style: 'minimal',
+                after: '<span class="fas fa-chevron-right"></span>'
+            } %}
+        {% endif %}
+
+    </header>
+{% endif %}

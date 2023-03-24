@@ -1,0 +1,106 @@
+{#
+* Membership : Card
+* ---------
+* @package components/membership
+#}
+<article class="c-membership-card" id="podcast--{{ member.ID }}">
+    {% if member.first_name and member.last_name %}
+        {% set title = '<span>' ~ member.first_name ~ '</span> <span>' ~ member.last_name ~ '</span>' %}
+    {% else %}
+        {% set title = member.title %}
+    {% endif %}
+
+    <div class="c-membership-card__inner">
+        {% if bigitem == 'bottom' %}
+            <div class="c-membership-card__description-top c-membership-card__description-mobile">
+                {% include 'objects/title.twig' with {
+                    el: 'h2',
+                    class: 'c-membership-card',
+                    title: member.title,
+                    before : '<a href="/?gentleman=' ~ member.slug  ~'">',
+                    after  : '</a>',
+                } %}
+                <p class="c-membership-card__description">{{ member.specialty }}</p>
+            </div>
+        {% endif %}
+        <div class="c-membership-card__img">
+            <a href="/?gentleman={{ member.slug }}">
+                {% include 'objects/image.twig' with {
+                    class: 'c-membership-card__img',
+                    img : {
+                        base : {
+                            obj : member.thumbnail,
+                            w   : img.base.w,
+                            h   : img.base.h,
+                            c   : 'center',
+                        },
+                        tablet : {
+                            obj : member.thumbnail,
+                            w   : img.tablet.w,
+                            h   : img.tablet.h,
+                            c   : 'center',
+                        },
+                        mobile : {
+                            obj : member.thumbnail,
+                            w   : img.mobile.w,
+                            h   : img.mobile.h,
+                            c   : 'center',
+                        },
+                    }
+                } %}
+            </a>
+        </div>
+        <div class="c-membership-card__info">
+            {% if bigitem == 'latest' %}
+                {% include 'objects/title.twig' with {
+                    el: 'h2',
+                    class: 'c-membership-card',
+                    title: member.preview_text,
+                    before : '<a href="/?gentleman=' ~ member.slug  ~'">',
+                    after  : '</a>',
+                } %}
+                <p class="c-membership-card__description">— {{ member.title }}, {{ member.specialty }}</p>
+                {% include 'objects/button.twig' with {
+                    el: 'a',
+                    cta: 'READ INTERVIEW',
+                    class : 'c-membership-card__btn o-btn o-btn--solid o-btn--light',
+                    link : '/?gentleman=' ~ member.slug,
+                    target: true,
+                } %}
+            {% elseif bigitem == 'bottom' %}
+                <div class="c-membership-card__description-top c-membership-card__description-desktop">
+                    {% include 'objects/title.twig' with {
+                        el: 'h2',
+                        class: 'c-membership-card',
+                        title: member.title,
+                        before : '<a href="/?gentleman=' ~ member.slug  ~'">',
+                        after  : '</a>',
+                    } %}
+                    <p class="c-membership-card__description">{{ member.specialty }}</p>
+                </div>
+                <div class="c-membership-card__description-bottom">
+                    <p class="c-membership-card__title-quote">{{ member.preview_text }}</p>
+                    {% include 'objects/button.twig' with {
+                        el: 'a',
+                        cta: 'READ INTERVIEW',
+                        class : 'c-membership-card__btn o-btn o-btn--solid o-btn--light',
+                        link : '/?gentleman=' ~ member.slug,
+                        target: true,
+                    } %}
+                </div>
+            {% else %}
+                {% include 'objects/title.twig' with {
+                    el: 'h2',
+                    class: 'c-membership-card',
+                    title: member.title,
+                    before : '<a href="/?gentleman=' ~ member.slug  ~'">',
+                    after  : '</a>',
+                } %}
+                <p class="c-membership-card__description">{{ member.specialty }}</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</article>

@@ -1,0 +1,65 @@
+/**
+ * Podcast Archive
+ * ---------
+ * @component podcast
+ * @version 1
+*/
+
+.c-podcast-archive {
+    background-color: $black;
+    @include rem(padding-top, 80px);
+
+    @include mq($until: tablet) {
+        @include rem(padding-top, 36px);
+    }
+
+    &__title {
+        color: $white;
+        text-align: center;
+        text-transform: uppercase;
+        @include font($font--cera, $font-app-cera-w--regular);
+        @include fontSize(32);
+        letter-spacing: 4px;
+        @include rem(margin-bottom, 25px);
+
+        @include mq($until: tablet) {
+            border-bottom: 1px solid $midnight;
+            @include rem(padding-bottom, 25px);
+            margin-bottom: 0;
+            @include fontSize(20);
+        }
+    }
+
+    &__date {
+        width: 100%;
+        padding: 0 20%;
+        @include rem(padding-bottom, 24px);
+        @include rem(padding-top, 24px);
+
+        &__title {
+            color: $white;
+            text-transform: uppercase;
+            @include font($font--cera, $font-app-cera-w--regular);
+            @include fontSize(14);
+            letter-spacing: 2.5px;
+            margin-right: auto;
+        }
+    }
+
+    &__loadmore {
+        color: $white;
+        border-top: 1px solid $despair;
+        border-bottom: 1px solid $despair;
+        @include rem(padding, 36px);
+        @include fontSize(20);
+
+        &:hover,
+        &:focus {
+            background-color: $despair;
+        }
+
+        &:active {
+            background-color: $midnight;
+        }
+    }
+}

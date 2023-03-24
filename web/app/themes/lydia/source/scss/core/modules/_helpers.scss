@@ -1,0 +1,69 @@
+/**
+* Helpers
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+* Remove unit
+* --------
+* @param {Number} $number - Number to remove unit from
+* @return {Number} - Unitless number
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+
+/**
+* User Selection
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+@mixin user-select {
+    user-select: none;
+    cursor: pointer;
+}
+
+/**
+* Truncate Text
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/**
+* Opacity
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+/**
+* Wordpress Admin Bar
+* --------
+* @since Lydia 4.0
+* @version 1.0
+*/
+$g-admin-bar : 32px;
+$g-admin-bar--mob : 46px;

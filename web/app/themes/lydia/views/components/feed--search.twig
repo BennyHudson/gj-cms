@@ -1,0 +1,45 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+<section class="o-post-group o-post-group--{{ archive.name|lower }}{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+
+        <div class="o-post-feed o-post-feed--archive">
+            {% for post in posts %}
+
+
+                {% include 'components/post-thumb.twig' with {
+                    style : 'standard',
+                    feat  : {
+                        base : {
+                            w: '260',
+                            h: '173',
+                            c: 'center'
+                        }
+                    }
+                } %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="c-ajax-archive-posts"></div>
+
+    <a href="{{ posts.pagination.next.link }}"
+        class="o-btn o-btn--solid o-btn--light o-post-feed__btn o-post-feed__btn--loadmore"
+        data-pagination="2"
+        data-search="{{ searchQuery }}"
+        id="js-archive-loadmore">Load More</a>
+
+</section>

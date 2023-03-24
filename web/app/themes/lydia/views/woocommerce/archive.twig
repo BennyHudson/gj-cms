@@ -1,0 +1,35 @@
+{#
+* Woo Archive
+* --------
+* @package GJ
+* @since GJ 1.0
+#}
+{% extends 'base.twig' %}
+
+{% block content %}
+
+    <header class="c-archive-header">
+        <div class="c-archive-header__inner o-wrapper o-wrapper--inner">
+            <h1 class="c-archive-header__title">{{ title }}</h1>
+            {% if category.description %}
+            <p class="c-archive-header__subtitle">{{ category.description }}</p>
+            {% endif %}
+        </div>
+    </header>
+
+    {% do action('woocommerce_before_main_content') %}
+
+    <div class="before-shop-loop o-wrapper o-wrapper--inner">
+        {% do action('woocommerce_before_shop_loop') %}
+    </div>
+
+    <div class="loop o-wrapper o-wrapper--inner c-shop-feed">
+        {% for post in products %}
+            {% include ["woocommerce/tease-product.twig"] %}
+        {% endfor %}
+    </div>
+
+    {% do action('woocommerce_after_shop_loop') %}
+    {% do action('woocommerce_after_main_content') %}
+
+{% endblock  %}

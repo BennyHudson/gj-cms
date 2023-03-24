@@ -1,0 +1,45 @@
+{#
+* Page : Contact Us
+* --------
+* @package GJ
+* @since GJ 1.0
+#}
+{% extends "page.twig" %}
+
+{% block pageContent %}
+
+    <div class="o-grid o-grid--flex o-grid--collapse-netbook">
+
+        <section class="o-grid o-wrapper--reading o-post-type__content o-post-type__content--{{ post.slug }} s-wysiwg-content s-article-content--{{ post.slug }} s-post-content">
+            {{ post.content }}
+        </section>
+
+        {% if post.get_field('staff_members') %}
+            <section class="c-staff-member">
+            {% for item in post.get_field('staff_members') %}
+                <div class="c-staff-member__item">
+                    <h2 class="c-staff-member__name">{{ item.name }}</h2>
+                    <div class="c-staff-member__position">{{ item.position }}</div>
+                </div>
+            {% endfor %}
+            </section>
+        {% endif %}
+        <div class="c-staff-member__seperator"></div>
+        <section class="o-grid o-wrapper--reading o-post-type__content o-post-type__content--{{ post.slug }} s-wysiwg-content s-article-content--{{ post.slug }} s-post-content">
+            <p>And our contributing writers:</p>
+        </section>
+
+        {% if post.get_field('staff_editors') %}
+            <section class="c-staff-member">
+            {% for item in post.get_field('staff_editors') %}
+                <div class="c-staff-member__item">
+                    <h2 class="c-staff-member__name">{{ item.name }}</h2>
+                    <div class="c-staff-member__position">{{ item.position }}</div>
+                </div>
+            {% endfor %}
+            </section>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

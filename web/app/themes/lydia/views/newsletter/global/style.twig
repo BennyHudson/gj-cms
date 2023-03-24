@@ -1,0 +1,71 @@
+{#
+* Style
+* --------
+* @version 1.0.0
+#}
+<style>
+    {% include "newsletter/style/reset.twig" %}
+    {% include "newsletter/style/general.twig" %}
+    {% include "newsletter/style/masthead.twig" %}
+    {% include "newsletter/style/foundation.twig" %}
+    {% include "newsletter/style/solus-brand.twig" %}
+
+    {% for layout in newsletterStyles %}
+
+        {% set part = layout %}
+
+        {% if part == 'image' %}
+            {% include "newsletter/style/image.twig" %}
+        {% endif %}
+
+        {% if part == 'text_block' %}
+            {% include "newsletter/style/text-block.twig" %}
+        {% endif %}
+
+        {% if part == 'button' %}
+            {% include "newsletter/style/button.twig" %}
+        {% endif %}
+
+        {% if part == 'selected_articles' %}
+            {% include "newsletter/style/selected-articles.twig" %}
+            {% include "newsletter/style/selected-articles--video.twig" %}
+        {% endif %}
+
+        {% if part == 'advert' %}
+            {% include "newsletter/style/advert.twig" %}
+        {% endif %}
+
+        {% if part == 'animation' %}
+            {% include "newsletter/style/animation.twig" %}
+        {% endif %}
+
+        {% if part == 'latest_issue' %}
+            {% include "newsletter/style/lastest-issue.twig" %}
+        {% endif %}
+
+        {% if part == 'key_dates' %}
+            {% include "newsletter/style/key-dates.twig" %}
+        {% endif %}
+
+        {% if part == 'featured_podcasts' %}
+            {% include "newsletter/style/podcasts.twig" %}
+        {% endif %}
+
+        {% if part == 'news_feed' %}
+            {% include "newsletter/style/news-feed.twig" %}
+        {% endif %}
+
+        {% if part == 'gallery' %}
+            {% include "newsletter/style/gallery.twig" %}
+        {% endif %}
+
+        {% if part == 'external_list' %}
+            {% include "newsletter/style/external-list.twig" %}
+        {% endif %}
+
+        {% if part == 'follow_us' %}
+            {% include "newsletter/style/follow-social.twig" %}
+        {% endif %}
+
+    {% endfor %}
+</style>

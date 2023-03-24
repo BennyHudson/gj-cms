@@ -1,0 +1,28 @@
+{#
+* Single Post
+* -------
+* @package GJ
+* @since Gj 1.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% if format != 'video' and not members and not premium %}
+
+        {% include 'components/ads.twig' with {
+            gpt : {
+                type : 'billboard',
+                code : 'GJ_970x250_001'
+            }
+        } %}
+
+    {% endif %}
+
+    {% do action('before_single_article_content') %}
+
+    <div class="c-infinite-posts">
+        {% include 'components/single-post.twig' %}
+    </div>
+
+{% endblock %}

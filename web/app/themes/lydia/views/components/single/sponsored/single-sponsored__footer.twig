@@ -1,0 +1,44 @@
+{#
+* Single Sponsored Hero
+* ---------
+* @component single/sponsored
+* @version 1
+#}
+
+<header class="c-single-sponsored-footer">
+    <div class="c-single-sponsored-footer__inner">
+
+        <div class="c-single-sponsored-footer__overlay">
+
+            <div class="c-single-sponsored-footer__nav">
+
+                {% include 'objects/button.twig' with {
+                    el: 'a',
+                    class: 'c-single-sponsored-footer',
+                    cta: 'gentlemansjournal.com',
+                    link: site.link,
+                } %}
+
+                <a class="c-single-sponsored-footer__logo" href="{{ post.meta('sponsor_url') }}">
+                    {% if post.ID != '420199' %}
+                    <span class="c-single-sponsored-footer__logo-pre">In partnership with</span>
+                    {% endif %}
+                    <img width="160" class="c-single-sponsored-footer__logo-icon" src="{{ Image(post.meta('sponsor_logo'))|resize('320') }}" alt="{{ post.meta('sponsor_name') }}">
+                </a>
+
+                {% if not post.meta('sponsor_disable_link') %}
+                    {% include 'objects/button.twig' with {
+                        el: 'a',
+                        class: 'c-single-sponsored-footer',
+                        cta: 'Visit ' ~ post.meta('sponsor_name'),
+                        link: post.meta('sponsor_url'),
+                    } %}
+                {% endif %}
+
+                <span></span>
+
+            </div>
+
+    </div>
+
+</header>

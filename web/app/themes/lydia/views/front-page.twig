@@ -1,0 +1,76 @@
+{#
+*  Front Page
+*
+*  @package GJ
+*  @since GJ 1.0
+#}
+{% extends 'base.twig' %}
+
+{% block content %}
+    {% include 'components/post-thumb--featured.twig' with {
+    post: featuredPost
+  } %}
+    <div class="t-bg t-bg--templar">
+        {% include 'components/feed--dont-miss.twig' %}
+        {% include 'components/signup/signup.twig' %}
+        {% include 'components/feed--latest.twig' with {
+            wrapper: 'inner'
+        } %}
+
+        {% include 'components/ads.twig' with {
+            gpt : {
+                type : 'billboard',
+                code : 'GJ_970x250_001'
+            }
+        } %}
+
+        {% include 'components/feed--standard.twig' with {
+            wrapper: 'inner',
+            catID: 9684
+        } %}
+
+        {% include 'components/section--clubhouse.twig' %}
+        {% include 'components/section--shop.twig' %}
+
+        {% if post.meta('cta_gift_home').title %}
+            {% include 'components/gifting/gifting-cta.twig' with {
+                giftImage: post.meta('cta_gift_home').background_image,
+                giftCat: post.meta('cta_gift_home').category,
+                giftTitle: post.meta('cta_gift_home').title,
+                giftSubtitle: post.meta('cta_gift_home').subtitle,
+                giftLink: post.meta('cta_gift_home').link,
+                giftLabel: 'Read more'
+            } %}
+        {% endif %}
+
+        {% include 'components/widgets/widget-weekly-highlight.twig' with {
+            wrapper: 'inner'
+        } %}
+
+        {% include 'components/featured-sessions.twig' %}
+        {# {% include 'components/hub/preview.twig' with { post : Post(post.meta('front').hub.selected) } %} #}
+
+        {% include 'components/feed--podcast-home.twig' with {
+            wrapper: 'inner'
+        } %}
+
+        {% include 'components/feed--video-home.twig' %}
+
+        {% include 'components/ads.twig' with {
+            gpt : {
+                type : 'billboard',
+                code : 'GJ_970x250_002'
+            }
+        } %}
+
+        {% include 'components/feed--editors-pick.twig' with {
+            wrapper: 'inner'
+        } %}
+
+        {% include 'components/feed--standard.twig' with {
+            wrapper: 'inner',
+            catID: 1993
+        } %}
+
+    </div>
+{% endblock %}

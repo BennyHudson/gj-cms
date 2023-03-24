@@ -1,0 +1,20 @@
+{#
+* Clubhouse Main Title
+* ---------
+* @package components/clubhouse
+#}
+<section class="c-club-partner-title">
+
+        <div class="c-club-partner-title__heading">
+            {% include 'objects/title.twig' with {
+                class: 'c-club-partner-title',
+                title: title,
+                style: '',
+            } %}
+
+            {% if clubhousePartners.sub_title %}
+                <p class="c-club-partner-title__subtitle">{{ clubhousePartners.sub_title }}</p>
+            {% endif %}
+        </div>
+
+</section>

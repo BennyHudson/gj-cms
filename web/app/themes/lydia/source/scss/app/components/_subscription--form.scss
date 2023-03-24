@@ -1,0 +1,359 @@
+/**
+* Subscription Form
+* --------
+* @package GJ
+* @since GJ 5.0
+* @version 1.0
+*/
+.subscription-page {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    // margin-top: 100vh;
+    background-color: $app-grey--light;
+    position: relative;
+    z-index: 5;
+
+    @include mq($until: tablet) {
+        @include rem(margin, 0 auto 50px);
+    }
+
+    &__intro {
+        width: 100%;
+        display: block;
+        text-align: center;
+        @include rem(margin, 68px auto);
+        @include rem(padding, 0 24px);
+        @include mq($until: tablet) {
+            @include rem(margin, 45px auto);
+        }
+
+        &-title {
+            color: $app-black--text;
+            @include fontSize(45);
+            line-height: 1.2;
+            @include font($font--chronicle, 800);
+            @include mq($until: tablet) {
+                @include fontSize(34);
+                @include lineHeight(36);
+                @include rem(margin-bottom, 24px);
+            }
+        }
+
+        &-text p {
+            color: $app-grey--text;
+            @include fontSize(18);
+            @include font($font--cera, 400);
+            @include lineHeight(20);
+            @include rem(max-width, 624px);
+            @extend %u-center--block;
+        }
+    }
+
+    &__products-group {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        @include rem(padding, 0 18px);
+        @include rem(margin-bottom, 120px);
+        @include mq($until: tablet) {
+            width: 100%;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+/**
+* Product Form
+* --------
+* @since GJ 5.0
+* @version 1.0
+*/
+.subscription-form {
+
+    &__form {
+        @include rem(width, 312px);
+        flex-direction: column;
+        @include rem(margin, 84px 30px 0);
+        @include rem(border-radius, 5px);
+        background-color: $app-white;
+        border: 1px solid $app-grey--light-border;
+        transition: transform 0.3s ease-out;
+        overflow: hidden;
+        @include mq($until: netbook) {
+            @include rem(margin, 48px 15px 0);
+        }
+        @include mq($until: tablet) {
+            width: 100%;
+            order: 2;
+        }
+    }
+
+    &__header {
+        @include rem(padding, 18px 0 0);
+        @include rem(margin-bottom, 24px);
+        background-image: linear-gradient(to bottom, $app-white, #e9e9e9);
+    }
+
+    &__img {
+        transform: translatez(0);
+        @extend %u-center--block;
+        @include rem(padding, 0 12px 24px);
+    }
+
+    &__title {
+        text-align: center;
+        @include fontSize(27);
+        @include font($font--cera, $font-app-cera-w--bold);
+        @include rem(letter-spacing, -0.2px);
+        @include rem(margin-bottom, 12px);
+    }
+
+    &__price-group {
+        text-align: center;
+        @include rem(margin-bottom, 18px);
+
+        &--mobile {
+            @include rem(margin-top, 24px);
+
+            @include mq($from: tablet) {
+                display: none;
+            }
+        }
+    }
+
+    &__price {
+        position: relative;
+        color: $app-black--text;
+        @include font($font--chronicle, $font-app-chronicle-w--black);
+        @include fontSize(32);
+        @include lineHeight(24);
+
+        &-vip {
+            position: relative;
+            margin: auto;
+            display: inline-block;
+        }
+    }
+
+    &__price-discount {
+        @include font($font--cera, $font-app-cera-w--semibold);
+        @include fontSize(12);
+        color: $app-white;
+        background-color: $app-black--light;
+        border: 1px solid $app-black--border;
+        @include rem(padding, 4px 6px);
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        @include rem(right, -72px);
+    }
+
+    &__price-info {
+        @include fontSize(18);
+        @include font($font--cera, $font-app-cera-w--regular);
+        color: $app-grey--text;
+
+        em {
+            @include fontSize(14);
+        }
+    }
+
+    &__perks {
+        list-style: none;
+        border-bottom: 1px solid $app-grey--light-border;
+    }
+
+    &__perk {
+        display: flex;
+        align-items: center;
+        color: $app-black--text;
+        @include fontSize(15);
+        @include font($font--cera, 400);
+        @include rem(padding, 12px);
+        line-height: 1.2;
+        border-top: 1px solid $app-grey--light-border;
+
+        &::before {
+            content: '\f00c';
+            font-family: FontAwesome;
+            @include fontSize(12);
+            vertical-align: middle;
+            @include rem(margin-right, 12px);
+        }
+    }
+
+    &__length {
+        border-bottom: 1px solid $app-grey--light-border;
+
+        &-select {
+            color: $app-black--text;
+            @include fontSize(14);
+            line-height: 1;
+            @include font($font--cera, $font-app-cera-w--bold);
+            @include rem(padding, 8px 34px 8px 8px);
+            @include rem(margin, 12px auto);
+            @include user-select;
+            @include rem(border-radius, 5px);
+            background: $app-white url('./assets/img/down-chevron--black.svg') no-repeat scroll 94% 50%;
+            background-size: 12px;
+            transition: color 0.15s ease;
+
+            &:hover,
+            &:focus {
+                color: lighten($app-black--text, 8%);
+            }
+
+            &::-ms-expand {
+                display: none;
+            }
+        }
+    }
+
+    &__payment {
+        text-align: center;
+        border-bottom: 1px solid $app-grey--light-border;
+
+        &-select {
+            @include fontSize(14);
+            line-height: 1;
+            @include font($font--cera, $font-app-cera-w--bold);
+            @include rem(padding, 8px);
+            @include rem(margin, 12px auto);
+            @include user-select;
+        }
+
+        &-radio:first-of-type {
+           @include rem(margin-right, 24px);
+        }
+    }
+
+    &__btn {
+        @include fontSize(11);
+        @extend %u-center--block;
+        @include rem(margin-top, 24px);
+        @include rem(margin-bottom, 24px);
+        @include rem(padding, 18px 36px);
+        @include rem(border-radius, 50px);
+        @include rem(letter-spacing, 1.5px);
+        background-color: $app-grey--light;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $app-white;
+            background-color: $app-black--light;
+        }
+
+        &:active {
+            background-color: lighten($app-black--light, 15%);
+        }
+    }
+
+    // Button Highlight on Form Hover
+    &__form:hover &__btn {
+        color: $app-white;
+        background-color: $app-black--light;
+    }
+
+    &__form:hover {
+        @include mq($from: tablet) {
+            transform: translateY(-5px);
+        }
+    }
+}
+
+/**
+* Featured Form
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+.subscription-form--featured {
+
+    &.subscription-form__form {
+        @include rem(width, 468px);
+        margin-top: 0;
+        background-color: $app-black;
+        border: 1px solid $app-black--border;
+        @include mq($until: tablet) {
+            order: 1;
+            width: 100%;
+        }
+    }
+
+    .subscription-form__header {
+        background-image: linear-gradient(to bottom, #333333, $app-black);
+    }
+
+    .subscription-form__img {
+      @include rem(padding, 12px 36px 24px);
+    }
+
+    .subscription-form__title {
+        @include fontSize(34);
+        color: $app-white;
+    }
+
+    .subscription-form__price {
+        color: $app-white;
+    }
+
+    .subscription-form__perks {
+        border-color: $app-black--text;
+    }
+
+    .subscription-form__perk {
+        color: $app-white;
+        border-color: $app-black--light;
+        @include rem(padding, 12px 24px);
+
+        &::before {
+            @include fontSize(14);
+            @include rem(margin-right, 24px);
+        }
+    }
+
+    .subscription-form__length {
+        border-bottom: 1px solid $app-black--text;
+
+        &-select {
+            color: $app-white;
+            background: $app-black url('./assets/img/down-chevron--white.svg') no-repeat scroll 94% 50%;
+            background-size: 12px;
+
+            &:hover,
+            &:focus {
+                color: darken($app-white, 8%);
+            }
+        }
+    }
+
+    .subscription-form__payment {
+        border-bottom: 1px solid $app-black--text;
+
+        &-select {
+            color: $app-white;
+        }
+    }
+
+    .subscription-form__btn {
+        color: $app-white;
+        background-color: $app-black--light;
+
+        &:hover {
+            color: $app-black--light;
+            background-color: $app-white;
+        }
+
+        &:active {
+            background-color: darken($app-white, 15%);
+        }
+    }
+
+    // Button Highlight on Form Hover
+    &:hover .subscription-form__btn {
+        color: $app-black--light;
+        background-color: $app-white;
+    }
+}

@@ -1,0 +1,73 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{#
+* Set Var
+* --------
+* @since 3.0
+* @version 1.0
+#}
+{% if archive.slug == 'video' %}
+    {% set posts = posts|slice(3, 12, true) %}
+{% else %}
+    {% set posts = posts %}
+{% endif %}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+<section class="o-post-group o-post-group--{{ archive.name|lower }}{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+
+        <div class="o-post-feed o-post-feed--archive">
+            {% for post in posts %}
+
+                {% include 'components/post-thumb.twig' with {
+                    style : 'standard',
+                    feat  : {
+                        base : {
+                            w: '297',
+                            h: '198',
+                            c: 'center'
+                        },
+                        tablet : {
+                            w: '496',
+                            h: '330',
+                            c: 'center'
+                        }
+                    }
+                } %}
+
+                {% if loop.index == 3 %}
+                    {% include 'components/ads.twig' with {
+                        gpt : {
+                            type : 'halfpage',
+                            code : 'GJ_300x600_001'
+                        }
+                    } %}
+                {% endif %}
+
+
+            {% endfor %}
+
+
+
+        </div>
+
+    </div>
+
+    <div class="c-ajax-archive-posts"></div>
+
+    <a href="{{ posts.pagination.next.link }}"
+        class="o-btn o-btn--solid o-btn--light o-post-feed__btn o-post-feed__btn--loadmore"
+        data-pagination="2"
+        data-search="{{ searchQuery }}"
+        id="js-archive-loadmore">Load More</a>
+
+</section>

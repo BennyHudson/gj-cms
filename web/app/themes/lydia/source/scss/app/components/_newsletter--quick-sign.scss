@@ -1,0 +1,65 @@
+/**
+* Newsletter Quick Signup
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-newsletter-quick-sign {
+    width: 100%;
+    border-bottom: $app-grey 2px solid;
+    @include rem(padding-bottom, 12px);
+    @include rem(margin, 36px auto 0);
+    display: flex;
+    @include mq($until: laptop) {
+        @include rem(padding-left, 24px);
+        @include rem(padding-right, 24px);
+    }
+
+    @include mq($until: tablet) {
+        align-items: center;
+        @include rem(padding-top, 24px);
+        @include rem(padding-bottom, 24px);
+        background-color: $samurai;
+        border-bottom: none;
+        margin: 0 auto;
+    }
+
+    &__intro,
+    &__cta {
+        @include fontSize(16);
+        @include font($font--cera, $font-app-cera-w--semibold);
+
+        @include mq($until: tablet) {
+            color: $shogun;
+        }
+    }
+
+    &__intro {
+        flex: 1;
+    }
+
+    &__cta {
+        @include fontSize(12);
+        text-transform: uppercase;
+
+        @include mq($until: tablet) {
+            border-bottom: 1px solid $shogun;
+        }
+
+        &:hover,
+        &:focus {
+            color: $app-black--text-alt;
+
+            .c-newsletter-quick-sign__icon {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    &__icon {
+        @include fontSize(10);
+        transition: transform 0.2s ease-out;
+    }
+}

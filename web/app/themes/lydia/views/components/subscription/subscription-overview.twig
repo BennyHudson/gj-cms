@@ -1,0 +1,22 @@
+{% if club.subscription_overview %}
+
+  <div class="subscription-overview">
+    <div class="subscription-overview__container">
+      <div class="subscription-overview__content">
+        <div class="subscription-overview__heading">
+          <h3 class="subscription-overview__title">Membership Overview</h3>
+          <p>Membership includes:</p>
+        </div>
+        <div class="subscription-overview__grid">
+          {% for item in club.subscription_overview.item %}
+            <div class="subscription-overview__grid__item">
+              <h3 class="subscription-overview__grid__item__title">{{ item.title }}</h3>
+              {{ item.description }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}

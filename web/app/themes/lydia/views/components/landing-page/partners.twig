@@ -1,0 +1,19 @@
+<div class="partners">
+  <div class="partners__title-block">
+    <div class="partners__title-block__content">
+      <h2>The membership also includes</h2>
+    </div>
+  </div>
+
+  <div class="partner-grid">
+    {% for partner in partners %}
+      {% include 'components/clubhouse/clubhouse__partner-card.twig' %}
+    {% endfor %}
+  </div>
+
+  <div class="partners__title-block">
+    <div class="partners__title-block__content">
+      <h2>And so much more...</h2>
+    </div>
+  </div>
+</div>

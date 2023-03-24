@@ -1,0 +1,55 @@
+{#
+* Feed Editors Pick
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if editorsPick %}
+{#
+* Set Var
+* --------
+* @since 3.0
+* @version 1.0
+#}
+{% set headerInfo = {
+    'title': 'Editors Pick',
+} %}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+<section class="o-post-group o-post-group--editors{{ border ? ' o-post-group--border' : '' }}">
+
+    <div class="{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+
+    {% include 'components/feed__header.twig' with { header : headerInfo } %}
+
+    <div class="o-post-feed o-post-feed--slick">
+        {% for post in editorsPick %}
+            {% include 'components/post-thumb.twig' with {
+                style : 'standard',
+                feat  : {
+                    base : {
+                        w: '297',
+                        h: '200',
+                        c: 'center'
+                    },
+                    tablet : {
+                        w: '502',
+                        h: '338',
+                        c: 'center'
+                    }
+                }
+            } %}
+        {% endfor %}
+
+    </div>
+
+    </div>
+
+</section>
+
+{% endif %}

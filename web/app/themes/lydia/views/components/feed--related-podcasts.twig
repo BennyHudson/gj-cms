@@ -1,0 +1,55 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{% set posts = posts %}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+<section class="o-post-group o-post-group--podcasts{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+
+        <div class="o-grid--flex">
+
+            <div class="c-post-sidebar c-post-sidebar--podcast">
+                {% include 'components/sponsor-by--podcast.twig'%}
+
+                <p class="c-post-sidebar__host"><strong>Your Host<br><pan class="c-post-sidebar__hostname">{{ podcasts.host }}</span></strong></p>
+                <p class="c-post-sidebar__short-description">{{ podcasts.short_description }}</p>
+
+                {% include 'objects/social.twig' %}
+
+                {% if podcasts.link_to_app_store %}
+                <a href="{{ podcasts.link_to_app_store }}" target="_blank" rel="nofollow">
+                    <img src="{{ theme.link }}/assets/img/apple-app-store.svg" alt="Podcasts Available on the Appstore" width="100">
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="o-post-feed o-post-feed--single o-post-feed--with-ad o-post-feed--archive o-wrapper">
+
+                {% for post in relatedPodcasts %}
+                    {% include 'components/post-thumb--podcast.twig' %}
+                {% endfor %}
+            </div>
+
+            {% include 'components/ads.twig' with {
+                gpt : {
+                    type : 'halfpage',
+                    code : 'GJ_300x600_001'
+                }
+            } %}
+
+        </div>
+
+    {% if posts.pagination.next %}
+        <a href="{{ posts.pagination.next.link }}" class="o-btn o-btn--solid o-btn--light o-post-feed__btn o-post-feed__btn--loadmore">View More</a>
+    {% endif %}
+
+</section>

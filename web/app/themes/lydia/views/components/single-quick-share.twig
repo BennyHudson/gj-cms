@@ -1,0 +1,21 @@
+{#
+* Social Icons
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<div class="c-share c-share--quick-share">
+    <h4 class="c-share__title">Share</h4>
+    <ul class="o-social-links">
+        <li class="c-share__item o-social-links__item">
+            <a class="c-share__link c-share--twitter" href="https://twitter.com/intent/tweet?text={{ post.title| raw | url_encode(true) }}&amp;url={{ post.link }}&amp;via=thegentsjournal" target="_blank"><span class="fab fa-twitter"></span></a>
+        </li>
+        <li class="c-share__item o-social-links__item">
+            <a class="c-share__link c-share--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ post.link }}" target="_blank"><span class="fab fa-facebook"></span></a>
+        </li>
+        <li class="c-share__item o-social-links__item">
+            <a class="c-share__link c-share--mail" href="mailto:?subject={{ post.title }}" target="_blank"><span class="far fa-envelope"></span></a>
+        </li>
+    </ul>
+    </ul>
+</div>

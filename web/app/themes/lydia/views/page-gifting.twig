@@ -1,0 +1,32 @@
+{% extends 'page.twig' %}
+
+{% block content %}
+  {% include 'components/gifting/gifting-cta.twig' with {
+    post: post.meta('cta_first_cta_gift')
+  } %}
+  {% include 'components/gifting/gifting-content.twig' %}
+  {% include 'components/gifting/gifting-guide.twig' %}
+  {% include 'components/gifting/gifting-cta.twig' with {
+    post: post.meta('cta_second_cta_gift')
+  } %}
+  {% include 'components/gifting/gifting-discover.twig' %}
+  {% include 'components/gifting/gifting-guide-more.twig' %}
+  {% include 'components/gifting/gifting-featured.twig' with {
+    title: post.meta('selected_products_featured_gifts_title'),
+    items: post.meta('selected_products_featured_gifts_gifts')
+  } %}
+  {% include 'components/ads.twig' with {
+      gpt : {
+          type : 'billboard',
+          code : 'GJ_970x250_001'
+      }
+  } %}
+  {% include 'components/gifting/gifting-cta.twig' with {
+    post: post.meta('cta_third_cta_gift')
+  } %}
+  {% include 'components/gifting/gifting-featured.twig' with {
+    title: post.meta('selected_products_second_featured_gifts_title'),
+    items: post.meta('selected_products_second_featured_gifts_gifts')
+  } %}
+  {% include 'components/gifting/gifting-guide-another.twig' %}
+{% endblock %}

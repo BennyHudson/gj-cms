@@ -1,0 +1,35 @@
+{#
+* Animation
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.issue %}
+    {% set issue = Post(object.issue) %}
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-is">
+        <tbody>
+
+            <tr class="c-is__item c-is__item--content">
+                 <td class="c-is__feat" align="left" valign="middle">
+                    <a class="c-is__link" href="{{ issue.link }}" target="_blank">
+                        <img class="c-is__img" src="{{ Image(issue.issue_cover).src|resize(270, 0) }}" width="135px" alt="{{ site.title }}">
+                    </a>
+                </td>
+                <td class="c-is__content-item" align="left" valign="middle">
+                    <img class="c-is__content__logo" src="https://gallery.mailchimp.com/be77c5006ebd55787abce2788/images/f9f6ff9f-5b3c-4e78-b46c-a7dfab1ec9dd.png" width="200px" alt="The Gentleman's Journal">
+                    <h2 class="c-is__content__title">{{ issue.name }} out now</h2>
+                    <p class="c-is__content__description">{{ object.description }}</p>
+                    <a class="c-is__action" target="_blank" href="{{ issue.link }}"><strong>Subscribe Now</strong></a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}

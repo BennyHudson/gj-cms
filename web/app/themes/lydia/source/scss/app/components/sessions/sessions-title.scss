@@ -1,0 +1,21 @@
+.sessions-title {
+  @include font($font--cera);
+  @include fontSize(19);
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $black;
+  border-top: 1px solid $samurai;
+  border-bottom: 1px solid $samurai;
+  padding: 34px 0;
+  margin-bottom: 30px;
+  @include mq($until: tablet) {
+    @include fontSize(14);
+    padding: 25px 0;
+  }
+  &--inverted {
+    color: $white;
+    border-top: 1px solid $despair;
+    border-bottom: 1px solid $despair;
+  }
+}

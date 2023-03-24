@@ -1,0 +1,114 @@
+/***
+* Webfonts
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 2.0
+*/
+
+/**
+* Chronicle Fonts
+* --------
+* @since GJ 5.0
+* @version 1.0
+* @author typography.com ProjectID=119128
+*
+*
+* font-family: "Chronicle Display A", "Chronicle Display B";
+*
+* Regular - font-style: normal;
+* Italics - font-style: italic;
+*
+* Regular   :font-weight: 400;
+* Semi-bold :font-weight: 600;
+* #Bold     :font-weight: 700;
+* Black     :font-weight: 800;
+*/
+
+/**
+* Cera Pro
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 3474903, 2017-10-30T10:08:14-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: CeraPRO-Bold by TypeMates
+ * URL: https://www.myfonts.com/fonts/typemates/cera/pro-bold/
+ *
+ * Webfont: CeraPRO-Medium by TypeMates
+ * URL: https://www.myfonts.com/fonts/typemates/cera/pro-medium/
+ *
+ * Webfont: CeraPRO-RegularItalic by TypeMates
+ * URL: https://www.myfonts.com/fonts/typemates/cera/pro-italic/
+ *
+ * Webfont: CeraPRO-Regular by TypeMates
+ * URL: https://www.myfonts.com/fonts/typemates/cera/pro-regular/
+ *
+ *
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3474903
+ * Licensed pageviews: 400,000
+ * Webfonts copyright: Copyright (c) 2015 by Jakob Runge, under exclusive license to TypeMates, Runge Thomsen GbR. All rights reserved.
+ *
+ * © 2017 MyFonts Inc
+*/
+
+@import url("//hello.myfonts.net/count/3505d7");
+
+// Regular
+@font-face {
+    font-family: '#{$font--cera}';
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_3_0.eot');
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_3_0.eot?#iefix') format('embedded-opentype'),
+       url('#{$font-path--webfont}/cera-pro-variant/3505D7_3_0.woff2') format('woff2'),
+       url('#{$font-path--webfont}/cera-pro-variant/3505D7_3_0.woff') format('woff'),
+       url('#{$font-path--webfont}/cera-pro-variant/3505D7_3_0.ttf') format('truetype');
+    font-weight: $font-app-cera-w--regular;
+    font-style: normal;
+}
+
+// Regular italic
+@font-face {
+    font-family: '#{$font--cera}';
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_2_0.eot');
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_2_0.eot?#iefix') format('embedded-opentype'),
+       url('#{$font-path--webfont}/cera-pro-variant/3505D7_2_0.woff2') format('woff2'),
+       url('#{$font-path--webfont}/cera-pro-variant/3505D7_2_0.woff') format('woff'),
+       url('#{$font-path--webfont}/cera-pro-variant/3505D7_2_0.ttf') format('truetype');
+    font-weight: $font-app-cera-w--regular;
+    font-style: italic;
+}
+
+// Semibold
+@font-face {
+    font-family: '#{$font--cera}';
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_1_0.eot');
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_1_0.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path--webfont}/cera-pro-variant/3505D7_1_0.woff2') format('woff2'),
+         url('#{$font-path--webfont}/cera-pro-variant/3505D7_1_0.woff') format('woff'),
+         url('#{$font-path--webfont}/cera-pro-variant/3505D7_1_0.ttf') format('truetype');
+    font-weight: $font-app-cera-w--semibold;
+    font-style: normal;
+}
+
+// Bold
+@font-face {
+    font-family: '#{$font--cera}';
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_0_0.eot');
+    src: url('#{$font-path--webfont}/cera-pro-variant/3505D7_0_0.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path--webfont}/cera-pro-variant/3505D7_0_0.woff2') format('woff2'),
+         url('#{$font-path--webfont}/cera-pro-variant/3505D7_0_0.woff') format('woff'),
+         url('#{$font-path--webfont}/cera-pro-variant/3505D7_0_0.ttf') format('truetype');
+    font-weight: $font-app-cera-w--bold;
+    font-style: normal;
+}

@@ -1,0 +1,26 @@
+{#
+* Podcast : Card Header
+* ---------
+* @package components/podcast
+#}
+
+<header class="c-podcast-card-header">
+
+    {% if meta %}
+    <p class="c-podcast-card-header__meta">
+        {% if cardMeta.number %}
+            <span class="c-podcast-card-header__meta__item c-podcast-card-header__meta__item--issue">{{ '0' ~ cardMeta.number }}</span>
+        {% endif %}
+        <span class="c-podcast-card-header__meta__item c-podcast-card-header__meta__item--date">{{ card.post_date|date('j F Y') }}</span>
+        {% if cardMeta.media.duration %}
+            <span class="c-podcast-card-header__meta__item c-podcast-card-header__meta__item--duration">{{ '| ' ~ cardMeta.media.duration ~ ' Min' }}</span>
+        {% endif %}
+    </p>
+    {% endif %}
+
+    <h1 class="c-podcast-card-header__title"><a href="{{ card.link }}">{{ card.title }}</a></h1>
+
+    {% if cardMeta.guest.name %}
+        <p class="c-podcast-card-header__guest" {{ style == 'hero' ? 'style="color:' ~ cardMeta.media.theme.text ~ '"' : '' }}>{{ cardMeta.guest.name }}{{ cardMeta.guest.about ? ', ' ~  cardMeta.guest.about : '' }}</p>
+    {% endif %}
+</header>

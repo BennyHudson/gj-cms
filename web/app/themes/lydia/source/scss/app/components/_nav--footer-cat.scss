@@ -1,0 +1,95 @@
+/**
+* Nav Footer
+*
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+// Nav Footer
+.c-nav-footer-cat {
+    display: flex;
+    flex: 1;
+    @include rem(margin-right, 48px);
+
+    @include mq($until: netbook) {
+        margin-right: 0;
+    }
+
+    @include mq($until: tablet) {
+        @include rem(margin-right, 24px);
+    }
+
+    &__list {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @include mq($until: netbook) {
+            justify-content: flex-start;
+        }
+
+        @include mq($until: tablet) {
+            flex-direction: column;
+        }
+
+        &--child {
+            display: block;
+        }
+    }
+
+    &__item {
+        position: relative;
+        display: block;
+        @include rem(margin, 0 48px 12px 0);
+
+        &--parent {
+            @include mq($until: laptop) {
+                @include rem(margin, 0 24px 24px 0);
+            }
+
+            @include mq($until: tablet) {
+                @include rem(margin, 0);
+            }
+        }
+
+        &--child {
+            @include mq($until: tablet) {
+                display: none;
+            }
+        }
+    }
+
+    &__link {
+        display: block;
+        font-weight: $font-app-cera-w--bold;
+        transition: color 0.15s ease;
+
+        &--parent {
+            @include font-caps--cera;
+            @include fontSize(12);
+            @include rem(margin-bottom, 12px);
+
+            @include mq($until: tablet) {
+                @include rem(margin-bottom, 24px);
+            }
+        }
+
+        &--child {
+            @include fontSize(13);
+            @include rem(margin-bottom, 6px);
+
+        }
+
+        &:hover,
+        &:focus {
+            color: darken($app-white, 30%);
+        }
+
+        &:active {
+            color: darken($app-white, 40%);
+        }
+    }
+}

@@ -1,0 +1,90 @@
+{#
+* Selected Articles
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% for article in object.article %}
+        {# Deal with Overrides #}
+        {% set selected = Post(article.selected) %}
+        {% set format = fn('get_post_format', selected.ID) %}
+        {% set img = article.override.image ? Image(article.override.image).src : selected.thumbnail.src %}
+        {% set title = article.override.title ? article.override.title : selected.title %}
+        {% set excerpt = article.override.excerpt ? article.override.excerpt ~ '...' : selected.preview.length(12).force(true).read_more('')|striptags %}
+        {% set link = article.override.link ? article.override.link : selected.link %}
+
+        {% if object.layout == 'single' %}
+
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-sa{{ format == 'video' ? ' c-sa-v' : '' }}">
+                <tbody>
+
+                    <tr class="c-sa__item">
+                        <td class="c-sa__feat" align="center" valign="middle">
+                            <a class="c-sa__feat-link" href="{{ link }}" target="_blank">
+                                <img class="c-sa__img" src="{{ img|resize(1200, 800, 'center') }}" width="600px" alt="{{ title }}">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="c-sa__item">
+                        <td class="c-sa__content" align="center" valign="middle">
+                            <h2 class="c-sa__title">
+                                <a class="c-sa__link" href="{{ link }}" target="_blank">{{ title }}</a>
+                            </h2>
+                            <p class="c-sa__excerpt">{{ excerpt }}</p>
+
+                            {% if format == 'video' %}
+                                <a class="c-sa__play c-sa__link" href="{{ link }}" target="_blank">Watch
+                                    <img class="c-sa__play-icon" src="https://gallery.mailchimp.com/be77c5006ebd55787abce2788/images/9c82eabe-93c7-4fee-aa6a-d69086511f04.png" width="22px" alt="Play Icon">
+                                </a>
+                            {% endif %}
+
+                            {% if article.override.cta %}
+                                <a class="c-sa__cta" href="{{ link }}">{{ article.override.cta }}</a>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        {% elseif object.layout == 'double' %}
+
+            <table align="left" border="0" cellpadding="0" cellspacing="0" width="50%" class="c-sa c-sa--double">
+                <tbody>
+
+                    <tr class="c-sa__item">
+                        <td class="c-sa__feat c-sa__feat--double" align="center" valign="middle">
+                            <a class="c-sa__feat-link" href="{{ link }}" target="_blank">
+                                <img class="c-sa__img c-sa__img--double" src="{{ img|resize(500, 444, 'center') }}" width="250px" alt="{{ title }}">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="c-sa__item">
+                        <td class="c-sa__content" align="center" valign="middle">
+                            <h2 class="c-sa__title">
+                                <a class="c-sa__link" href="{{ link }}" target="_blank">{{ title }}</a>
+                            </h2>
+                            <p class="c-sa__excerpt">{{ excerpt }}</p>
+
+                            {% if article.override.cta %}
+                                <a class="c-sa__cta" href="{{ link }}">{{ article.override.cta }}</a>
+                            {% endif %}
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}

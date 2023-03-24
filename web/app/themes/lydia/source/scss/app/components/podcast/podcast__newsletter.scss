@@ -1,0 +1,63 @@
+/**
+ * Podcast Newsletter
+ * ---------
+ * @component podcast
+ * @version 1
+*/
+
+.c-podcast-newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $samurai;
+    @include rem(padding, 72px 24px);
+
+    &__info {
+        text-align: center;
+        @include rem(max-width, 396px);
+    }
+
+    &__illustration {
+        margin-right: 10%;
+
+        @include mq($until: netbook) {
+            display: none;
+        }
+    }
+
+    &__title {
+        color: #494949;
+        @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+        @include fontSize(32);
+        @include rem(margin-bottom, 24px);
+    }
+
+    &__description {
+        color: #494949;
+        @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+        @include fontSize(18);
+        @include rem(margin-bottom, 48px);
+    }
+
+    &__signup {
+        color: $fog;
+        @include fontSize(16);
+        @include rem(padding-bottom, 6px);
+        border-bottom: 1px solid $fog;
+        display: flex;
+        align-items: center;
+        margin: auto;
+        width: 80%;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus {
+            color: $despair;
+        }
+
+        &__icon {
+            margin-left: auto;
+            @include fontSize(11);
+        }
+    }
+}

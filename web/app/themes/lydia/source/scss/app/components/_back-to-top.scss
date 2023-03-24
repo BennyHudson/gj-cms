@@ -1,0 +1,29 @@
+/**
+* Hamburger
+* --------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+.c-back-top {
+    @include fontSize(15);
+    font-weight: $font-app-cera-w--regular;
+    padding: 0;
+
+    @include mq($until: tablet) {
+        display: none;
+    }
+
+    &:hover,
+    &:focus {
+        color: darken($app-white, 30%);
+    }
+
+    &:active {
+        color: darken($app-white, 40%);
+    }
+
+    &__icon {
+        @include rem(margin-right, 6px);
+    }
+}

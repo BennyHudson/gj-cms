@@ -1,0 +1,26 @@
+{#
+* Footer Navigation Categories
+* --------
+* @package GJ
+* @since GJ 1.0
+#}
+<nav class="c-nav-footer">
+    <ul class="c-nav-footer__list">
+        {% for item in menu.foundation.main.items %}
+            <li class="c-nav-footer__item" id="c-nav-footer__item-{{ item.ID }}">
+                <a class="c-nav-footer__link" href="{{ item.link }}">{{ item.title }}</a>
+
+                 {% if item.get_children %}
+                        <ul class="c-nav-footer__list c-nav-footer__list--child">
+                            {% for child in item.get_children %}
+                                <li class="c-nav-footer__item c-nav-footer__item--child" id="c-nav-footer__item-{{ item.ID }}">
+                                    <a class="c-nav-footer__link c-nav-footer__link--child" href="{{ child.link }}">{{ child.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                {% endif %}
+
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

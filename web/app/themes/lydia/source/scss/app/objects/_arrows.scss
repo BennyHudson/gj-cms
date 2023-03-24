@@ -1,0 +1,97 @@
+/**
+* Icons
+*
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-arrow {
+    display: block;
+
+    &--left {
+        transform: rotate(180deg);
+    }
+    &--up {
+        transform: rotate(-90deg);
+    }
+    &--down {
+        transform: rotate(90deg);
+    }
+}
+
+.c-arrow--light {
+    filter: drop-shadow( -2px 0 4px rgba(0, 0, 0, 0.05));
+    transition: filter 0.2s ease-out;
+
+    .c-arrow {
+
+        &__circle {
+            fill: $app-white;
+        }
+
+        &__chevron {
+            fill: $app-grey--text;
+            transition: fill 0.2s ease;
+        }
+    }
+
+    &:hover {
+        filter: drop-shadow( -0px 0 6px rgba(0, 0, 0, 0.15));
+
+        .c-arrow {
+            &__circle {
+                fill: $gunmetal;
+            }
+
+            &__chevron {
+                fill: $app-white;
+            }
+        }
+    }
+
+    &:active {
+        filter: drop-shadow( -1px 0 4px rgba(0, 0, 0, 0.15));
+
+        .c-arrow {
+            &__circle {
+                fill: darken($gunmetal, 5%);
+            }
+        }
+    }
+}
+
+.c-arrow--dark {
+
+    .c-arrow {
+
+        &__circle {
+            fill: $app-black;
+            stroke: $app-black--text;
+            stroke-width: 2px;
+        }
+
+        &__chevron {
+            fill: $app-white;
+            transition: fill 0.2s ease;
+        }
+    }
+
+    &:hover {
+
+        .c-arrow {
+            &__circle {
+                fill: $app-black--text;
+            }
+        }
+    }
+
+    &:active {
+
+        .c-arrow {
+            &__circle {
+                fill: lighten($app-black--text, 4%);
+            }
+        }
+    }
+}

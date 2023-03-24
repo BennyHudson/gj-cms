@@ -1,0 +1,16 @@
+{#
+* Video Player
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<video
+    class="video-js vjs-big-play-centered vjs-fluid {{ className }}"
+    id="{{ ID }}"
+    controls
+    preload="auto"
+    width="100%"
+    height="100%"
+    poster="{{ thumb.src|resize(thumb.width, thumb.height , 'center') }}"
+    data-setup='{ "techOrder": ["youtube", "html5"], "sources": [{ "type": "video/youtube", "src": "{{ src }}"}], "youtube": [{ "iv_load_policy": 3, "rel": 0 }] }'>
+</video>

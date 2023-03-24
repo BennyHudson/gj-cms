@@ -1,0 +1,79 @@
+/**
+ * Subscription Gift
+ * ---------
+ * @component Subscription
+ * @version 1
+*/
+.c-subscription-gift {
+    padding: rem(12px);
+    margin: rem(12px) 0 rem(48px);
+    background: $wild-sand;
+
+    &__title {
+        @include fontSize(36);
+        margin-bottom: rem(12px);
+        @include font($font--cond-chronicle);
+
+        @include mq($until: tablet) {
+            @include fontSize(34);
+        }
+    }
+
+    p {
+        margin-bottom: rem(52px);
+        @include fontSize(16);
+    }
+
+    &__product {
+        padding: rem(100px 0 0);
+        border-top: 1px solid #ddd;
+        display: grid;
+        grid-template-columns: rem(400px) 1fr;
+        gap: rem(48px);
+        align-items: center;
+
+        @include mq($until: tablet) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    &__preview {
+        aspect-ratio: 16 / 9;
+        background: $white;
+    }
+
+    &__feat {
+        width: 100%;
+
+        &-img {
+            width: 100%;
+        }
+    }
+
+    &__info {
+
+        p {
+            @include fontSize(18);
+
+            @include mq($until: tablet) {
+                @include fontSize(16);
+            }
+        }
+    }
+
+    &__product__title {
+        @include fontSize(28);
+        margin-bottom: rem(12px);
+        @include font($font--cond-chronicle);
+
+
+        @include mq($until: tablet) {
+            @include fontSize(24);
+        }
+    }
+
+    &__stock {
+        margin-top: rem(12px);
+        font-weight: bold;
+    }
+}

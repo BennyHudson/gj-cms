@@ -1,0 +1,68 @@
+{#
+* Base Template
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% block head %}
+    {% include 'components/global/head.twig' %}
+{% endblock %}
+
+    <body class="{{ body_class }}" itemscope itemtype="http://schema.org/WebPage">
+
+        {% do action('gj_after_body_open') %}
+
+        {% block masthead %}
+            {% include 'components/global/masthead.twig' with {
+                style : 'prime'
+            } %}
+        {% endblock %}
+
+        <main class="o-content o-content--main" role="main" id="o-main-content">
+            {% block content %}
+                Sorry, no content
+            {% endblock %}
+        </main>
+
+        {% block footer %}
+        <footer class="o-foundation" itemscope="itemscope" itemtype="http://schema.org/WPFooter" role="contentinfo">
+
+
+            {# {% include 'components/newsletter.twig' %} #}
+            {% include 'components/signup/signup.twig' with {
+                style : 'foundation',
+            } %}
+
+            <div class="o-foundation__base">
+                <div class="o-wrapper o-wrapper--inner">
+
+                    <div class="o-grid o-grid--flex o-foundation__base-lv o-foundation__base-lv--1">
+                        {% include 'objects/logo.twig' with { style : 'foundation' } %}
+                        {% include 'components/back-to-top.twig' %}
+                    </div>
+
+                    <div class="o-grid o-grid--flex o-foundation__base-lv o-foundation__base-lv--2">
+                        {% include 'components/nav--footer-cat.twig' %}
+                        {% include 'components/nav--footer.twig' %}
+                    </div>
+
+                    <div class="o-grid o-grid--flex o-foundation__base-lv o-foundation__base-lv--3">
+                        {% include 'objects/social.twig' %}
+                        {% include 'components/nav--footer-info.twig' %}
+                        {% include 'components/site-info.twig' %}
+                        {% include 'components/agency.twig' %}
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+
+        {% include 'components/modal--newsletter.twig' %}
+        {% include 'components/modal--search.twig' %}
+
+        {% endblock %}
+
+        {{ fn('wp_footer') }}
+
+       </body>
+</html>

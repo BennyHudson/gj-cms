@@ -1,0 +1,44 @@
+.horizons-content {
+  margin-bottom: 100px;
+  padding: 0 30px;
+  &__container {
+    max-width: 1040px;
+    margin: auto;
+    display: flex;
+    @include mq($until: tablet) {
+      flex-wrap: wrap;
+    }
+  }
+  &__block {
+    width: 45%;
+    margin-right: 10%;
+    &:last-child {
+      margin-right: 0;
+    }
+    @include mq($until: tablet) {
+      width: 100%;
+      margin-right: 0;
+      &:first-child {
+        margin-bottom: 50px;
+      }
+    }
+  }
+  &__title {
+    @include font($font--cera);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: $midnight;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  &__text {
+    p {
+      @include font($font--text-chronicle);
+      color: $midnight;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.4em;
+    }
+  }
+}

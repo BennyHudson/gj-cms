@@ -1,0 +1,27 @@
+{#
+* Logo
+* ---------
+* @package objects
+#}
+{% set class = class ? ' ' ~ class : '' %}
+<section class="o-logo o-logo--{{ style }} o-logo--{{ type }}{{ class }}" itemscope itemtype="http://schema.org/Organization" id="js-logo--{{ style }}">
+
+    <a class="o-logo__link" itemprop="url" rel="home" href="{{ site.link }}">
+
+        {{ source('objects/svg/logo.svg') }}
+
+        {% if style == "masthead" %}
+
+            {{ source('objects/svg/logo--symbol.svg') }}
+
+        {% endif %}
+
+        <link itemprop="logo" content="{{ theme.link }}/views/objects/svg/logo.svg" />
+
+        {% if fn('is_front_page') and style == "masthead" %}
+            {#  Adds visually hidden H1 tag to site front page #}
+            <h1 class="is-visually-hidden" itemprop="name">{{ site.name }}</h1>
+        {% endif %}
+
+    </a>
+</section>

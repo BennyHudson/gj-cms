@@ -1,0 +1,82 @@
+/**
+* Ad Blocks
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-ad-block {
+
+    &--billboard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: $app-grey--light;
+
+        .c-ad-block__slot {
+            @include rem(margin, 78px 24px);
+
+            @include mq($until: tablet) {
+                @include rem(margin, 36px auto);
+            }
+        }
+    }
+
+    &--leaderboard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: $app-grey--light;
+
+        .c-ad-block__slot {
+            @include rem(margin, 36px 24px);
+
+            @include mq($until: tablet) {
+                @include rem(margin, 12px auto);
+            }
+        }
+    }
+
+    .archive &--halfpage {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 4;
+        height: 100%;
+
+        @include mq($until: laptop) {
+            grid-row-end: initial;
+            grid-row-start: initial;
+            grid-column-start: initial;
+        }
+
+    }
+
+    .single &--mpu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .c-ad-block__slot {
+            display: none;
+
+            @include mq($until: phablet) {
+                display: block;
+                @include rem(margin, 0 24px 36px);
+            }
+        }
+    }
+
+    &--int {
+        .c-ad-block__slot {
+            margin-bottom: rem(48px);
+        }
+    }
+
+    &--pixel {
+        @extend .is-visually-hidden;
+    }
+}

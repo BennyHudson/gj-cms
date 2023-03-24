@@ -1,0 +1,124 @@
+/**
+* Positioning
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+
+/**
+* Center Block
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+%u-center--block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**
+* Width and Height
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+.w {
+
+    &--100 {
+        width: 100%;
+    }
+
+    &--75 {
+        width: 75%;
+    }
+
+    &--50 {
+        width: 50%;
+    }
+
+    &--25 {
+        width: 25%;
+    }
+}
+
+.h {
+
+    &--100 {
+        height: 100%;
+    }
+
+    &--75 {
+        height: 75%;
+    }
+
+    &--50 {
+        height: 50%;
+    }
+
+    &--25 {
+        height: 25%;
+    }
+}
+
+/**
+* Rotate
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+.u-rotate {
+    width: auto;
+
+    &--90 {
+        @extend .u-rotate;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+        transform: rotate(90deg);
+    }
+
+    &--180 {
+        @extend .u-rotate;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+        transform: rotate(180deg);
+    }
+
+    &--270 {
+        @extend .u-rotate;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        transform: rotate(270deg);
+    }
+}
+
+/**
+* Flip
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+%u-flip-horizontal {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+    transform: scale(-1, 1);
+}
+
+%u-flip-vertical {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    transform: scale(1, -1);
+}
+
+/**
+* Resolve Filter Issues
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+:root .u-rotate--90,
+:root .u-rotate--180,
+:root .u-rotate--270,
+:root .u-flip-horizontal,
+:root .u-flip-vertical {
+    -webkit-filter: none;
+          filter: none;
+}

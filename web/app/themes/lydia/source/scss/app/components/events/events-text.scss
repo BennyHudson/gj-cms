@@ -1,0 +1,14 @@
+.events-text {
+  padding: 90px 30px;
+  &__content {
+    max-width: 650px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    @include font($font--cond-chronicle, $font-app-chronicle-w--regular);
+    @include fontSize(17);
+    @include rem(line-height, 21px);
+  }
+}

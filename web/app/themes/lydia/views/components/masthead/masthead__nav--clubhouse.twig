@@ -1,0 +1,73 @@
+{#
+* Masthead Nav Clubhouse
+* --------
+* @package components/masthead
+* @version 1.0.0
+#}
+
+<div class="c-masthead-nav__subnav c-masthead-nav--club">
+
+    <div class="c-masthead-nav-club">
+
+        {% include 'objects/image.twig' with {
+            class: 'c-masthead-nav-club__card',
+            alt : 'Join the Clubhouse',
+            img : {
+                base : {
+                    obj : clubhouse.card,
+                    w   : '480',
+                    h   : '0'
+                }
+            }
+        } %}
+
+        <div class="c-masthead-nav-club__info">
+
+            {% include 'objects/title.twig' with {
+                el: 'h2',
+                class: 'c-masthead-nav-club',
+                title: '<span class="c-masthead-nav-club__pretitle">Introducing</span> Clubhouse',
+            } %}
+
+            <p class="c-masthead-nav-club__description">{{ clubhouse.description }}</p>
+
+            {% include 'objects/button.twig' with {
+                el: 'a',
+                class: 'c-masthead-nav-club__link',
+                cta: 'Join the Club',
+                link: clubhouse.link,
+                style: 'solid',
+            } %}
+
+             {% include 'objects/button.twig' with {
+                el: 'a',
+                class: 'c-masthead-nav-club__link',
+                cta: 'Member Experiences',
+                link: fn('get_post_type_archive_link', 'clubhouse-partners'),
+                style: 'outline',
+            } %}
+
+        </div>
+
+    </div>
+
+    {# <div class="c-masthead-nav-mag__items">
+        {% for mag in nav.magazine %}
+            <div class="c-masthead-nav-mag__item">
+                <a class="c-masthead-nav-mag__link" href="{{ mag.link }}" tabindex="-1">
+                    {% include 'objects/image.twig' with {
+                        class: 'c-masthead-nav-mag__feat',
+                        alt :  mag.title,
+                        img : {
+                            base : {
+                                obj : Image(mag.thumbnail),
+                                w   : '185',
+                                h   : '242'
+                            }
+                        }
+                    } %}
+                </a>
+            </div>
+        {% endfor %}
+    </div> #}
+</div>

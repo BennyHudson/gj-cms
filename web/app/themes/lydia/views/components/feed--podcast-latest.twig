@@ -1,0 +1,33 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{#
+* Set Var
+* --------
+* @since 3.0
+* @version 1.0
+#}
+{% set headerInfo = {'title': 'Podcasts', 'subtitle' : podcasts.short_description } %}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+<section class="o-post-group o-post-group--podcasts o-post-group--podcasts-featured t-dark">
+    <div class="{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %}">
+        {% include 'components/feed__header.twig' with { header : headerInfo } %}
+
+        <div class="o-post-feed o-post-feed--lead">
+            {% for post in podcastsLatest %}
+                {% include 'components/post-thumb--podcast-featured.twig' with { thumbStyle : 'podcast o-post-thumb--podcast-featured' } %}
+            {% endfor %}
+        </div>
+        <a href="{{ fn('get_post_type_archive_link', 'podcasts') }}" class="o-btn o-btn--solid o-btn--dark o-post-feed__btn o-post-feed__btn--loadmore">View More</a>
+    </div>
+</section>

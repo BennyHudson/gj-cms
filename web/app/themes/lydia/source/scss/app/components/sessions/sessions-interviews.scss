@@ -1,0 +1,28 @@
+.sessions-interviews {
+  max-width: 585px;
+  width: 100%;
+  @include mq($until: tablet) {
+    max-width: 100%;
+  }
+  &__interviews {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @include mq($from: tablet) {
+    .sessions-tease:not(:first-of-type) {
+      width: calc(50% - 15px);
+      &:nth-of-type(even) {
+        margin-right: 30px;
+      }
+      .sessions-tease__image {
+        margin-bottom: 15px;
+      }
+      .sessions-tease__info {
+        margin-bottom: 20px;
+      }
+      .sessions-tease__title {
+        @include fontSize(28);
+      }
+    }
+  }
+}

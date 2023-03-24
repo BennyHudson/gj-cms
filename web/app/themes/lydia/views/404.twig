@@ -1,0 +1,26 @@
+{#
+*  404
+*
+*  @package Nurformix
+*  @since GJ 1.0
+#}
+
+{% extends "page.twig" %}
+
+{% block content %}
+    <section class="c-error-404">
+        <figure class="c-error-404__img-container">
+            <picture>
+                <source media="(max-width: 768px)" srcset="{{ errorBackground.src|resize(768, 526) }} 1x">
+                <img class="c-error-404__img" src="{{ errorBackground.src|resize(1800, 1100, 'center top') }}" alt="{{ errorBackground.alt }}"/>
+            </picture>
+        </figure>
+
+        <div class="c-error-404__header-group">
+            <h1 class="c-error-404__title">404</h1>
+            <p class="c-error-404__subtitle">Oops! This page doesn’t exist.<br>Christoph Waltz is looking into it.</p>
+            <a href="{{ site.url }}" class="o-btn o-btn--solid o-btn--light c-error-404__btn">Go Home</a>
+        </div>
+
+    </section>
+{% endblock %}

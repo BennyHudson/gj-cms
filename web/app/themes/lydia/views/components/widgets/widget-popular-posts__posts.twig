@@ -1,0 +1,5 @@
+<ol class="c-widget-pop-post__items">
+    {% for post in popular %}
+        <li class="c-widget-pop-post__item"><a href="{{ post.link }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ol>

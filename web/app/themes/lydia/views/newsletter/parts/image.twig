@@ -1,0 +1,29 @@
+{#
+* Image
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.img %}
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-feat-image">
+        <tbody>
+            <tr class="c-feat-image__item">
+                <td class="c-feat-image__feat" align="center" valign="middle" colspan="2">
+                    {% if object.link %}
+                        <a class="c-feat-image__link" href="{{ object.link }}" target="_blank">
+                    {% endif %}
+                            <img class="c-feat-image__img" src="{{ Image(object.img)|resize(1200, 0) }}" width="600px" alt="Featured Image">
+                    {% if object.link %}
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}

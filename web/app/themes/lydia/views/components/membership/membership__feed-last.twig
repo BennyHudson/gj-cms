@@ -1,0 +1,20 @@
+{#
+* Membership : Feed last
+* ---------
+* @package components/membership
+#}
+<section class="c-membership__feed">
+
+    {% for member in posts|slice(start, length) %}
+
+        {% include 'components/membership/membership__card.twig' %}
+
+    {% endfor %}
+
+</section>
+
+<div class="c-ajax-members-posts"></div>
+
+
+<div class="o-btn o-btn--solid o-btn--light o-post-feed__btn o-post-feed__btn--loadmore" id="js-membership-loadmore" data-pagination="2">Load More</div>
+

@@ -1,0 +1,35 @@
+/**
+* Border Mixins
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+*/
+
+// Border Radius
+@mixin border-radius($border-radius) {
+    @include rem(border-radius, $border-radius + px);
+    background-clip: padding-box;  // stops bg color from leaking outside the border
+}
+
+// Single side border-radius
+@mixin border-top-radius($border-radius) {
+    @include rem(border-top-right-radius, $border-radius + px);
+    @include rem(border-top-left-radius, $border-radius + px);
+    background-clip: padding-box;
+}
+@mixin border-right-radius($border-radius) {
+    @include rem(border-bottom-right-radius, $border-radius + px);
+    @include rem(border-top-right-radius, $border-radius + px);
+    background-clip: padding-box;
+}
+@mixin border-bottom-radius($border-radius) {
+    @include rem(border-bottom-right-radius, $border-radius + px);
+    @include rem(border-bottom-left-radius, $border-radius + px);
+    background-clip: padding-box;
+}
+@mixin border-left-radius($border-radius) {
+    @include rem(border-bottom-left-radius, $border-radius + px);
+    @include rem(border-top-left-radius, $border-radius + px);
+    background-clip: padding-box;
+}

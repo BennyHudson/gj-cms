@@ -1,0 +1,15 @@
+{#
+* Content Builder : Recommended Products
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<div class="c-content-builder__products c-content-builder__products--woo {{ wrapper }}">
+
+    {% set products = item.recommended_products|join(',') %}
+
+    {% filter shortcodes %}
+        [products ids="{{ products }}" columns="1" class="c-content-builder__products-group"]
+    {% endfilter %}
+
+</div>

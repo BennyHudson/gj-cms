@@ -1,0 +1,48 @@
+<div class="clubhouse-posts clubhouse-posts--{{ layout }}">
+  {% for post in posts %}
+    <div class="clubhouse-posts__tease">
+      <a href="{{ post.link }}" class="clubhouse-posts__image">
+        {% include 'objects/image.twig' with {
+          alt: post.title,
+          img: {
+            base: {
+              obj: Image(post.thumbnail),
+              w: '500',
+              h: '335',
+              c: 'center'
+            }
+          }
+        } %}
+      </a>
+
+      <div class="clubhouse-posts__info">
+        {% for cat in post.terms if cat.ID == membersCatID %}
+          <div class="clubhouse-posts__members" data-tooltip="Members only">
+            <a href="{{ Post(74300).link }}">
+              {% include 'objects/icon--padlock.twig' %}
+            </a>
+          </div>
+        {% endfor %}
+        <p class="clubhouse-posts__category">
+          {{ post.category }}
+          <span class="clubhouse-posts__posted">
+            &#8213;
+            {{
+              post.post_date_gmt
+                |time_ago
+                |replace({
+                  mins: 'minutes'
+                })
+            }}
+          </span>
+        </p>
+      </div>
+
+      <a href="{{ post.link }}" class="clubhouse-posts__title">
+        <h1>
+          {{ post.post_title|truncate(15) }}
+        </h1>
+      </a>
+    </div>
+  {% endfor %}
+</div>

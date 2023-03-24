@@ -1,0 +1,10 @@
+<aside class="events-modal">
+  <div class="events-modal__container">
+    <button class="events-modal__close"><i class="far fa-times"></i></button>
+    <h1 class="events-modal__title">Enquire Below</h1>
+    <div class="events-modal__content">Fill our your details below to enquire about this event</div>
+    {% include 'components/events/events-form.twig' with {
+      subject: subject
+    } %}
+  </div>
+</aside>

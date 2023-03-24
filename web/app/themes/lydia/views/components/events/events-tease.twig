@@ -1,0 +1,59 @@
+<div class="events-tease">
+  <div class="events-tease__images">
+    <div class="events-tease__slider">
+      {% for image in post.meta('events_image_gallery') %}
+        <div class="events-tease__slide">
+          {% include 'objects/image.twig' with {
+            class: 'events-tease__media',
+            alt: '',
+            img: {
+              base: {
+                obj: Image(image),
+                w: '620',
+                h: '361',
+                c: 'center'
+              }
+            }
+          } %}
+        </div>
+      {% endfor %}
+    </div>
+    <button class="events-tease__prev">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <button class="events-tease__next">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="events-tease__date">
+      <span class="events-tease__day">
+        {{ post.events_event_date|date('d') }}
+      </span>
+      <span class="events-tease__month">
+        {{ post.events_event_date|date('M') }}
+      </span>
+    </div>
+  </div>
+
+  <div class="events-tease__content">
+    <h3 class="events-tease__title">
+      {{ post.title }}
+    </h3>
+    <div class="events-tease__text">
+      {{ post.post_content|truncate(50) }}
+    </div>
+    {% if post.events_purchase_type == 'Form enquiry' %}
+      <button class="events-tease__purchase js-events-modal o-btn o-btn--outline">
+        Buy the guestlist package here
+      </button>
+      {% include 'components/events/events-modal.twig' with {
+        subject: post.title
+      } %}
+    {% else %}
+      <a href="{{ site.url }}/checkout?add-to-cart=367143"
+        class="events-tease__purchase o-btn o-btn--outline">
+        Buy the guestlist package here
+      </a>
+    {% endif %}
+  </div>
+</div>

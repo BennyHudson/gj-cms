@@ -1,0 +1,44 @@
+/**
+* Issue Gallery Drag
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-issue-gallery-drag {
+    @include rem(padding, 90px 0);
+    background-color: $concrete;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: url(assets/img/cursors/cursor-drag-circle.png) 40 40, auto;
+
+    &__slider-container {
+        width: 100%;
+    }
+
+    &__slider {
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        transition: opacity .3s ease-out;
+
+        &.slick-initialized {
+            opacity: 1;
+            visibility: visible;
+            height: auto;
+        }
+    }
+
+    .slick-slide {
+        height: auto;
+        @include rem(margin, 0 48px);
+
+        @include mq($until: tablet) {
+            @include rem(margin, 0 12px);
+        }
+    }
+}

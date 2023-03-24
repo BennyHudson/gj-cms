@@ -1,0 +1,32 @@
+<section class="c-widget-pop-post">
+
+    <div class="c-widget-pop-post__header">
+
+        {% include 'objects/title.twig' with {
+            class: 'c-widget-pop-post',
+            title: 'Most popular this <span class="c-widget-pop-post__period">week</span>',
+        } %}
+
+        <div class="c-widget-pop-post__controls">
+            {% for period in ['Week', 'Month', 'Year'] %}
+
+                {% include 'objects/button.twig' with {
+                    el: 'button',
+                    cta: period,
+                    style: 'minimal',
+                    meta : 'data-period="'~ period ~'"',
+                    class: period == 'Week' ? 'is-active c-widget-pop-post__control--'~ period ~' c-widget-pop-post' : 'c-widget-pop-post__control--'~ period ~' c-widget-pop-post',
+                } %}
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="c-widget-pop-post__posts">
+
+        {% include 'components/widgets/widget-popular-posts__posts.twig' %}
+
+    </div>
+
+</section>

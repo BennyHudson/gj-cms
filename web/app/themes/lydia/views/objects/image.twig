@@ -1,0 +1,76 @@
+{#
+* Image
+* ---------
+* @objects
+* @version 4
+#}
+{% if img.base.obj %}
+    {# Conditional defaults for the size #}
+    {% set size = {
+        base : {
+            w:  img.base.w ? img.base.w: '',
+            h:  img.base.h ? img.base.h: '',
+            w2: img.base.w ? (img.base.w * 2): '',
+            h2: img.base.h ? (img.base.h * 2): '',
+            c:  img.base.c ? img.base.c: ''
+        },
+        tablet : {
+            w:  img.tablet.w ? img.tablet.w: '',
+            h:  img.tablet.h ? img.tablet.h: '',
+            w2: img.tablet.w ? (img.tablet.w * 2): '',
+            h2: img.tablet.h ? (img.tablet.h * 2): '',
+            c:  img.tablet.c ? img.tablet.c: ''
+        },
+        mobile : {
+            w:  img.mobile.w ? img.mobile.w: '',
+            h:  img.mobile.h ? img.mobile.h: '',
+            w2: img.mobile.w ? (img.mobile.w * 2): '',
+            h2: img.mobile.h ? (img.mobile.h * 2): '',
+            c:  img.mobile.c ? img.mobile.c: ''
+        }
+    } %}
+
+    {# Set the Images Sizes based on the source #}
+    {% set image = {
+        alt: img.base.obj.alt ? img.base.obj.alt : '',
+        class: {
+            parent : class ? ' ' ~ class : '',
+            child  : class ? ' ' ~ class ~ '-img' : ''
+        },
+        base: {
+            standard : img.base.obj.src|resize( size.base.w, size.base.h, size.base.c ),
+            retina   : img.base.obj.src|resize( size.base.w2, size.base.h2, size.base.c )
+        },
+        tablet: {
+            standard : img.tablet.obj.src|resize( size.tablet.w, size.tablet.h, size.tablet.c ),
+            retina   : img.tablet.obj.src|resize( size.tablet.w2, size.tablet.h2, size.tablet.c )
+        },
+        mobile: {
+            standard : img.mobile.obj.src|resize( size.mobile.w, size.mobile.h, size.mobile.c ),
+            retina   : img.mobile.obj.src|resize( size.mobile.w2, size.mobile.h2, size.mobile.c )
+        }
+    } %}
+
+    {% if image.base.standard %}
+        <picture class="c-image{{ image.class.parent }}">
+
+            {% if image.mobile.standard %}
+            <source media="(max-width: 480px)"
+                    srcset="{{ image.mobile.standard }} 1x,
+                            {{ image.mobile.retina }} 2x">
+            {% endif %}
+
+            {% if image.tablet.standard %}
+            <source media="(max-width: 768px)"
+                    srcset="{{ image.tablet.standard }} 1x,
+                            {{ image.tablet.retina }} 2x">
+            {% endif %}
+
+            <source srcset="{{ image.base.standard }} 1x,
+                            {{ image.base.retina }} 2x">
+
+            <img class="c-image__img{{ image.class.child }}" src="{{ image.base.standard }}" alt="{{ image.alt }}" width="{{ img.base.w }}" height="{{ img.base.h }}">
+
+        </picture>
+    {% endif %}
+{% endif %}

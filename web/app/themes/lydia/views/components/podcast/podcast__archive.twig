@@ -1,0 +1,28 @@
+{#
+* Podcast : Archive
+* ---------
+* @package components/podcast
+#}
+<section class="c-podcast-archive">
+
+    {% include 'objects/title.twig' with {
+        el: 'h2',
+        class: 'c-podcast-archive',
+        title: 'Archive',
+    } %}
+
+    {% include 'components/podcast/podcast__archive__header.twig' %}
+
+    <div class="c-podcast-archive__inner c-ajax-podcast-posts">
+
+        {% include 'components/podcast/podcast__archive__feed.twig' %}
+
+    </div>
+
+    <a href="{{ posts.pagination.next.link }}"
+        class="o-btn c-podcast-archive__loadmore"
+        data-pagination="2"
+        id="js-podcast-loadmore">Load more</a>
+
+
+</section>

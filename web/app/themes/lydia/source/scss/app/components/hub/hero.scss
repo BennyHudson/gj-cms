@@ -1,0 +1,131 @@
+.c-hub-hero {
+  min-height: calc(100vh - 112px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include mq($until: tablet) {
+    min-height: calc(100vh - 60px);
+  }
+
+  &__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &-img {
+      width: inherit;
+      height: inherit;
+      display: block;
+      object-fit: cover;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-color: rgba(0,0,0,0.4);
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  &__scroller {
+    margin-bottom: rem(24px);
+    align-self: end;
+  }
+
+  &__chevron {
+    color: $white;
+    font-size: 18px;
+    text-align: center;
+    height: 13px;
+    opacity: 0.25;
+    &:nth-of-type(2) {
+      opacity: 0.5;
+    }
+    &:nth-of-type(3) {
+      opacity: 1;
+    }
+  }
+
+  &__lead {
+    max-width: 50ch;
+    padding: rem(48px 24px);
+    color: $white;
+    margin-bottom: auto;
+  }
+
+  &__title {
+    @include font($font--text-chronicle, $font--regular);
+    @include fontSize(48);
+    line-height: 0.97em;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+
+    @include mq($until: tablet) {
+      @include fontSize(36);
+    }
+  }
+
+  &__times {
+    @include fontSize(24);
+    margin-bottom: rem(24px)
+  }
+
+  &__logo {
+    max-width: rem(260px);
+
+    @include mq($until: tablet) {
+        max-width: rem(180px)
+    }
+  }
+
+  &__excerpt {
+    @include font($font--cera);
+    color: $white;
+    text-align: center;
+    @include fontSize(18);
+    max-width: 25ch;
+    margin: auto;
+    margin-bottom: rem(48px);
+    @include mq($until: tablet) {
+      @include fontSize(16);
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    @include font($font--cera);
+    @include fontSize(11);
+    text-transform: uppercase;
+    color: $black;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    background-color: $white;
+    border-radius: 25px;
+    padding: 13px 30px;
+    letter-spacing: 0.01em;
+    transition: all ease-in-out 0.2s;
+
+    .c-icon {
+      display: inline-block;
+      margin-left: rem(12px);
+    }
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+  }
+}

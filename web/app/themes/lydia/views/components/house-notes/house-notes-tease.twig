@@ -1,0 +1,108 @@
+<a href="{{ post.link }}"
+  class="house-notes-tease {{
+  largeHeader
+    ? 'house-notes-tease--large'
+    : ''
+  }} house-notes-tease--{{
+  post.format
+  }} house-notes-tease--{{ post.article_type|sanitize }}">
+  {% if category and above %}
+    <h3 class="house-notes-tease__category">
+      ({{ post.get_terms('house-note-category')[0].name }})
+    </h3>
+  {% endif %}
+
+  <div class="house-notes-tease__image">
+    {% if category and above %}
+      {% set width = 587 %}
+      {% set height = 388 %}
+    {% elseif post.format == 'audio' and stylised %}
+      {% set width = 300 %}
+      {% set height = 300 %}
+    {% else %}
+      {% set width = 600 %}
+      {% set height = 600 %}
+    {% endif %}
+
+    {% include 'objects/image.twig' with {
+      img: {
+        base: {
+          obj: post.thumbnail,
+          w: width,
+          h: height
+        }
+      }
+    } %}
+  </div>
+  <div class="house-notes-tease__subtitle">
+    ({{ category and not above
+      ? post.get_terms('house-note-category')[0].name
+      : post.article_type }})
+  </div>
+  <div class="house-notes-tease__title">
+    {{ post.title }}
+  </div>
+  {% if post.article_type_topic_guest and stylised %}
+    <div class="house-notes-tease__topic-guest">
+      with <span>{{ post.article_type_topic_guest }}</span>
+    </div>
+  {% endif %}
+  {% set content = stylised
+    ? post.article_type_landing_page_excerpt
+    : post.article_type_landing_page_excerpt|truncate(30)
+  %}
+  <div class="house-notes-tease__content">
+    {{ content }}
+  </div>
+  <div class="house-notes-tease__authors">
+    {% if (post.article_type|sanitize) == 'quote' and stylised %}
+      <div class="house-notes-tease__author">
+        <span>(Seen in)</span>
+        <div>
+          {{ post.title }}
+        </div>
+      </div>
+    {% elseif (post.article_type|sanitize) == 'podcast' %}
+      <div class="house-notes-tease__author">
+        <span>(Interviewed by)</span>
+        <div>
+          {{ post.article_type_podcast_interviewer }}
+        </div>
+      </div>
+      {% if stylised %}
+        <button class="house-notes-tease__button">Listen now</button>
+      {% endif %}
+    {% elseif (post.article_type|sanitize) == 'topic' %}
+      <div class="house-notes-tease__author">
+        <span>(With)</span>
+        <div>
+          {{ post.article_type_topic_guest }}
+        </div>
+      </div>
+    {% elseif post.author == post.photographer_name %}
+      <div class="house-notes-tease__author">
+        <span>(Words and photography by)</span>
+        <div>
+          {{ post.author }}
+        </div>
+      </div>
+    {% else %}
+      {% if post.author %}
+        <div class="house-notes-tease__author">
+          <span>(Words by)</span>
+          <div>
+            {{ post.author }}
+          </div>
+        </div>
+      {% endif %}
+      {% if post.photographer_name %}
+        <div class="house-notes-tease__author">
+          <span>(Photography by)</span>
+          <div>
+            {{ post.photographer_name }}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</a>

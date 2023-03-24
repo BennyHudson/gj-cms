@@ -1,0 +1,140 @@
+{#
+* Single Sponsored Content
+* ---------
+* @component single/sponsored
+* @version 1
+#}
+
+<section class="c-single-sponsored-content">
+
+    <div class="c-content-builder s-wysiwg-content">
+
+        {% for item in contentBuilder %}
+
+            {% set type = item.acf_fc_layout %}
+
+            {% set wrapperInner      = 'o-wrapper o-wrapper--inner' %}
+            {% set wrapperReading    = 'o-wrapper o-wrapper--reading' %}
+
+            {% if item.image_size == 'standard--full' %}
+                {% set wrapperReading = '' %}
+            {% endif %}
+
+            {# Heading #}
+            {% if type == 'heading' %}
+                {% set type = item.select_heading_type %}
+                <{{ type }} class="c-content-builder__header c-content-builder__header--{{ type }} {% if item.pull %}c-content-builder__header--{{ pullClass }}{% endif %} {{ wrapperReading }}">{{ item.heading }}</{{ type }}>
+            {% endif %}
+
+            {# Paragraph #}
+            {% if type == 'paragraph' %}
+                <div class="c-content-builder__paragraph {{ wrapperReading }}" data-animate="fadeUP">
+                    {{ item.paragraph }}
+                </div>
+            {% endif %}
+
+            {# Blockquote #}
+            {% if type == 'blockquote' %}
+                <blockquote class="c-content-builder__blockquote {{ wrapperInner }}" data-animate="fadeUP">
+                    <p class="c-content-builder__blockquote-text">{{ item.text }}</p>
+                </blockquote>
+            {% endif %}
+
+            {# List #}
+            {% if type == 'list' %}
+                {% if item.list_title %}
+                    <h2 class="c-content-builder__list-title {{ wrapperReading }}">{{ item.list_title }}</h2>
+                {% endif %}
+                <ul class="c-content-builder__list {{ wrapperReading }}">
+                    {% for line in item.list %}
+                        <li class="c-content-builder__list-item">{{ line.list_item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {# Image #}
+            {% if type == 'image' %}
+                {% include 'components/content-builder/sponsored/image.twig' with { wrapper : wrapperReading } %}
+            {% endif %}
+
+            {# Video #}
+            {% if type == 'video_embed' %}
+                {% include 'components/content-builder/embed.twig' with { wrapper : wrapperReading } %}
+            {% endif %}
+
+            {# Gallery #}
+            {% if type == 'image_gallery'%}
+                {% include 'components/content-builder/sponsored/gallery.twig' with { wrapper : wrapperInner } %}
+            {% endif %}
+
+            {# Gallery Masonry #}
+            {% if type == 'masonry_gallery' %}
+                {% include 'components/content-builder/gallery--masonry.twig' with { wrapper : wrapperInner } %}
+            {% endif %}
+
+            {# Gallery Slider #}
+            {% if type == 'image_slider' %}
+                {% include 'components/content-builder/sponsored/gallery--slider.twig' %}
+            {% endif %}
+
+            {# Button Info-Block #}
+            {% if type == 'button_info_block' %}
+                {% include 'components/content-builder/button-info-block.twig' with { wrapper : wrapperReading } %}
+            {% endif %}
+
+            {# Products Woocommerce  #}
+            {% if type == 'recommended_products' %}
+                {% include 'components/content-builder/products--woo.twig' with { wrapper : wrapperInner } %}
+            {% endif %}
+
+            {# Products Affiliate #}
+            {% if type == 'affiliate_products' %}
+                {% include 'components/content-builder/sponsored/products--affiliates.twig' %}
+            {% endif %}
+
+            {# Single Affiliate #}
+            {% if type == 'single_affiliate' %}
+                {% include 'components/content-builder/sponsored/products--affiliate-single.twig' %}
+            {% endif %}
+
+            {# Affiliate Button #}
+            {% if type == 'affiliate_button' %}
+                <div class="c-content-builder__affiliate-btn-group {{ wrapperReading }}">
+                    <a class="c-content-builder__affiliate-btn o-btn o-btn--solid" href="{{ item.url }}" target="_blank">{{ item.text ? item.text : 'Buy Now' }}</a>
+                </div>
+            {% endif %}
+
+            {# Form #}
+            {% if type == 'competition_form' %}
+                <div class="c-content-builder__form {{ wrapperReading }}">
+                {{ item.form_shortcode }}
+                </div>
+            {% endif %}
+
+            {% if type == 'podcast_player' %}
+                <div class="o-wrapper {{ wrapperReading }}">
+                    <h2 class="c-content-builder__header--4">{{item.title}}</h2>
+                    <section class="c-podcast-player">
+                        {% filter shortcodes %}
+                            [audio mp3="{{ item.source.podcast_meta_media_audio }}" preload="metadata" autoplay="0"]
+                        {% endfilter %}
+                    </section>
+                </div>
+            {% endif %}
+                
+            {# Code Snippet #}
+            {% if type == 'code_snippet' %}
+                <div class="c-content-builder__code-snippet {{ wrapperReading }}">
+                    {{ item.ad_code|raw }}
+                </div>
+            {% endif %}
+
+            {# Products Affiliate #}
+            {% if type == 'media_and_text' %}
+                {% include 'components/content-builder/sponsored/media-text.twig' %}
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+</section>

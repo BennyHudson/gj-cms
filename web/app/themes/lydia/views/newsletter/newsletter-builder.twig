@@ -1,0 +1,82 @@
+{#
+* Newsletter Brands
+* --------
+* @version 1.0.0
+#}
+{% extends "newsletter/global/base.twig" %}
+
+{% block content %}
+
+    {% include 'newsletter/parts/preheader.twig' with { object : true } %}
+
+    {% if newsletter.config.type == 'brand' %}
+        {% include 'newsletter/parts/masthead--light.twig' with { object : true } %}
+    {% else %}
+        {% include 'newsletter/parts/masthead.twig' with { object : true } %}
+    {% endif %}
+
+    {% for layout in newsletter.content if newsletter.content %}
+
+        {% set part = layout.acf_fc_layout %}
+
+        {% if part == 'image' %}
+            {% include 'newsletter/parts/image.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'text_block' %}
+            {% include 'newsletter/parts/text-block.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'button' %}
+            {% include 'newsletter/parts/button.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'selected_articles' %}
+            {% include 'newsletter/parts/selected-articles.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'advert' %}
+            {% include 'newsletter/parts/advert-mpu.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'animation' %}
+            {% include 'newsletter/parts/animation.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'latest_issue' %}
+            {% include 'newsletter/parts/latest-issue.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'key_dates' %}
+            {% include 'newsletter/parts/key-dates.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'featured_podcasts' %}
+            {% include 'newsletter/parts/podcasts.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'news_feed' %}
+            {% include 'newsletter/parts/news-feed.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'gallery' %}
+            {% include 'newsletter/parts/gallery.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'external_list' %}
+            {% include 'newsletter/parts/external-list.twig' with { object : layout } %}
+        {% endif %}
+
+        {% if part == 'follow_us' %}
+            {% include 'newsletter/parts/follow-social-media.twig' with { object : layout } %}
+        {% endif %}
+
+    {% endfor %}
+
+    {% if newsletter.config.type == 'solus' %}
+        {% include 'newsletter/parts/solus-brand-logo.twig' with { object : newsletter.config.solus_brand } %}
+    {% endif %}
+
+    {% include 'newsletter/parts/foundation.twig' with { object : true } %}
+
+{% endblock %}

@@ -1,0 +1,157 @@
+/**
+* Masthead SubNav
+* --------
+* @component app/masthead
+* @version 1.0
+*/
+
+// Nav Masthead
+.c-masthead-subnav {
+  $block: &;
+  background-color: $white;
+
+  &__items {
+    background-color: $samurai;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    @include rem(padding, 24px);
+
+    @include mq($until: netbook) {
+      flex-direction: column;
+      background: none;
+      padding: 0;
+    }
+
+    .t-front & {
+      background: none;
+    }
+  }
+
+  .t-front & {
+    color: $white;
+  }
+
+  &__item {
+    flex: 1;
+    position: relative;
+    @include rem(max-width, 260px);
+    @include rem(padding, 0 24px);
+    color: $dove-gray;
+    @include mq($until: netbook) {
+      padding: 0;
+      max-width: 100%;
+
+      &:hover,
+      &:focus {
+        background-color: $despair;
+      }
+
+      &:active {
+        background-color: $shogun;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    @include mq($until: netbook) {
+      justify-content: flex-start;
+      @include rem(padding, 24px);
+    }
+  }
+
+  &__title {
+    color: $midnight;
+    @include fontSize(24);
+    @include rem(padding, 6px 0);
+    display: block;
+    @include font($font--cond-chronicle, $font-app-chronicle-w--light);
+    z-index: 1;
+    transition: transform 0.2s ease-out;
+
+    @include mq($from: netbook) {
+      &:hover,
+      &:focus {
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    @include mq($until: netbook) {
+      color: $white;
+      @include font-caps--cera;
+      @include font($font--cera, $font-app-cera-w--bold);
+      @include fontSize(12);
+      @include rem(padding, 0);
+    }
+  }
+}
+
+.c-masthead-sub-subnav {
+  $block: &;
+
+  @include rem(padding, 12px 0);
+  margin: auto;
+  width: 100%;
+  border-top: 1px solid $serenity;
+
+  @include mq($until: netbook) {
+    display: none;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    transform: translateY(-20%);
+    opacity: 0;
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        transition: transform 0.1s ease-out ($i * 0.05s),
+          opacity 0.2s ease ($i * 0.05s);
+      }
+    }
+  }
+
+  &__title {
+    display: block;
+    @include fontSize(12);
+    @include rem(padding, 4px 0);
+    @include font($font--cera, $font-app-cera-w--regular);
+    transition: transform 0.2s ease-out;
+
+    &:hover,
+    &:focus {
+      transform: translateX(3px);
+      color: $black;
+    }
+
+    &:active {
+      transform: translateX(0);
+    }
+
+    @include mq($until: netbook) {
+      @include fontSize(16);
+    }
+  }
+
+  .c-masthead-nav__item:hover &,
+  .c-masthead-nav__item:focus-within & {
+    #{$block}__item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

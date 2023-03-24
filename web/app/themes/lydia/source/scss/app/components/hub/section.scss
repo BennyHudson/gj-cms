@@ -1,0 +1,39 @@
+/**
+ * Section
+ * ---------
+ * @component
+ * @version 1
+*/
+
+.c-hub-section {
+
+    &__inner {
+
+    }
+
+    &__header {
+        background-image: linear-gradient(to left, #030303 2%, $midnight);
+        padding: 12vh rem(24px);
+        color: $white;
+        text-align: center;
+
+        &-inner {
+            @include wrapper($g-wrapper--laptopHD, true);
+        }
+    }
+
+    &__title {
+        @include fontSize(48);
+        margin-bottom: rem(24px);
+
+        @include mq($until: tablet) {
+            @include fontSize(36);
+        }
+    }
+
+    &__description {
+        @include fontSize(16);
+        max-width: 45ch;
+        margin: auto;
+    }
+}

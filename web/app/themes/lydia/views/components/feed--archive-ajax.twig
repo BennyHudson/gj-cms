@@ -1,0 +1,36 @@
+{#
+* Latest Post Feed
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{#
+* Template
+* --------
+* @since 3.0
+* @version 1.0
+#}
+{# <section class="o-post-group o-post-group--{{ archive.name|lower }}{% if wrapper is not empty %} o-wrapper o-wrapper--{{ wrapper }}{% endif %} u-animate-fadein">
+
+    <div class="o-post-feed o-post-feed--archive"> #}
+        {% for post in posts %}
+            {% include 'components/post-thumb.twig' with {
+                style : 'standard',
+                feat  : {
+                    base : {
+                        w: '297',
+                        h: '198',
+                        c: 'center'
+                    },
+                    tablet : {
+                        w: '496',
+                        h: '330',
+                        c: 'center'
+                    }
+                }
+            } %}
+        {% endfor %}
+    {# </div>
+
+</section> #}

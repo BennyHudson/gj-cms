@@ -1,0 +1,34 @@
+{#
+* Podcast : Newsletter
+* ---------
+* @package components/podcast
+#}
+{% if podcastGlobal.newsletter.illustration %}
+    <section class="c-podcast-newsletter">
+
+        {% include 'objects/image.twig' with {
+            class: 'c-podcast-newsletter__illustration',
+            img : {
+                base : {
+                    obj : Image(podcastGlobal.newsletter.illustration),
+                    w   : '650'
+                },
+            }
+        } %}
+
+        <div class="c-podcast-newsletter__info">
+
+            {% include 'objects/title.twig' with {
+                el: 'h2',
+                class: 'c-podcast-newsletter',
+                title: podcastGlobal.newsletter.title
+            } %}
+
+            <p class="c-podcast-newsletter__description">{{ podcastGlobal.newsletter.description }}</p>
+
+            <button class="c-podcast-newsletter__signup" type="button" name="newsletter-quick-sign" id="js-open-newsletter-modal">Enter your email address <span class="c-podcast-newsletter__signup__icon fas fa-chevron-right"></span></button>
+
+        </div>
+
+    </section>
+{% endif %}

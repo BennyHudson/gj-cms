@@ -1,0 +1,138 @@
+/**
+* Membership pick block
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+
+.c-membership {
+
+  &-pick {
+    @include rem(margin-bottom, 93px);
+
+    @include mq($until: tablet) {
+      @include rem(margin-bottom, 50px);
+    }
+
+    &__header {
+      @include rem(margin-bottom, 20px);
+      @include rem(padding, 3rem 24px 0);
+
+      @include mq($until: tablet) {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &-mobile__btn {
+      display: none;
+
+      @include mq($until: tablet) {
+        display: block;
+        @include rem(padding, 0);
+        @include fontSize(14);
+        @include font($font--cera);
+        line-height: 1.25;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+
+    &__arrow {
+      @include rem(margin-left, 6px);
+    }
+
+    &__items {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      @include rem(grid-column-gap, 19px);
+      border-top: 1px solid $mercury;
+      border-bottom: 1px solid $mercury;
+      @include rem(padding, 16px 0);
+
+      @include mq($until: tablet) {
+        overflow-x: scroll;
+      }
+
+      #style-4::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+      }
+
+      #style-4::-webkit-scrollbar-thumb {
+        background-color: #000000;
+        border: 2px solid #555555;
+      }
+    }
+
+    &__title {
+      @include fontSize(14);
+      @include font($font--cera, $font-app-cera-w--bold);
+      line-height: 1.25;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      &-person {
+        @include fontSize(20);
+        line-height: 1.1;
+        @include font($font--chronicle, $font-app-chronicle-w--light);
+        text-transform: uppercase;
+      }
+
+      &-place {
+        @include fontSize(15);
+        @include font($font--chronicle, $font-app-chronicle-w--light);
+        @include rem(margin-top, 8px);
+      }
+    }
+
+    &__speciality {
+      color: $app-grey--text ;
+      @include fontSize(10);
+      @include rem(margin-top, 10px);
+      text-transform: uppercase;
+    }
+
+    &__description {
+      @include fontSize(15);
+      @include font($font--chronicle, $font-app-chronicle-w--light);
+    }
+
+    &__item {
+      display: grid;
+      grid-template-columns: 65px 1fr;
+      @include rem(grid-column-gap, 16px);
+      align-items: center;
+      @include rem(padding, 10px 0 10px 15px);
+
+      @include mq($until: netbook) {
+        grid-template-columns: 1fr;
+      }
+
+      @include mq($until: tablet) {
+        grid-template-columns: 65px 1fr;
+        @include rem(width, 297px);
+      }
+
+      &:not(:first-child) {
+        border-left: 1px solid $mercury;
+      }
+
+      img {
+        width: 65px;
+        height: 65px;
+
+        @include mq($until: netbook) {
+          @include rem(margin-bottom, 10px);
+          text-align: center;
+        }
+
+        @include mq($until: tablet) {
+          @include rem(margin-bottom, 0);
+        }
+      }
+    }
+  }
+}

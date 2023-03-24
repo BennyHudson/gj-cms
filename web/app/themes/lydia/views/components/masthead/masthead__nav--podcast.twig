@@ -1,0 +1,20 @@
+<div class="c-masthead-nav__subnav subnav-podcast">
+  <div class="subnav-podcast__container">
+    {% for item in latestPodcastMenu %}
+      {% set item = Post(item) %}
+      <a href="{{ item.link }}" class="subnav-podcast__item">
+        <img src="{{ Image(item.thumbnail)|resize(604, 604, 'center') }}"
+          alt=""
+          class="subnav-podcast__image" />
+        <div class="subnav-podcast__title">
+          {{ item.title }}
+        </div>
+        <div class="subnav-podcast__subtitle">
+          {{ item.podcast_meta_guest_name }}, {{
+            item.podcast_meta_guest_about
+          }}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>

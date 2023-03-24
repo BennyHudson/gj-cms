@@ -1,0 +1,93 @@
+{#
+* Single Sponsored Hero
+* ---------
+* @component single/sponsored
+* @version 1
+#}
+
+<header class="c-single-sponsored-hero">
+    <div class="c-single-sponsored-hero__inner">
+
+        {% include 'objects/image.twig' with {
+            class: 'c-single-sponsored-hero__media',
+            alt : post.title,
+            img : {
+                base : {
+                    obj : post.thumbnail,
+                    w   : '1920',
+                    h   : '1080',
+                    c   : 'center'
+                },
+                tablet : {
+                    obj : post.meta('mobile_image') ? Image(post.meta('mobile_image')) : post.thumbnail,
+                    w   : '768',
+                    h   : '1024',
+                    c   : 'center',
+                },
+                mobile : {
+                    obj : post.meta('mobile_image') ? Image(post.meta('mobile_image')) : post.thumbnail,
+                    w   : '468',
+                    h   : '768',
+                    c   : 'center',
+                }
+            }
+        } %}
+
+        <div class="c-single-sponsored-hero__overlay">
+
+            <div class="c-single-sponsored-hero__nav" data-animate="fadeUP">
+
+                {% include 'objects/button.twig' with {
+                    el: 'a',
+                    class: 'c-single-sponsored-hero',
+                    cta: 'gentlemansjournal.com',
+                    link: site.link,
+                } %}
+
+                {% if post.meta('sponsor_logo') %}
+                <a class="c-single-sponsored-hero__logo" href="{{ post.meta('sponsor_url') }}">
+                    {% if post.ID != '420199' %}
+                    <span class="c-single-sponsored-hero__logo-pre">In partnership with</span>
+                    {% endif %}
+                    <img width="160px" class="c-single-sponsored-hero__logo-icon" src="{{ Image(post.meta('sponsor_logo'))|resize('320') }}" alt="{{ post.meta('sponsor_name') }}">
+                </a>
+                {% endif %}
+
+                {% if not post.meta('sponsor_disable_link') %}
+                    {% include 'objects/button.twig' with {
+                        el: 'a',
+                        class: 'c-single-sponsored-footer',
+                        cta: 'Visit ' ~ post.meta('sponsor_name'),
+                        link: post.meta('sponsor_url'),
+                    } %}
+                {% endif %}
+
+            </div>
+
+            <div class="c-single-sponsored-hero__info" data-animate="fadeUP">
+                <div class="c-single-sponsored-hero__info-inner">
+
+                    {% include 'objects/title.twig' with {
+                        el: 'h1',
+                        class: 'c-single-sponsored-hero',
+                        title: post.title,
+                    } %}
+
+                    <p class="c-single-sponsored-hero__standfirst">{{ post.preview.read_more('') }}</p>
+
+                    <div class="c-scroll">
+                        <div class="c-scroll__inner">
+                            <span class="c-scroll__arrow c-scroll__arrow--one fas fa-chevron-down"></span>
+                            <span class="c-scroll__arrow c-scroll__arrow--two fas fa-chevron-down"></span>
+                            <span class="c-scroll__arrow c-scroll__arrow--three fas fa-chevron-down"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</header>

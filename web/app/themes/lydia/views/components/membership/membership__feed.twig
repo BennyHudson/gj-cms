@@ -1,0 +1,14 @@
+{#
+* Membership : Feed
+* ---------
+* @package components/membership
+#}
+<section class="c-membership__feed o-wrapper o-wrapper--inner">
+
+    {% for member in posts|slice(start, length) %}
+
+        {% include 'components/membership/membership__card.twig' %}
+
+    {% endfor %}
+
+</section>

@@ -1,0 +1,11 @@
+.horizons-video {
+  margin-bottom: 100px;
+  padding: 0 30px;
+  @include mq($until: tablet) {
+    margin-bottom: 80px;
+  }
+  &__container {
+    max-width: 1040px;
+    margin: auto;
+  }
+}

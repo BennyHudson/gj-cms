@@ -1,0 +1,59 @@
+/**
+* Tool Tips
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+[data-tooltip] {
+    position: relative;
+    z-index: 1;
+    @include user-select;
+
+    &::before,
+    &::after {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.1s ease-out;
+        z-index: 1;
+    }
+
+    &::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        @include rem(width, 96px);
+        @include rem(margin-bottom, 5px);
+        @include rem(margin-left, -48px);
+        @include rem(padding, 12px);
+        @include rem(border-radius, 2px);
+        background: linear-gradient(to bottom, $app-grey--light, darken($app-grey--light, 8%));
+        @include fontSize(14);
+        @include font($font--cera, $font-app-cera-w--bold);
+        line-height: 1.16;
+        text-align: center;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        @include rem(width, 12px);
+        @include rem(height, 12px);
+        @include rem(margin-left, -6px);
+        border-bottom-right-radius: 24%;
+        transform: rotate(45deg);
+        background: darken($app-grey--light, 8%);
+        backface-visibility: hidden;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        visibility: visible;
+        opacity: 1;
+    }
+}

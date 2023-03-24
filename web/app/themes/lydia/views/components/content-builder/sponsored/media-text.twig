@@ -1,0 +1,104 @@
+{#
+* Content Builder : Product Wide
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<div class="c-content-builder__mediatext has-align--{{ item.alignment == "right" ? "right" : "left" }}" data-animate="fadeUP">
+
+    <div class="c-content-builder__mediatext__media">
+
+        {% if item.video.source %}
+            {% set embedSrc = preg_match('/src=\"(.[^"]+)\"/', item.video.source) %}
+            {% set embedHost = parse_url(embedSrc[1]) %}
+
+            {% if embedHost == 'youtube.com' or embedHost == 'youtu.be' %}
+                {% include 'components/video-player.twig' with {
+                    src : embedSrc[1],
+                    thumb : {
+                        src : Image(item.video.cover),
+                        width : 1000,
+                        height : 650
+                    }
+                } %}
+            {% else %}
+                <div class="is-fluid-video">
+                    {{ item.video.source }}
+                </div>
+            {% endif %}
+
+        {% endif %}
+
+
+        {% if item.gallery %}
+        <div class="c-content-builder__mediatext__slider swiper-container">
+            <div class="c-content-builder__mediatext__slider-wrap swiper-wrapper">
+                {% for image in item.gallery %}
+                    <div class="c-content-builder__mediatext__slide swiper-slide">
+                        {% include 'objects/image.twig' with {
+                            class: 'c-content-builder__mediatext-media',
+                            alt : item.title,
+                            img : {
+                                base : {
+                                    obj : Image(image),
+                                    w   : '1000',
+                                    h   : '650',
+                                    c   : 'center'
+                                },
+                                mobile : {
+                                    obj : Image(image),
+                                    w   : '468',
+                                    h   : '580',
+                                    c   : 'center',
+                                }
+                            }
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <div class="c-content-builder__mediatext__info">
+        <span class="c-content-builder__mediatext__pretitle">{{ item.info.pretitle }}</span>
+        <h1 class="c-content-builder__mediatext__title">{{ item.info.title }}</h1>
+        <p class="c-content-builder__mediatext__description">{{ item.info.description }}</p>
+
+        {% if item.info.link %}
+            {% include 'objects/button.twig' with {
+                el: 'a',
+                cta: 'Read More',
+                link: item.info.link,
+                style: 'outline',
+                class: 'c-content-builder__mediatext',
+            } %}
+        {% endif %}
+
+
+        {% if item.gallery %}
+        <div class="c-content-builder__mediatext__controls">
+            <div class="c-content-builder__mediatext__control-prev">
+                {% include 'objects/button.twig' with {
+                    el: 'button',
+                    cta: '<i class="fas fa-chevron-left"></i>',
+                    style: 'arrow-dark',
+                    class: 'swiper-button-prev c-content-builder__mediatext__prev',
+                } %}
+            </div>
+
+            <div class="c-content-builder__mediatext__control-next">
+                {% include 'objects/button.twig' with {
+                    el: 'button',
+                    cta: '<i class="fas fa-chevron-right"></i>',
+                    style: 'arrow-dark',
+                    class: 'swiper-button-next c-content-builder__mediatext__next',
+                } %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>

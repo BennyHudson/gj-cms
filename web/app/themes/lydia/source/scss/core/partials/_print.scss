@@ -1,0 +1,109 @@
+/**
+* Print Styles
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+* Show for Print
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+.u-print-only {
+    display: none !important;
+}
+
+@media print {
+
+    * {
+        background: transparent !important;
+        color: black !important; // Black prints faster: h5bp.com/s
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")"; }
+
+    abbr[title]::after {
+        content: " (" attr(title) ")";
+    }
+
+    a::after,
+    a[href^="javascript:"]::after,
+    a[href^="#"]::after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid lightgrey;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        page-break-after: avoid;
+    }
+
+    /**
+    * Print Utility Classes
+    * --------
+    * @since Lydia 1.0
+    * @version 1.0
+    */
+    .u-hide-on-print {
+        display: none !important;
+    }
+
+    .u-print-only {
+        display: block !important;
+    }
+
+    .u-hide-for-print {
+        display: none !important;
+    }
+
+    .u-show-for-print {
+        display: inherit !important;
+    }
+}

@@ -1,0 +1,194 @@
+/**
+ * Podcast Hero and Slider
+ * ---------
+ * @component podcast
+ * @version 1
+*/
+.c-podcast-hero {
+    position: relative;
+}
+
+// Main
+.c-podcast-hero-slider {
+    position: relative;
+
+    &__main {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s ease-out;
+
+
+        &.slick-initialized {
+            opacity: 1;
+            visibility: visible;
+
+            .slick-slide {
+                display: flex;
+            }
+        }
+
+        .slick-dots {
+            position: absolute;
+            bottom: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        max-width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid transparentize($white, 0.7);
+
+        @include mq($until: laptop) {
+            max-width: 95%;
+
+            @include mq($until: netbook) {
+                max-width: 95%;
+            }
+
+            @include mq($until: 1100px) {
+                display: none;
+            }
+        }
+    }
+}
+
+.c-podcast-hero-nav {
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    &__marker {
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: 25%;
+        @include rem(height, 2px);
+        z-index: 1;
+        background-color: $white;
+        transition: transform 0.35s ease 0s;
+    }
+
+    &__item {
+        color: $white;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        @include rem(padding, 48px 24px 48px 12px);
+        user-select: none;
+        cursor: pointer;
+
+        @include mq($until: laptop) {
+            @include rem(padding, 24px 24px 24px 12px);
+        }
+
+        &:hover,
+        &:focus {
+            .c-podcast-hero-nav {
+
+                &__index {
+                    background-color: transparentize($white, 0.7);
+                }
+            }
+        }
+
+        &.is-current {
+            .c-podcast-hero-nav {
+
+                &__index {
+                    background-color: $white;
+                    color: $midnight;
+                }
+            }
+        }
+    }
+
+    &__details {
+        width: calc(100% - 50px);
+        @include rem(padding-right, 12px);
+    }
+
+    &__index {
+        text-align: center;
+        font-weight: $font-app-cera-w--semibold;
+        @include rem(margin-right, 24px);
+        position: relative;
+        border: 1px solid $white;
+        border-radius: 50%;
+        line-height: 1;
+        padding: 6px;
+        @include rem(width, 26px);
+        @include rem(height, 26px);
+        transition: color 0.2s ease, background-color 0.2s ease-out;
+    }
+
+    &__title {
+        @include fontSize(14);
+        font-weight: $font-app-cera-w--semibold;
+        display: block;
+        @include rem(margin-bottom, 4px);
+    }
+
+    &__guest {
+        color: $calcium;
+    }
+
+    &__scroll {
+        color: $white;
+        display: block;
+        user-select: none;
+        cursor: pointer;
+        @include rem(padding, 0 12px);
+        border-left: 2px solid transparentize($white, 0.7);
+
+        &__inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__cta {
+            font-weight: $font-app-cera-w--bold;
+            @include rem(margin-bottom, 4px);
+        }
+
+        &__arrow {
+            @include fontSize(16);
+            animation: pulse 1s ease-in-out infinite alternate;
+
+            &--one {
+                animation-delay: 0s
+            }
+
+            &--two {
+                animation-delay: .5s
+            }
+
+            &--three {
+                animation-delay: 1s
+            }
+
+            @at-root {
+                @keyframes pulse {
+                    0% {
+                        opacity: .3
+                    }
+
+                    to {
+                        opacity: 1
+                    }
+                }
+            }
+        }
+    }
+}

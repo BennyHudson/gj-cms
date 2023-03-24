@@ -1,0 +1,47 @@
+{% set pick = post.meta('sessions').editors_pick_interview %}
+
+{% if pick.spotify_id %}
+
+    {% set parsedSpotifyID = '' %}
+
+    {# Split URL and get last subdirectory (ID) #}
+    {% for splitURL in pick.spotify_id|split('/') %}
+        {% set parsedSpotifyID = loop.last ? splitURL %}
+    {% endfor %}
+
+    {# If the user pasted a Spotify formated ID, further split and use the last part #}
+    {% for SplitID in parsedSpotifyID|split(':') %}
+        {% set parsedSpotifyID = loop.last ? SplitID %}
+    {% endfor %}
+
+{% endif %}
+
+<div class="sessions-editors-pick">
+
+    {% include 'components/sessions/sessions-heading.twig' with {
+        first: 'Sunday',
+        second: 'Playlists'
+    } %}
+
+    <div class="sessions-editors-pick__pick">
+        <img src="{{ pick.thumbnail.src|resize(82, 82) }}" alt="" class="sessions-editors-pick__image"/>
+        <div class="sessions-editors-pick__tease">
+            <div class="sessions-editors-pick__info">Sunday Playlist</div>
+            <h3 class="sessions-editors-pick__title">{{ pick.title }}</h3>
+            <div class="sessions-editors-pick__content">{{ pick.preview }}</div>
+            <a href="{{ pick.link }}" class="sessions-editors-pick__link">Read interview</a>
+        </div>
+    </div>
+    <div class="sessions-editors-pick__spotify">
+        {% if parsedSpotifyID %}
+            <iframe src="https://open.spotify.com/embed/playlist/{{ parsedSpotifyID }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="sessions-editors-pick__playlist"></iframe>
+        {% endif %}
+
+        {% include 'components/ads.twig' with {
+            gpt : {
+                type : 'mpu',
+                code : 'GJ_SESSIONS-MPU-001'
+            }
+        } %}
+    </div>
+</div>

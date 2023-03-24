@@ -1,0 +1,18 @@
+{% extends 'page.twig' %}
+
+{% block content %}
+
+  {% include 'components/hub/hero.twig' %}
+
+  {% include 'components/ads.twig' with {
+    gpt : {
+        type : 'billboard',
+        code : 'GJ_970x250_007'
+    }
+  } %}
+
+  {% for section in hub.sections %}
+    {% include 'components/hub/section.twig' %}
+  {% endfor %}
+
+{% endblock %}

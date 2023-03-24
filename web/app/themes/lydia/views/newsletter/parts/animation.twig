@@ -1,0 +1,38 @@
+{#
+* Animation
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.image %}
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-an">
+        <tbody>
+
+            <tr class="c-an__item">
+                <td class="c-an__feat" align="center" valign="middle" colspan="2">
+                    <a class="c-an__link" href="{{ object.link }}" target="_blank">
+                        <img class="c-an__img" src="{{ Image(object.image).src|resize(600, 0) }}" width="600px" alt="{{ site.title }}">
+                    </a>
+                </td>
+            </tr>
+
+            {% if object.show_info %}
+            <tr class="c-an__item c-an__item--content">
+                <td class="c-an__content-item" align="left" valign="middle">
+                    <p>{{ object.info.description }}</p>
+                </td>
+                <td class="c-an__content-item c-an__content-item--action" align="center" valign="middle">
+                    <a class="c-an__action" target="_blank" href="{{ object.link }}"><strong>{{ object.info.cta }}</strong></a>
+                </td>
+            </tr>
+            {% endif %}
+
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endblock %}

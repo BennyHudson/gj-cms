@@ -1,0 +1,23 @@
+/**
+* Site Info
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-site-info {
+    display: flex;
+    align-items: center;
+    text-align: right;
+
+    @include mq($until: tablet) {
+        display: none;
+    }
+
+    &__copyright {
+        @include fontSize(12);
+        @include font($font--cera, $font-app-cera-w--bold);
+        color: $app-grey--text-black;
+    }
+}

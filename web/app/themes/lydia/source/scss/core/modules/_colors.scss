@@ -1,0 +1,44 @@
+/**
+* Colours
+* --------
+* @package Lydia
+* @subpackage Lydia-SCSS
+* @since Lydia 1.0
+* @version 1.0
+*/
+
+/**
+* Base Colours
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+$color-base         : #444 !default;
+$color-base--invert : #fff !default;
+$color-accent       : lighten($color-base, 40%) !default;
+
+/**
+* BMAS Brand
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+$bmas-blue  : #0f8bcc !default;
+$bmas-white : #fff !default;
+$bmas-black : #0a0a0a !default;
+$bmas-green : #43db2a !default;
+$bmas-gold  : #d5b783 !default;
+$bmas-text  : #202020 !default;
+
+/**
+* Social
+* --------
+* @since Lydia 1.0
+* @version 1.0
+*/
+$facebook    : #3b5998;
+$twitter     : #00aced;
+$instagram   : #8a3ab9;
+$linkedin    : #007bb5;
+$google-plus : #dd4b39;
+$youtube     : #bb0000;

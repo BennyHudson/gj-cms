@@ -1,0 +1,109 @@
+.sessions-videos {
+  background-color: $black;
+  @include rem(padding-left, 30px);
+  @include rem(padding-right, 30px);
+  &__wrapper {
+    background-color: $black;
+    padding-bottom: 42px;
+    display: flex;
+    @include mq($until: netbook) {
+      flex-direction: column;
+    }
+  }
+  &__featured {
+    width: calc(100% - 285px);
+    margin-right: 45px;
+    @include mq($until: netbook) {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+  &__playlist {
+    width: 240px;
+    background-color: $black;
+    max-height: 557px;
+    overflow: auto;
+    transition: opacity ease-in-out 0.2s;
+    &--loading {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    @include mq($until: netbook) {
+      padding-bottom: 0;
+      width: 100%;
+    }
+  }
+  &__list {
+    @include mq($until: netbook) {
+      display: flex;
+      overflow-x: auto;
+    }
+  }
+
+  &__swipe {
+    @include mq($from: netbook) {
+      display: none;
+    }
+  }
+
+  &__heading {
+    @include font($font--cera);
+    @include fontSize(14);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $white;
+    border-bottom: 1px solid $despair;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+  }
+  &__tease {
+    margin-bottom: 15px;
+    border-bottom: 1px solid $despair;
+    display: block;
+    padding-bottom: 25px;
+    @include user-select;
+    transition: all ease-in-out 0.3s;
+    &:last-of-type {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    @include mq($until: netbook) {
+      margin-right: 20px;
+      width: 170px;
+      flex-shrink: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__thumbnail {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  &__category {
+    @include font($font--cera);
+    @include fontSize(11);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $white;
+    margin-bottom: 10px;
+    @include mq($until: netbook) {
+      display: none;
+    }
+  }
+  &__title {
+    @include font($font--cond-chronicle);
+    font-weight: 100;
+    @include fontSize(21);
+    line-height: 1.2em;
+    color: $white;
+    @include mq($until: netbook) {
+      @include fontSize(18);
+    }
+  }
+}

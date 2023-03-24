@@ -1,0 +1,25 @@
+/*!
+ * Admin CSS
+ * ------
+ * @component lydia-admin-scss
+ * @version 1.0.0
+ */
+
+// Config
+$bmas-blue  : #0f8bcc;
+$bmas-white : #fff;
+$bmas-black : #0a0a0a;
+$bmas-green : #43db2a;
+$bmas-gold  : #d5b783;
+$bmas-text  : #202020;
+
+// Overides
+$base-color: $bmas-text;
+$icon-color: $bmas-white;
+$highlight-color: $bmas-blue;
+$notification-color: $bmas-green;
+
+$form-checked: $bmas-green;
+
+// Adjust as per core wordpress location
+@import "wordpress/wp-admin/css/colors/_admin.scss";

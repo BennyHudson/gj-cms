@@ -1,0 +1,100 @@
+.featured-sessions {
+  background-color: $shogun;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-left: 30px;
+  padding-right: 30px;
+  @include mq($until: tablet) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  &__container {
+    display: flex;
+    @include mq($until: tablet) {
+      flex-wrap: wrap;
+    }
+  }
+  &__info {
+    width: calc(38% - 70px);
+    margin-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    border-top: solid 1px $despair;
+    border-bottom: solid 1px $despair;
+    min-width: 380px;
+    @include mq($until: tablet) {
+      min-width: 100%;
+      border: none;
+      padding-bottom: 50px;
+    }
+  }
+  &__title {
+    @include font($font--cond-chronicle);
+    font-weight: 600;
+    @include fontSize(65);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    @include mq($until: tablet) {
+      max-width: 100%;
+      @include fontSize(50);
+      @include rem(line-height, 55px);
+    }
+  }
+  &__first-name {
+    color: $white;
+  }
+  &__last-name {
+    color: $serenity;
+  }
+  &__sponsor {
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    @include font-caps--cera;
+    @include font($font--cera, $font-app-cera-w--semibold);
+    @include fontSize(10);
+    @include mq($until: tablet) {
+      margin-top: 20px;
+    }
+  }
+  &__logo {
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 70px;
+    @include mq($until: tablet) {
+      margin-bottom: 40px;
+    }
+  }
+  &__content {
+    max-width: 585px;
+    margin-bottom: 30px;
+    @include mq($until: tablet) {
+      max-width: 100%;
+    }
+    p {
+      @include fontSize(16);
+      color: $fog;
+      line-height: 1.4;
+      @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+    }
+  }
+  &__link {
+    display: table;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  &__video {
+    width: 62%;
+    display: flex;
+    .sessions-featured {
+      margin-top: auto;
+      margin-bottom: auto;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    @include mq($until: tablet) {
+      width: 100%;
+    }
+  }
+}

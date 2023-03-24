@@ -1,0 +1,53 @@
+/**
+* Site Info
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-page {
+  @include mq($until: tablet) {
+    padding: 3rem 0;
+    @include rem(margin-bottom, 50px);
+  }
+
+  &--members {
+
+    .c-page__header {
+      text-align: center;
+      border-bottom: 1px solid $mercury;
+      @include rem(padding-bottom, 20px);
+
+      @include mq($until: tablet) {
+        @include rem(margin-bottom, 26px);
+      }
+    }
+
+    .c-page__title {
+      color: $app-black--text;
+      @include fontSize(95);
+      @include lineHeight(100);
+      @include font($font--cond-chronicle);
+      transition: color 0.2s ease;
+      letter-spacing: -0.82px;
+      text-transform: uppercase;
+
+      @include mq($until: tablet) {
+        @include fontSize(65);
+      }
+    }
+
+    .c-page__subtitle {
+      max-width: 100%;
+      @include fontSize(14);
+      @include font($font--cera, $font-app-cera-w--semibold);
+      @include rem(margin-top, 22px);
+    }
+  }
+}
+  @import 'membership__card';
+  @import 'membership__top';
+  @import 'membership__pick';
+  @import 'membership__feed';
+  @import 'membership__bigbottom';

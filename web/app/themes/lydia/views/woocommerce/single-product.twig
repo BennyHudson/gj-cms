@@ -1,0 +1,98 @@
+{#
+* Single Product
+* --------
+* @package GJ
+* @since GJ 1.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+    {{ fn('timber_set_product', post) }}
+
+    {% do action('woocommerce_before_single_product') %}
+
+    <article itemscope itemtype="http://schema.org/Product" class="c-product {{ post.class }}">
+
+        <header class="c-product-header">
+            <div class="c-product-header__inner o-wrapper o-wrapper--inner">
+                <h1 class="c-product-header__title">{{ post.title }}</h1>
+                {% if post.short_description %}
+                    <div class="c-product-header__subtitle">{{ post.short_description }}</div>
+                {% endif %}
+            </div>
+        </header>
+
+        <section class="c-product__gallery">
+            {% if product.terms == 'magazine' %}
+                {% include 'components/product-issue-gallery.twig' with { wrapper : 'inner' } %}
+            {% else %}
+                <figure class="c-product-featured-img__container">
+                    <picture>
+                        <source media="(max-width: 481px)" srcset="{{ post.thumbnail.src|resize(300) }} 1x">
+                        <source media="(max-width: 768px)" srcset="{{ post.thumbnail.src|resize(500) }} 1x">
+                        <img class="c-product-featured-img__img" src="{{ post.thumbnail.src|resize(800) }}" alt="{{ post.thumbnail.alt }}"/>
+                    </picture>
+                </figure>
+            {% endif %}
+            {% do action('woocommerce_before_single_product_summary') %}
+        </section>
+
+        <section class="c-product__summary o-wrapper o-wrapper--inner">
+            {% if product.terms == 'magazine' %}
+                <div class="c-product-magazine c-product-magazine__intro">
+                    <h2 class="c-product-magazine__coverstar">{{ post.issue_cover_star }}</h2>
+                    {% if post.content %}
+                        <div class="c-product-magazine__description">{{ post.content }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="c-product__summary-actions">
+                {% do action('woocommerce_single_product_summary') %}
+            </div>
+        </section>
+
+        {% if product.terms == 'magazines' and post.issue_selected_stories %}
+        <section class="c-product__selected-stories o-wrapper o-wrapper--inner">
+            <div class="o-post-group__header">
+                <h2 class="o-post-group__title">Selected stories from the latest issue</h2>
+            </div>
+
+            <div class="o-post-feed o-post-feed--lead">
+                {% for post in post.issue_selected_stories|slice(0,3) %}
+                    {% set post = Post(post) %}
+                    {% include 'components/post-thumb.twig' with { thumbFeedLead : true } %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% do action('woocommerce_after_single_product_summary') %}
+
+        <meta itemprop="url" content="{{ post.link }}" />
+
+    </article>
+
+    {% if product.terms == 'magazine' %}
+    <section class="c-magazine-archive o-wrapper o-wrapper--inner">
+        <h2 class="c-magazine-archive__title">Magazine Archive</h2>
+        <div class="c-magazine-archive__feed">
+            {% for item in archive %}
+                <article class="c-magazine-archive__item">
+                    <a href="{{ item.link }}">
+                        <div class="c-magazine-archive__cover-cont">
+                            <img class="c-magazine-archive__cover" src="{{ Image(item.thumbnail).src|resize(300) }}" alt="{{ item.title }}">
+                        </div>
+                        <h1 class="c-magazine-archive__item-title">{{ item.title }} : {{ item.issue_cover_star }}</h1>
+                        {% if item._stock_status == 'outofstock' %}
+                            <p class="c-magazine-archive__stock-status">Sold Out</p>
+                        {% endif %}
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% do action('woocommerce_after_single_product') %}
+
+{% endblock  %}

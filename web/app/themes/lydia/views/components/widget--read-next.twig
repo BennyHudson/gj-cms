@@ -1,0 +1,25 @@
+{#
+* Widget -- Read Next
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if readNext %}
+{% set posted = readNext.post_date_gmt|time_ago|replace({'mins' : 'minutes'}) %}
+
+<aside class="c-widget-read-next">
+    <h2 class="c-widget-read-next__title">Read next:</h2>
+    <article class="c-widget-read-next__post">
+        <a href="{{ readNext.link }}" class="c-widget-read-next__link">
+            <div class="c-widget-read-next__featured">
+                <img src="{{ readNext.thumbnail.src|resize(191, 127, 'center') }}" alt="" class="c-widget-read-next__img">
+            </div>
+            <div class="c-widget-read-next__info">
+                <p class="c-widget-read-next__category">{{ readNext.category }}  &#8213;
+                <span class="c-widget-read-next__posted">{{ posted }}</span></p>
+            </div>
+            <h1 class="c-widget-read-next__post-title">{{ readNext.title }}</h1>
+        </a>
+    </article>
+</aside>
+{% endif %}

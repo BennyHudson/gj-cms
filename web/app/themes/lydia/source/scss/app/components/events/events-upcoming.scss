@@ -1,0 +1,13 @@
+.events-upcoming {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 30px;
+  &__title {
+    @include font-caps--cera;
+    @include font($font--cera, $font-app-cera-w--regular);
+    @include fontSize(29);
+    width: 100%;
+    border-bottom: solid 1px $samurai;
+    padding-bottom: 15px;margin-bottom: 60px;
+  }
+}

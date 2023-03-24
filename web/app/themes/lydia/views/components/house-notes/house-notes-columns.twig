@@ -1,0 +1,68 @@
+<div class="house-notes-columns">
+  <div class="house-notes-columns__columns {{
+    not post.get_field('house_notes_watch_column')
+      ? 'house-notes-columns__columns--no-video'
+    }}">
+    <div class="house-notes-columns__column">
+      <h3 class="house-notes-columns__title">
+        (Read)
+      </h3>
+
+      {% for post in post.get_field('house_notes_read_column') %}
+        {% include 'components/house-notes/house-notes-tease.twig' %}
+      {% endfor %}
+    </div>
+
+    {% if post.get_field('house_notes_watch_column') %}
+      <div class="house-notes-columns__column">
+        <h3 class="house-notes-columns__title">
+          (Watch)
+        </h3>
+
+        {% for post in post.get_field('house_notes_watch_column') %}
+          {% include 'components/house-notes/house-notes-tease.twig' %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="house-notes-columns__column">
+      <h3 class="house-notes-columns__title">
+        (Scroll)
+      </h3>
+
+      {% for post in post.get_field('house_notes_scroll_column') %}
+        {% include 'components/house-notes/house-notes-tease.twig' %}
+      {% endfor %}
+    </div>
+
+    <div class="house-notes-columns__column">
+      <div class="house-notes-columns__tease tease--is-podcast">
+        <h3 class="house-notes-columns__title">
+          (Listen)
+        </h3>
+        {% include 'components/house-notes/house-notes-tease.twig' with {
+          post: post.get_field('house_notes_podcast_column'),
+          stylised: true
+        } %}
+      </div>
+
+      <div class="house-notes-columns__tease tease--is-overheard">
+        <h3 class="house-notes-columns__title">
+          (Overheard)
+        </h3>
+        {% include 'components/house-notes/house-notes-tease.twig' with {
+          post: post.get_field('house_notes_overheard_column'),
+          stylised: true
+        } %}
+      </div>
+    </div>
+  </div>
+  {% if post.get_field('house_notes_quote_column') %}
+    <div class="house-notes-columns__row tease--is-quote">
+      {% include 'components/house-notes/house-notes-tease.twig' with {
+        post: post.get_field('house_notes_quote_column'),
+        stylised: true
+      } %}
+    </div>
+  {% endif %}
+</div>

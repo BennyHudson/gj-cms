@@ -1,0 +1,42 @@
+/**
+* Single Article Share
+* --------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-article-note {
+    display: grid;
+    grid-template-columns: rem(180px) 1fr;
+    background-color: #f9f9f9;
+    padding: rem(24px);
+    align-items: center;
+    gap: rem(24px);
+    margin-bottom: rem(48px);
+
+    @include mq($until: phablet) {
+        grid-template-columns: 1fr
+    }
+
+    &__content {
+        @include fontSize(16);
+
+        a:not(.o-btn) {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-bottom: rem(24px);
+        }
+    }
+
+    &__image {
+        width: 100%;
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

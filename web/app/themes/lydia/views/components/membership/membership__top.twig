@@ -1,0 +1,34 @@
+{#
+* Membership : Top section
+* ---------
+* @package components/membership
+#}
+<section class="c-membership-top o-wrapper o-wrapper--inner">
+
+    <div class="c-membership-top__inner">
+
+        {% include 'components/membership/membership__latest.twig' with {
+            bigitem: 'latest'
+        } %}
+        {% include 'components/membership/membership__feed.twig' with {
+            start : '1',
+            length: '6',
+            img : {
+                base : {
+                    w   : '183',
+                    h   : '228',
+                },
+                tablet : {
+                    w   : '710',
+                    h   : '1000',
+                },
+                mobile : {
+                    w   : '471',
+                    h   : '650',
+                },
+            }
+        }%}
+
+    </div>
+
+</section>

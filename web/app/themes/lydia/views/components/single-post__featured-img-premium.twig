@@ -1,0 +1,17 @@
+{#
+* Single Post Header
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if post.thumbnail %}
+<figure class="c-post__featured-img c-post__featured-img-print c-post__featured-img-container o-wrapper">
+    <picture>
+        <source media="(max-width: 768px)" srcset="{{ post.thumbnail.src|resize(768, 650) }} 1x">
+        <img class="c-post__featured-img-image" src="{{ post.thumbnail.src|resize(1800, 756, 'center') }}" alt="{{ post.thumbnail.alt }}"/>
+    </picture>
+    {% if post.thumbnail.caption %}
+        <figcaption class="c-post__featured-img-caption">{{ post.thumbnail.caption }}</figcaption>
+    {% endif %}
+</figure>
+{% endif %}

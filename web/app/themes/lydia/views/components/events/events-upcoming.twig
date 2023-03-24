@@ -1,0 +1,8 @@
+<section class="events-upcoming">
+  <h1 class="events-upcoming__title">
+    Upcoming events
+  </h1>
+  {% for post in offsetPosts %}
+    {% include 'components/events/events-tease.twig' %}
+  {% endfor %}
+</section>

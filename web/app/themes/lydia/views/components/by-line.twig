@@ -1,0 +1,16 @@
+{#
+* Single Post By Line
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<div class="c-by-line">
+    <p class="c-by-line__item">Words: <strong class="c-by-line__name">{{ post.author }}</strong></p>
+    {% if post.get_field('photographer_name') %}
+    <p class="c-by-line__item">Photography: <strong class="c-by-line__name">{{ post.get_field('photographer_name') }}</strong></p>
+    {% endif %}
+    {% set otherByLines = post.get_field('other_by_lines') %}
+    {% for item in otherByLines %}
+        <p class="c-by-line__item">{{item.title}}: <strong class="c-by-line__name">{{ item.content }}</strong></p>
+    {% endfor %}
+</div>

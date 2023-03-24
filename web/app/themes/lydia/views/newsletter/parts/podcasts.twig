@@ -1,0 +1,51 @@
+{#
+* Podcasts
+* --------
+* @component parts
+* @version 1.0.0
+#}
+{% extends 'newsletter/global/flex-container.twig' %}
+
+{% block flexcontent %}
+
+    {% if object.podcasts %}
+    <div class="c-pd">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-pd__items">
+            <tbody>
+                {% for podcast in object.podcasts %}
+                    {% set podcast = Post(podcast.podcast) %}
+                    <tr class="c-pd__item{{ loop.first ? ' c-pd__item--first' : ' c-pd__item--second' }}">
+                        <td align="left" valign="top" class="{{ loop.first ? 'c-pd__spacer-bottom' : 'c-pd__spacer-top' }}">
+                            <div class="c-pd__image-wrap">
+                                <a class="c-pd__link" href="{{ podcast.link }}" target="_blank">
+                                    <img class="c-pd__image" src="{{ Image(podcast.podcast_meta_media_profile).src|resize(284, 284) }}" alt="{{ podcast.title }}" width="142px" height="142px">
+                                </a>
+                            </div>
+                        </td>
+                        <td align="left" valign="top" class="{{ loop.first ? 'c-pd__spacer-bottom' : 'c-pd__spacer-top' }}">
+                            <div class="c-pd__info-wrap">
+                                <h2 class="c-pd__title"><a class="c-pd__link" href="{{ podcast.link }}" target="_blank">{{ podcast.title }}</a></h2>
+                                <p class="c-pd__excerpt">{{ podcast.preview.length(35).force(true).read_more('') }}</p>
+
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="c-pd__items">
+                                    <tbody>
+                                        <tr>
+                                            <td class="c-pd__meta-item" align="left" valign="middle">40 Mins</td>
+                                            <td class="c-pd__meta-item" align="right" valign="middle">
+                                                <a class="c-pd__link" href="{{ podcast.link }}" target="_blank">Listen
+                                                    <img class="c-pd__meta-icon" width="18px" src="https://cdn.thegentlemansjournal.com/wp-content/uploads/2018/02/newsletter-listen-image.png" alt="Listen">
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}

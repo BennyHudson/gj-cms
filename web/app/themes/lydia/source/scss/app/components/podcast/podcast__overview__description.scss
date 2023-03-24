@@ -1,0 +1,53 @@
+/**
+ * Podcast Overview Description
+ * ---------
+ * @component podcast
+ * @version 1
+*/
+
+.c-podcast-description {
+    display: flex;
+    width: 40%;
+    @include rem(padding, 60px 0);
+
+    @include mq($until: laptop) {
+        width: 60%;
+
+        @include mq($until: netbook) {
+            width: 100%;
+
+            @include mq($until: tablet) {
+                flex-direction: column;
+                @include rem(padding, 24px 0 0);
+            }
+        }
+    }
+
+    &__title {
+        width: 30%;
+        @include fontSize(36);
+        @include font($font--text-chronicle, $font-app-chronicle-w--semibold);
+        @include rem(margin-right, 24px);
+
+        @include mq($until: tablet) {
+            width: 100%;
+            @include fontSize(26);
+        }
+    }
+
+    &__content {
+        @include rem(max-width, 690px);
+        @include rem(padding-top, 12px);
+        width: 70%;
+
+        @include mq($until: tablet) {
+            width: 100%;
+        }
+
+        p {
+            @include fontSize(18);
+            @include font($font--text-chronicle);
+            @include rem(margin-bottom, 12px);
+        }
+    }
+}

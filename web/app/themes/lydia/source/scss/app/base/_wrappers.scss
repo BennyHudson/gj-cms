@@ -1,0 +1,60 @@
+/**
+* Main Layouts and Global Components
+* --------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.o-wrapper {
+  @extend %u-center--block;
+
+  &--left {
+    margin-left: 0;
+  }
+
+  &--right {
+    margin-right: 0;
+  }
+
+  &--inner {
+    @include rem(max-width, $g-wrapper--inner);
+  }
+
+  &--padding {
+    padding: rem(0 24px);
+  }
+
+  &--single {
+    @include rem(max-width, $g-wrapper--single);
+
+    @include mq($until: laptop) {
+      padding: 0 24px;
+    }
+  }
+
+  &--reading {
+    @include rem(max-width, $g-wrapper--reading);
+  }
+
+  &--medium {
+    @include rem(max-width, 1030px);
+  }
+
+  &--reading-left {
+    @include rem(margin-left, 236px);
+
+    @include mq($until: laptop) {
+      padding: 0 24px;
+    }
+
+    @include mq($until: netbook) {
+      margin-left: 0;
+    }
+  }
+}
+.c-post--house-note {
+  .o-wrapper--reading-left {
+    margin-left: auto;
+  }
+}

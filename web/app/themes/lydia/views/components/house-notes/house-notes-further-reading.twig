@@ -1,0 +1,10 @@
+<div class="house-notes-further-reading o-wrapper o-wrapper--inner">
+  <h3 class="house-notes-further-reading__title">
+    (Further reading)
+  </h3>
+  <div class="house-notes-further-reading__content">
+    {% for post in latestHouseNotes %}
+      {% include 'components/house-notes/house-notes-tease.twig' %}
+    {% endfor %}
+  </div>
+</div>

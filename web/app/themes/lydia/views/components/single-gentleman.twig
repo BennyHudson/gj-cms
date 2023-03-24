@@ -1,0 +1,106 @@
+{#
+* Single Gentleman Content
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+<article class="c-post c-post-gentleman" data-cat="{{ mainCat }}" data-single-url="{{ post.link }}" data-ga-path="{{ post.path }}" data-title="{{ post.title }}" id="{{ post.ID }}">
+
+    <div class="c-post-gentleman__header">
+
+        <div class="c-post-gentleman__navigation o-wrapper o-wrapper--inner">
+
+            {% if readPrev.link %}
+                <div class="c-post-gentleman__navigation--prev"><a href="{{ readPrev.link }}"><strong>PREVIOUS</strong> | {{ readPrev.title }}</a></div>
+            {% else %}
+                <div class="c-post-gentleman__navigation--prev"><span><strong>PREVIOUS</strong></span></div>
+            {% endif %}
+
+            <div class="c-post-gentleman__navigation--members"><a href="{{ parentLink }}">RETURN TO MEMBERS</a></div>
+
+            {% if readNext.link %}
+                <div class="c-post-gentleman__navigation--next"><a href="{{ readNext.link }}">{{ readNext.title }} | <strong>NEXT</strong></a></div>
+            {% else %}
+                <div class="c-post-gentleman__navigation--next"><span><strong>NEXT</strong></span></div>
+            {% endif %}
+
+        </div>
+
+        <div class="c-post-gentleman__portraits o-wrapper o-wrapper--inner">
+            <div class="c-post-gentleman__portrait c-post-gentleman__portrait--image">
+                {% if post.thumbnail %}
+                    <figure class="c-post-gentleman__featured-img c-post-gentleman__featured-img-container o-wrapper o-wrapper--left o-wrapper--{{ wrapper }}">
+                        <picture>
+                            <source media="(max-width: 500px)" srcset="{{ post.thumbnail.src }} 1x">
+                            <img class="c-post-gentleman__featured-img-image" src="{{ post.thumbnail.src }}" alt="{{ post.thumbnail.alt }}"/>
+                        </picture>
+                        {% if post.thumbnail.caption %}
+                            <figcaption class="c-post-gentleman__featured-img-caption">{{ post.thumbnail.caption }}</figcaption>
+                        {% endif %}
+                    </figure>
+                {% endif %}
+            </div>
+            <div class="c-post-gentleman__portrait c-post-gentleman__portrait--description">
+                <div class="c-post-gentleman__portrait--specialty">{{ post.specialty }}</div>
+                <div class="c-post-gentleman__portrait--title">{{ post.title }}</div>
+                <div class="c-post-gentleman__portrait--content">{{ post.content }}</div>
+                <div class="c-post-gentleman__portrait--author">Interview by: {{ post.author }}</div>
+            </div>
+        </div>
+
+    </div>
+
+    {% set etiquette_questions = post.meta('etiquette_questions') %}
+    {% set style_questions = post.meta('style_questions') %}
+    {% set travel_questions = post.meta('travel_questions') %}
+
+    <div class="c-post-gentleman__content o-wrapper o-wrapper--inner">
+
+        {% for item in etiquette_questions %}
+            {% include 'components/single-gentleman__content.twig' %}
+        {% endfor %}
+
+        {% for item in style_questions %}
+            {% include 'components/single-gentleman__content.twig' %}
+        {% endfor %}
+
+        {% for item in travel_questions %}
+            {% include 'components/single-gentleman__content.twig' %}
+        {% endfor %}
+
+    </div>
+
+    {% if post.gentleman %}
+        <div class="c-post-gentleman__more o-wrapper o-wrapper--inner">
+            {% include 'objects/title.twig' with {
+                class: 'c-post-gentleman__more',
+                title: 'Discover more',
+            } %}
+
+            <div class="c-post-gentleman__more__feed">
+                {%  for member in post.gentleman %}
+
+                    {% include 'components/membership/membership__card.twig' with {
+                        member : Post(member),
+                        img : {
+                            base : {
+                                w   : '290',
+                            },
+                            tablet : {
+                                w   : '390',
+                            },
+                            mobile : {
+                                w   : '471',
+                            },
+                        }}
+                    %}
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</article>

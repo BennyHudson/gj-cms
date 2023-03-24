@@ -1,0 +1,147 @@
+/**
+ * Podcast Card : Featured
+ * ---------
+ * @component podcast
+ * @version 1
+*/
+
+.c-podcast-card--featured {
+
+    .c-podcast-card {
+
+        &__inner {
+            @include rem(min-width, 300px);
+            @include rem(max-width, 600px);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: $shogun;
+            border-radius: 2px;
+            transition: transform 0.2s ease-out, box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+        }
+
+        &__feat {
+            &-bg {
+                width: 100%;
+            }
+
+            position: relative;
+            width: 100%;
+            cursor: url(assets/img/cursors/cursor-drag-circle.png) 40 40, auto;
+            background: $white;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                opacity: 0;
+                background: linear-gradient(to bottom, rgba(255,255,255,1) 20%,rgba(137, 147, 222, 0.7) 100%);
+                transition: opacity 0.2s ease-out;
+            }
+
+            &-img {
+                width: 100%;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+                mix-blend-mode: multiply;
+                z-index: 1;
+            }
+        }
+
+        &-header {
+            width: calc(100% - 36px);
+            @include rem(padding, 12px);
+
+            &__meta {
+                @include rem(margin-bottom, 12px);
+
+                &__item {
+                    color: $fog;
+
+                    &--issue {
+                        background-color: $gunmetal;
+                        color: $black;
+                    }
+                }
+            }
+
+            &__title {
+                color: $white;
+                @include fontSize(28);
+                letter-spacing: -0.7px;
+                line-height: 1.1;
+                @include rem(margin-bottom, 12px);
+            }
+
+            &__guest {
+                color: $fog;
+            }
+        }
+
+        &__play {
+            position: absolute;
+            @include rem(right, 12px);
+            @include rem(bottom, 12px);
+            z-index: 1;
+
+            &__icon {
+                @include fontSize(6);
+                @include rem(margin-left, 1px);
+            }
+
+            &__circle {
+                @include rem(height, 22px);
+                @include rem(width, 22px);
+                border: 2px solid $white;
+                border-radius: 50%;
+                transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            }
+        }
+    }
+
+    &:hover,
+    &:focus {
+
+        .c-podcast-card {
+
+            &__inner {
+                transform: translateY(-12px);
+                box-shadow: 0 14px 28px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.08);
+            }
+
+            &__feat {
+
+                &::before {
+                    opacity: 1;
+                }
+            }
+
+            &__play {
+
+                &__circle {
+                    background-color: darken($white, 2%);
+                }
+
+                &__icon {
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    &:active {
+        .c-podcast-card {
+
+            &__inner {
+                transform: translateY(-8px);
+                box-shadow: 0 10px 24px rgba(0,0,0,0.10), 0 8px 8px rgba(0,0,0,0.08);
+            }
+        }
+    }
+}

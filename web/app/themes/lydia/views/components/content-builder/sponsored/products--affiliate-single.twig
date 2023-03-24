@@ -1,0 +1,42 @@
+{#
+* Content Builder : Product Wide
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+<div class="c-content-builder__prod-wide" data-animate="fadeUP">
+
+    {% include 'objects/image.twig' with {
+        class: 'c-content-builder__prod-wide-media',
+        alt : item.title,
+        img : {
+            base : {
+                obj : Image(item.image),
+                w   : '1000',
+                h   : '0',
+                c   : 'center'
+            },
+            mobile : {
+                obj : Image(item.image),
+                w   : '468',
+                h   : '0',
+                c   : 'center',
+            }
+        }
+    } %}
+
+
+    <div class="c-content-builder__prod-wide__info">
+        {# <span class="c-content-builder__prod-wide__pretitle">Product Overview</span> #}
+        <h1 class="c-content-builder__prod-wide__title">{{ item.title }}</h1>
+        <p class="c-content-builder__prod-wide__description">{{ item.description }}</p>
+        {% include 'objects/button.twig' with {
+            el: 'a',
+            cta: 'Shop Now',
+            link: item.link,
+            style: 'outline',
+            class: 'c-content-builder__prod-wide',
+        } %}
+    </div>
+
+</div>

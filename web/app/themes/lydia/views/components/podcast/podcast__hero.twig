@@ -1,0 +1,46 @@
+{#
+* Podcast : Hero
+* ---------
+* @package components/podcast
+#}
+{% if podcastGlobal.featured.hero %}
+<section class="c-podcast-hero">
+
+    <div class="c-podcast-hero-slider">
+
+        <div class="c-podcast-hero-slider__main" js="js-podcast-hero-slider--main">
+
+            {% for hero in podcastGlobal.featured.hero %}
+                {% set hero = Post(hero) %}
+
+                {% include 'components/podcast/podcast__card.twig' with {
+                    card : hero,
+                    img : {
+                        base : {
+                            obj : hero.thumbnail,
+                            w   : '2000',
+                            h   : '890',
+                            c   : 'center'
+                        },
+                        mobile : {
+                            obj : hero.thumbnail,
+                            w   : '768',
+                            h   : '800',
+                            c   : 'center',
+                        }
+                    },
+                    meta : true,
+                    style : 'hero'
+                } %}
+
+            {% endfor %}
+        </div>
+
+        <nav class="c-podcast-hero-slider__nav">
+            {% include 'components/podcast/podcast__hero__nav.twig' %}
+        </nav>
+
+    </div>
+
+</section>
+{% endif %}

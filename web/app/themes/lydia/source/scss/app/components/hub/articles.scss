@@ -1,0 +1,37 @@
+/**
+ * Articles
+ * ---------
+ * @component
+ * @version 1
+*/
+
+.c-hub-articles {
+    margin: rem(48px) auto;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 35%;
+
+        @include mq($until: tablet) {
+            grid-template-columns: 1fr;
+            gap: rem(48px);
+        }
+    }
+
+    &__scrolling {
+        padding: 0 48px;
+
+        & > *:not(:last-of-type) {
+            margin-bottom: rem(48px);
+        }
+
+        @include mq($until: netbook) {
+            padding: 0 24px;
+        }
+    }
+
+    &__featured > * {
+        position: sticky;
+        top: calc(112px + 48px);
+    }
+}

@@ -1,0 +1,29 @@
+{#
+* Post Thumbnail Small
+* --------
+* @package GJ
+* @since GJ 1.0
+#}
+{% set posted = post.post_date_gmt|time_ago|replace({'ago' : '', 'mins' : 'minutes'}) %}
+
+<article class="c-post-thumb-podcast" id="post-thumb--{{ post.ID }}">
+    <a href="{{ post.link }}" class="c-post-thumb-podcast__link">
+
+        <figure class="c-post-thumb-podcast__img-container">
+            {% include 'objects/icon--gj.twig' with { dark : true } %}
+            <div class="c-post-thumb-podcast__play">
+                <span class="c-post-thumb-podcast__play-icon far fa-play"></span>
+            </div>
+        </figure>
+
+        <div class="c-post-thumb-podcast__content">
+            <div class="c-post-thumb-podcast__info">
+                <p class="c-post-thumb-podcast__category">{{ post.post_type }}
+                <span class="c-post-thumb-podcast__posted">&mdash; {{ post.date }}</span></p>
+            </div>
+            <h1 class="c-post-thumb-podcast__title">{{ post.title }}</h1>
+            <p class="c-post-thumb-podcast__topic">{{ post.podcast_topic }}</p>
+            <p class="c-post-thumb-podcast__excerpt">{{ post.preview.read_more('')|striptags }}</p>
+        </div>
+    </a>
+</article>

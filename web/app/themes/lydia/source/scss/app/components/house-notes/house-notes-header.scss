@@ -1,0 +1,26 @@
+.house-notes-header {
+  text-align: center;
+  border-bottom: dashed $serenity 1px;
+  padding: 50px 20px;
+  &__title {
+    @include font($font--cond-chronicle);
+    @include fontSize(120);
+    letter-spacing: rem(-1px);
+    letter-spacing: rem(-2px);
+    line-height: 1;
+    margin-bottom: 20px;
+    @include mq($until: tablet) {
+      @include fontSize(60);
+    }
+  }
+  &__subtitle {
+    @include font($font--text-chronicle);
+    @include fontSize(19);
+    @include rem(line-height, 22px);
+    max-width: 540px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

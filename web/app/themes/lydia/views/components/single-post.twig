@@ -1,0 +1,103 @@
+{#
+* Single Post
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+<article class="c-post c-post--{{ post.post_type }}{% if members or premium %} c-post--print{% endif %}{% if premium and not members %} c-post--premium{% endif %}{% if format == 'video' %} c-post--video{% endif %}" data-cat="{{ mainCat }}" data-single-url="{{ post.link }}" data-ga-path="{{ post.path }}" data-title="{{ post.title }}" id="{{ post.ID }}" {% if user.can('administrator') %}data-views="{{ post.meta('post_views_count') }}"{% endif %}>
+
+    {% include 'components/ads.twig' with {
+        gpt : {
+            type : 'pixel',
+            code : 'GJ_1x1_001'
+        }
+    } %}
+
+    {% if members %}
+        {% include 'components/single-post__featured-img-print.twig' %}
+    {% elseif premium and format != 'video' %}
+        {% include 'components/single-post__featured-img-print.twig' %}
+
+           {% if fn('is_single', 400879) %}
+
+                {% include 'components/ads.twig' with {
+                    gpt : {
+                        type : 'billboard',
+                        code : 'GJ_970x250_001'
+                    }
+                } %}
+
+            {% else %}
+
+                {% include 'components/ads.twig' with {
+                    gpt : {
+                        type : 'leaderboard',
+                        code : 'GJ_728x90_001'
+                    }
+                } %}
+
+           {% endif %}
+
+
+    {% elseif format == 'video' %}
+        {% include 'components/single-post__featured-video.twig' %}
+    {% endif %}
+
+    <div class="o-wrapper o-wrapper--inner">
+        {% if post.type != 'house-note' %}
+            {% if not Ajax %}
+                {% include 'components/breadcrumbs.twig' with { background : 'light' } %}
+            {% endif %}
+        {% endif %}
+        {% include 'components/single-post__header.twig' %}
+    </div>
+
+    {% if post.type == 'house-note' and (post.article_type_podcast_audio or post.article_type_existing_podcast) %}
+        <div class="o-wrapper o-wrapper--single">
+            <section class="c-podcast-player">
+                {% filter shortcodes %}
+                    [audio mp3="{{ post.use_url ? post.article_type_podcast_audio : post.meta('article_type_existing_podcast').podcast_meta_media_audio }}" preload="metadata" autoplay="0"]
+                {% endfilter %}
+            </section>
+        </div>
+    {% endif %}
+
+    <div class="c-post__container o-wrapper o-wrapper--inner">
+        {% if format != 'video' and not members and not premium %}
+            {% include 'components/single-post__featured-img.twig' with { wrapper: 'single' } %}
+        {% endif %}
+
+        {% if contentBuilder %}
+            {% if members and not subscriber %}
+                {% set layout = contentBuilder|slice(0, 3) %}
+                {% include 'components/single-post__content--builder.twig' with { contentBuilder : layout } %}
+                {% include 'components/paywall-signup.twig' %}
+            {% else %}
+                {% include 'components/single-post__content--builder.twig' %}
+            {% endif %}
+        {% elseif contentBuilderLegacy %}
+            {% include 'components/single-post__content--builder-legacy.twig'%}
+        {% else %}
+            {% include 'components/single-post__content--legacy.twig' %}
+        {% endif %}
+
+        {% if format != 'video' and not members and not extended and not extendedImage %}
+            {% include 'components/sidebar--widgets.twig' with { wrapper: 'inner' } %}
+        {% endif %}
+    </div>
+
+    {% include 'components/single/author/single-author.twig' %}
+
+    {% include 'components/single-article-note.twig' %}
+
+    {% include 'components/single-share.twig' with { class : post.post_type }%}
+
+    {% if post.type != 'house-note' %}
+        {% include 'components/feed--related.twig' with { wrapper: 'inner' } %}
+    {% endif %}
+    {% if post.type == 'house-note' %}
+        {% include 'components/house-notes/house-notes-further-reading.twig' %}
+    {% endif %}
+
+</article>

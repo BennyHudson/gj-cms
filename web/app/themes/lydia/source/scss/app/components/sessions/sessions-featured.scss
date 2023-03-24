@@ -1,0 +1,44 @@
+.sessions-featured {
+
+  position: relative;
+ 
+  &__category {
+    @include font($font--cera);
+    @include fontSize(11);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $white;
+    margin-bottom: 10px;
+    @include mq($until: netbook) {
+      display: none;
+    }
+  }
+  &__title {
+    @include font($font--cond-chronicle);
+    font-weight: 100;
+    @include fontSize(21);
+    line-height: 1.2em;
+    color: $white;
+    @include mq($until: netbook) {
+      @include fontSize(18);
+    }
+  }
+  &__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-left: 47px;
+    padding-bottom: 38px;
+    @include mq($until: netbook) {
+      padding-left: 20px;
+      padding-bottom: 15px;
+    }
+    .sessions-videos__title {
+      margin-bottom: 0;
+      @include fontSize(46);
+      @include mq($until: netbook) {
+        @include fontSize(22);
+      }
+    }
+  }
+}

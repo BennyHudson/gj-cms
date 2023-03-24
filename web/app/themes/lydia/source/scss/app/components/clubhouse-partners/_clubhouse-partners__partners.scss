@@ -1,0 +1,23 @@
+/**
+ * Clubhouse Partners - Feed
+ * ---------
+ * @component clubhouse
+ * @version 1
+*/
+
+.c-club-partner-feed {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    @include rem(max-width, $g-wrapper--inner);
+    @include rem(padding-bottom, 48px);
+
+    &__title {
+        color: $despair;
+        flex-basis: 100%;
+        @include rem(margin-bottom, 24px);
+        @include font($font--cond-chronicle, $font-app-chronicle-w--semibold);
+        text-align: center;
+    }
+}

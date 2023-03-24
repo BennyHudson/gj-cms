@@ -1,0 +1,32 @@
+{#
+*  Index Template
+*
+*  @package lydia
+*  @since lydia 1.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="o-container">
+        <h1 class="c-title c-title--prime c-title--left {% if page.thumbnail %}c-title--fixed{% else %}c-title--bar{% endif %}">{{ page.title }}</h1>
+
+        {% if page.thumbnail %}
+            <figure class="c-feautred-img c-featured-image__container">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="{{ page.thumbnail.src|resize(768, 650) }} 1x">
+                    <img class="c-feautred-img__img" src="{{ page.thumbnail.src|resize(1800, 200, 'center') }}" alt="{{ page.thumbnail.alt }}"/>
+                </picture>
+            </figure>
+        {% endif %}
+    </div>
+
+    <section class="o-post-type o-post-type--{{page.post_type }} o-post-type__content o-post-type__content--{{ page.id }}" id="post-{{page.ID }}">
+
+        <div class="c-post-card c-post-card__group">
+            {% for post in posts %}
+                {% include ['partials/card-'~post.post_type~'.twig', 'partials/card.twig'] %}
+            {% endfor %}
+        </div>
+
+    </section>
+{% endblock %}

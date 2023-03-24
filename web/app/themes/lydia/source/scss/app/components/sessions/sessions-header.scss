@@ -1,0 +1,83 @@
+.sessions-header {
+  @include rem(padding-left, 30px);
+  @include rem(padding-right, 30px);
+  &--inverted {
+    background-color: $black;
+    .sessions-header__first-name,
+    .sessions-header__content {
+      color: $white;
+    }
+    .sessions-header__container {
+      align-items: flex-start;
+      padding-bottom: 15px;
+      @include mq($until: tablet) {
+        padding-bottom: 30px;
+      }
+    }
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 90px;
+    padding-bottom: 75px;
+    @include mq($until: tablet) {
+      flex-wrap: wrap;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+  &__wrapper {
+    margin-right: 30px;
+    @include mq($until: tablet) {
+      margin-right: 0;
+      margin-bottom: 40px;
+    }
+  }
+  &__title {
+    @include font($font--cond-chronicle);
+    font-weight: 600;
+    @include fontSize(95);
+    text-transform: uppercase;
+    max-width: 530px;
+    @include rem(line-height, 75px);
+    @include mq($until: tablet) {
+      max-width: 100%;
+      @include fontSize(50);
+      @include rem(line-height, 55px);
+    }
+  }
+  &__first-name {
+    color: $black;
+  }
+  &__last-name {
+    color: $serenity;
+  }
+  &__sponsor {
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    @include font-caps--cera;
+    @include font($font--cera, $font-app-cera-w--semibold);
+    @include fontSize(10);
+    margin-top: 60px;
+    @include mq($until: tablet) {
+      margin-top: 20px;
+    }
+  }
+  &__logo {
+    width: 200px;
+    margin-top: 10px;
+  }
+  &__content {
+    max-width: 585px;
+    @include mq($until: tablet) {
+      max-width: 100%;
+    }
+    p {
+      @include fontSize(18);
+      line-height: 1.4;
+      @include font($font--text-chronicle, $font-app-chronicle-w--regular);
+    }
+  }
+}

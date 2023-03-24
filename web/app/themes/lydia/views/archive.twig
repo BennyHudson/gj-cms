@@ -1,0 +1,48 @@
+{#
+* Archive Templates
+* -------
+* @package Nurformix
+* @since GJ 1.0
+#}
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% include 'components/ads.twig' with {
+        gpt : {
+            type : 'billboard',
+            code : 'GJ_970x250_001'
+        }
+    } %}
+
+    <header class="c-archive-header">
+        <div class="c-archive-header__inner o-wrapper o-wrapper--inner">
+            {% include 'components/breadcrumbs.twig' with { background : 'dark' } %}
+
+            <div class="c-archive-header__container">
+                <div class="c-archive-header__intro">
+                    <h1 class="c-archive-header__title">{{ title }}</h1>
+                    {% if archive.description %}
+                    <p class="c-archive-header__subtitle">{{ archive.description }}</p>
+                    {% endif %}
+                </div>
+
+                {% if archive.children %}
+                    <nav class="c-archive-header__sub-categories">
+                        {% for item in archive.children %}
+                            <a class="c-archive-header__sub-categories-item" href="{{ item.link }}">{{ item.name }}</a>
+                        {% endfor %}
+                    </nav>
+                {% endif %}
+            </div>
+
+            {% if archive.slug == 'video' %}
+                {% include 'components/feed--video-playlist.twig' with { wrapper: 'inner', catID : archive.ID } %}
+            {% endif %}
+
+        </div>
+    </header>
+
+    {% include 'components/feed--archive.twig' with { wrapper: 'inner'} %}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{#
+* Content Builder : Gallery
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+{% if item.type == 'gallery--standard' %}
+    {% if item.gallery|length <= 2 %}
+        {% set thumbSize = {'width': 624, 'height' : 728 } %}
+    {% else %}
+        {% set thumbSize = {'width': 471, 'height' : 549 } %}
+    {% endif %}
+{% elseif item.type == 'gallery--tall' %}
+
+    {% set thumbSize = {'width': 625, 'height' : 937 } %}
+
+{% elseif item.type == 'gallery--square' %}
+
+    {% set thumbSize = {'width': 624, 'height': 624 } %}
+
+{% endif %}
+
+<figure class="c-content-builder__gallery type-{{ item.type }}">
+    <div class="c-content-builder__gallery-inner {{ wrapper }}">
+        {% for image in item.gallery %}
+            <div class="c-content-builder__gallery-img-container">
+                {% set img = Image(image.id) %}
+
+                {% include 'objects/image.twig' with {
+                    class: 'c-content-builder__gallery',
+                    alt : img.alt ? img.alt|e : post.title|e,
+                    img : {
+                        base : {
+                            obj : img,
+                            w   : thumbSize.width,
+                            h   : thumbSize.height,
+                            c   : 'center'
+                        },
+                        mobile : {
+                            obj : img,
+                            w   : thumbSize.width,
+                            h   : thumbSize.height,
+                            c   : 'center',
+                        }
+                    }
+                } %}
+
+                {% if img.caption %}
+                    <figcaption class="c-content-builder__img-caption">{{ img.caption }}</figcaption>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</figure>

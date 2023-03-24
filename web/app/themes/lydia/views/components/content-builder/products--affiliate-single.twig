@@ -1,0 +1,21 @@
+{#
+* Content Builder : Recommended Products
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{# TODO : REFACTOR CLASS NAMES #}
+<article class="c-content-builder__product-single-affiliate {{ wrapper }}">
+    {% set product = item %}
+    {% set img = Image(product.image) %}
+    <figure class="c-content-builder__product-single-affiliate__img-group">
+        <img class="c-content-builder__product-single-affiliate__img" src="{{ img.src|resize(80, 80, 'center') }}" alt="{{ img.alt ? img.alt|e : post.title|e }}"/>
+    </figure>
+    <div class="c-content-builder__product-single-affiliate__info-group">
+        <h1 class="c-content-builder__product-single-affiliate__title">{{ product.title }}</h1>
+        {% if product.price %}
+            <p class="c-content-builder__product-single-affiliate__price">£{{ product.price|number_format(2, '.', ',') }}</p>
+        {% endif %}
+    </div>
+    <a href="{{ product.link }}" class="o-btn o-btn--solid c-content-builder__product-single-affiliate__btn" target="_blank">Buy Now</a>
+</article>

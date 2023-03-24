@@ -1,0 +1,15 @@
+<section class="featured-sessions">
+    <div class="featured-sessions__container o-wrapper o-wrapper--inner">
+        <div class="featured-sessions__info">
+            <h2 class="featured-sessions__title">
+                <span class="featured-sessions__first-name">GJ</span>
+                <span class="featured-sessions__last-name">Sessions</span>
+            </h2>
+            <div class="featured-sessions__content">{{ sessions.global.meta.sessions_intro_text }}</div>
+            <a href="{{ sessions.global.link }}" class="o-btn o-btn--light o-btn--animated featured-sessions__link">View All</a>
+        </div>
+        <div class="featured-sessions__video">
+            {% include 'components/sessions/sessions-featured.twig' with { session : sessions.latest } %}
+        </div>
+    </div>
+</section>

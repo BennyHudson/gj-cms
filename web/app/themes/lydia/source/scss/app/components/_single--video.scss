@@ -1,0 +1,26 @@
+/**
+* Single Post video
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-post {
+    &--video {
+
+        .c-post {
+
+            &__title {
+                @include font($font--cera, $font-app-chronicle-w--bold);
+                @include fontSize(29);
+                line-height: 1.12;
+                @include rem(margin-bottom, 24px);
+
+                @include mq($until: laptop) {
+                    @include fontSize(34);
+                }
+            }
+        }
+    }
+}

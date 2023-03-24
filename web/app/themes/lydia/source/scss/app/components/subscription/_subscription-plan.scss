@@ -1,0 +1,56 @@
+.subscription-plan {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  @include mq($until: tablet) {
+    width: 100%;
+  }
+  &:first-child {
+    border-right: solid 1px $app-grey;
+    padding-right: 10%;
+    @include mq($until: tablet) {
+      padding-right: 0;
+      border-right: none;
+      margin-bottom: 30px;
+      padding-bottom: 50px;
+      border-bottom: solid 1px $app-grey;
+    }
+  }
+  &:last-child {
+    padding-left: 10%;
+    @include mq($until: tablet) {
+      padding-left: 0;
+    }
+  }
+  &__sub {
+    @include font($font--cera);
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 50px;
+    @include mq($until: tablet) {
+      margin-bottom: 0px;
+    }
+    span {
+      color: $fog;
+      display: block;
+      font-weight: 500;
+    }
+  }
+  &__price {
+    @include font($font--cera);
+    font-weight: 400;
+    font-size: 26px;
+    margin-top: auto;
+    margin-bottom: 30px;
+    @include mq($until: tablet) {
+      margin-bottom: 40px;
+    }
+  }
+  &__submit {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: normal;
+    width: 100%;
+    border-radius: 2px;
+  }
+}

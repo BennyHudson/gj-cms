@@ -1,0 +1,39 @@
+{#
+* Single Post Header
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{% if post.thumbnail %}
+<div class="c-post__featured-img c-post__featured-img-print c-post__featured-img-container o-wrapper">
+
+    {% include 'objects/image.twig' with {
+        class: 'c-post__featured-img-media',
+        alt : post.title,
+        img : {
+            base : {
+                obj : post.thumbnail,
+                w   : '2502',
+                h   : '1200',
+                c   : 'center'
+            },
+            tablet : {
+                obj : post.meta('mobile_image') ? Image(post.meta('mobile_image')) : post.thumbnail,
+                w   : '768',
+                h   : '528',
+                c   : 'center',
+            },
+            mobile : {
+                obj : post.meta('mobile_image') ? Image(post.meta('mobile_image')) : post.thumbnail,
+                w   : '468',
+                h   : '528',
+                c   : 'center',
+            }
+        }
+    } %}
+    {% if post.thumbnail.caption %}
+        <figcaption class="c-post__featured-img-caption">{{ post.thumbnail.caption }}</figcaption>
+    {% endif %}
+
+</div>
+{% endif %}

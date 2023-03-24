@@ -1,0 +1,149 @@
+/**
+* Paywall Widget
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+
+.c-paywall-restrict {
+    background: linear-gradient(to top, ($app-white) 0%, transparentize($app-white, 0.05) 70%, (transparentize($app-white, 0.6)) 100%);
+    padding-top: 160px;
+    margin-top: -160px;
+    position: relative;
+    @include rem(margin-bottom, 72px);
+
+    &__info {
+        display: flex;
+        @include rem(margin-bottom, 24px);
+
+        @include mq($until: tablet) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__locked,
+    &__login {
+        width: 50%;
+
+        @include mq($until: tablet) {
+            width: 100%;
+        }
+    }
+
+    &__login {
+        text-align: right;
+
+        @include mq($until: tablet) {
+            text-align: center;
+        }
+    }
+
+    &__locked {
+        @include mq($until: tablet) {
+            @include rem(margin-bottom, 12px);
+            text-align: center;
+        }
+    }
+
+    &__locked-icon {
+        @include rem(width, 11px);
+        vertical-align: middle;
+        display: inline-block;
+        @include rem(margin-right, 6px);
+    }
+
+    &__locked-text {
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: $font-app-cera-w--bold;
+        @include fontSize(14);
+    }
+
+    &__login {
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: $font-app-cera-w--semibold;
+        @include fontSize(14);
+    }
+
+    &__widget {
+        border: 1px solid $app-grey--light-border;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+    }
+
+    &__widget-info {
+        width: 50%;
+        @include rem(padding, 24px);
+        border-right: 1px solid $app-grey--light-border;
+
+        @include mq($until: tablet) {
+            width: 100%;
+            border-right: none;
+        }
+    }
+
+    &__widget-title {
+        @include font($font--chronicle, $font-app-chronicle-w--semibold);
+        @include fontSize(19);
+        @include lineHeight(24);
+        @include rem(margin-bottom, 12px);
+    }
+
+    &__widget-perk {
+        display: flex;
+        align-items: center;
+        color: $app-black--text;
+        @include fontSize(15);
+        @include font($font--cera);
+        @include rem(padding, 6px 0);
+        line-height: 1.2;
+
+        &::before {
+            content: '';
+            width: rem(6px);
+            height: rem(4px);
+            border-radius: 50%;
+            vertical-align: middle;
+            background-color: $app-grey--text;
+            @include rem(margin-right, 12px);
+        }
+    }
+
+    &__widget-thumb {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to bottom, $app-white, $app-grey--light-border);
+
+        @include mq($until: tablet) {
+            display: none;
+        }
+    }
+
+    &__widget-img {
+        width: 100%;
+    }
+
+    &__widget-actions {
+        width: 100%;
+        border-top: 1px solid $app-grey--light-border;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include rem(padding, 24px);
+    }
+
+    &__widget-product-title {
+        @include fontSize(27);
+        font-weight: $font-app-cera-w--semibold;
+
+        @include mq($until: tablet) {
+            @include fontSize(18);
+        }
+    }
+}

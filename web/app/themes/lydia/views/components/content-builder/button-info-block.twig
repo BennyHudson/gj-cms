@@ -1,0 +1,18 @@
+{#
+* Content Builder : Recommended Products
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+{# TODO : REFACTOR CLASS NAMES #}
+<div class="c-content-builder-info-block {{ wrapper }}">
+    {% set button = item %}
+    {% set img = Image(button.image) %}
+    <figure class="c-content-builder-info-block__img-group">
+        <img class="c-content-builder-info-block__img" src="{{ img.src|resize(80, 80, 'center') }}" alt="{{ img.alt ? img.alt|e : post.title|e }}"/>
+    </figure>
+    <div class="c-content-builder-info-block__info-group">
+        <p class="c-content-builder-info-block__title">{{ button.title }}</p>
+    </div>
+    <a href="{{ button.link }}" class="o-btn o-btn--solid c-content-builder-info-block__btn" target="_blank">{{ button.call_to_action ? button.call_to_action : 'Learn More' }}</a>
+</div>

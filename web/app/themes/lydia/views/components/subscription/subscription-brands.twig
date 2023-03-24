@@ -1,0 +1,40 @@
+{#
+* Subscription brands
+* ---------
+* @component Subscription
+* @version 1
+#}
+{% if club.brands %}
+<section class="c-subscription-brands">
+
+    <div class="c-subscription-brands__steps">
+
+        <div class="c-subscription-brands__items c-brands-items">
+
+        {% for brand in club.brands %}
+            {% set brandMeta = brand.get_field('partner_information') %}
+
+            {% if brandMeta.logo %}
+            <div class="c-brands-items__item">
+                <a href="{{ fn('get_post_type_archive_link', 'clubhouse-partners') }}">
+                    {% include 'objects/image.twig' with {
+                        class: 'c-brands-items__picture',
+                        img : {
+                            base : {
+                                obj : Image(brandMeta.logo),
+                                w   : '124',
+                                h   : '124'
+                            }
+                        }
+                    } %}
+                </a>
+            </div>
+            {% endif %}
+
+        {% endfor %}
+
+        </div>
+    </div>
+
+</section>
+{% endif %}

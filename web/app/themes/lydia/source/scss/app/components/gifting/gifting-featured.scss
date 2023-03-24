@@ -1,0 +1,107 @@
+.gifting-featured {
+  padding-left: 30px;
+  padding-right: 30px;
+  &__container {
+    border-top: solid 1px $mercury;
+    margin-top: 70px;
+    padding-top: 30px;
+    margin-bottom: 100px;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  &__heading {
+    @include font($font--cera);
+    @include fontSize(17);
+    text-transform: uppercase;
+    color: $black;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__slider {
+    width: 100%;
+  }
+  &__slide {
+    display: block;
+    &:hover {
+      .gifting-featured__overlay {
+        opacity: 1;
+      }
+    }
+  }
+  &__brand {
+    @include font($font--cera);
+    @include fontSize(10);
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $fog;
+    margin-bottom: 6px;
+  }
+  &__title,
+  &__price {
+    @include font($font--text-chronicle);
+    @include fontSize(17);
+    line-height: 1.15em;
+  }
+
+  .slick-slide {
+    margin-right: 30px;
+  }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all ease-in-out 0.2s;
+    span {
+      @include font($font--cera);
+      @include fontSize(15);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: $white;
+      text-align: center;
+    }
+  }
+  &__prev,
+  &__next {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 16px;
+    border: solid 1px $app-grey--text;
+    color: $app-grey--text;
+    transition: all ease-in-out 0.2s;
+    &:hover {
+      background-color: $wild-sand;
+      border: solid 1px $wild-sand;
+      color: $black;
+    }
+  }
+  &__prev {
+    margin-right: 20px;
+  }
+  &__next {
+  }
+  &__image {
+    background-color: #eae7e6;
+    max-width: 300px;
+    padding: 40px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+}

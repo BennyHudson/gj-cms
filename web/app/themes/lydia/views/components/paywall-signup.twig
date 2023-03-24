@@ -1,0 +1,45 @@
+{#
+* Paywall Signup
+* --------
+* @package GJ
+* @since GJ 3.0
+#}
+
+<div class="c-paywall-restrict o-wrapper o-wrapper--reading o-wrapper--reading-left">
+
+    <div class="c-paywall-restrict__info">
+        <div class="c-paywall-restrict__locked">
+            <a href="{{ Post(74300).link }}">
+                <div class="c-paywall-restrict__locked-icon" data-tooltip="Members only">
+                    {% include 'objects/icon--padlock.twig' %}
+                </div>
+                <p class="c-paywall-restrict__locked-text">This article is for members only</p>
+            </a>
+        </div>
+
+        <div class="c-paywall-restrict__login">
+            <p class="c-paywall-restrict__login-text">Already a subscriber? <a href="{{ Post(74170).link  }}"><strong>Login here</strong></a></p>
+        </div>
+    </div>
+
+    <div class="c-paywall-restrict__widget">
+
+        <div class="c-paywall-restrict__widget-info">
+            <h2 class="c-paywall-restrict__widget-title">To unlock this article, please subscribe. Benefits include:</h2>
+            <ul class="c-paywall-restrict__widget-perks">
+                {% for perk in paywallProduct.get_field('subscription_perks') %}
+                    <li class="c-paywall-restrict__widget-perk">{{ perk.subscription_perk }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="c-paywall-restrict__widget-thumb">
+            <img class="c-paywall-restrict__widget-img" src="{{ Image(currentIssue.issue_cover).src|resize(331) }}" alt="{{ paywallProduct.title }}">
+        </div>
+
+        <div class="c-paywall-restrict__widget-actions">
+            <h3 class="c-paywall-restrict__widget-product-title">{{ paywallProduct.title }}</h3>
+            <a href="{{Post(74300).link }}" class="o-btn o-btn--solid o-btn--light">Buy Now</a>
+        </div>
+    </div>
+</div>

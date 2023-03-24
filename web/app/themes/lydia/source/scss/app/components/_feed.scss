@@ -1,0 +1,153 @@
+/**
+* Post Feed
+* -------
+* @package GJ
+* @since GJ 3.0
+* @version 1.0
+*/
+.o-post-feed {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(auto-fill, minmax(297px, 1fr));
+    @include rem(grid-column-gap, 36px);
+    @include rem(grid-row-gap, 36px);
+    @include rem(margin-bottom, 48px);
+
+    @include mq($until: laptop) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mq($until: netbook) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq($until: phablet) {
+        @include rem(grid-column-gap, 12px);
+    }
+
+    @include mq($until: phablet) {
+        grid-template-columns: 1fr;
+        @include rem(grid-column-gap, 12px);
+    }
+
+
+    &--latest {
+        grid-template-columns: repeat(9, 1fr);
+
+        @include mq($until: 900px) {
+            grid-template-columns: repeat(6, 1fr);
+
+            .o-post-thumb--mini {
+                grid-column: span 3;
+            }
+        }
+    }
+
+    &__innergroup {
+        @include rem(padding-left, 24px);
+        border-left: 1px solid $samurai;
+
+        @include mq($until: netbook) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include rem(grid-column-gap, 36px);
+            @include rem(grid-row-gap, 24px);
+            border: none;
+            padding: 0;
+
+            @include mq($until: tablet) {
+                display: block;
+            }
+        }
+    }
+
+    &--slick {
+        @include mq($until: tablet) {
+            display: block;
+            margin-bottom: 0;
+
+            .slick-slide {
+                @include rem(margin-right, 24px);
+            }
+        }
+    }
+
+    &--podcasts {
+        grid-template-columns: 60% 1fr;
+        @include rem(grid-row-gap, 0px);
+        margin-bottom: 0;
+
+        @include mq($until: netbook) {
+            grid-template-columns: 1fr;
+            @include rem(grid-row-gap, 36px);
+        }
+    }
+
+    &--highlight {
+        grid-template-columns: repeat(1, 1fr);
+        border-bottom: 1px solid $samurai;
+        @include rem(padding-bottom, 36px);
+        margin-bottom: 0;
+    }
+
+    &--video {
+        grid-template-columns: 1fr;
+    }
+
+    &--archive {
+        grid-template-columns: repeat(auto-fit, minmax(297px, 1fr));
+        @include mq($until: laptop) {
+            // grid-template-columns: repeat(4, 1fr);
+
+        }
+    }
+
+    &--related {
+        padding: rem(12px);
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    &__btn {
+        display: block;
+        margin: auto;
+        width: max-content;
+    }
+}
+
+.o-post-group--latest-issue {
+
+    &.o-post-group {
+        @include mq($until: phablet) {
+            @include rem(padding, 40px 32px);
+        }
+    }
+
+    &__title {
+        @include font($font--chronicle, $font-app-chronicle-w--bold);
+        @include fontSize(55);
+        color: $app-black--text;
+        text-align: center;
+
+        @include mq($until: phablet) {
+            @include fontSize(31);
+        }
+    }
+
+    &__subtext {
+        @include fontSize(18);
+        color: $app-grey--text;
+        max-width: 50%;
+        @extend %u-center--block;
+        @include rem(margin-bottom, 36px);
+        text-align: center;
+
+        @include mq($until: phablet) {
+            max-width: 100%;
+            @include fontSize(16);
+        }
+    }
+
+    &__btn {
+        @include rem(margin-bottom, 60px);
+    }
+}
