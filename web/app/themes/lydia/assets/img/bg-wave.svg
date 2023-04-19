@@ -1,7 +1,0 @@
-<svg class="o-background o-background--wave" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1366 288">
-<style type="text/css">
-    .o-background__path{fill: #fff;opacity: 0.1}
-</style>
-<path class="o-background__path" d="M1118.7,0H1366v288h-5C1336.4,183.6,1258.9,58.4,1118.7,0z M224.1,288c11.8-4.8,23.2-9.7,34-14.9
-    C457.8,186.8,568.9,59.6,740.3,0H349.9C291.5,137,202.2,232.1,84.6,288H224.1z"/>
-</svg>

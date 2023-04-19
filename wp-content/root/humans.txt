@@ -1,0 +1,62 @@
+/**
+ * Humans
+ * humanstxt.org
+ * ---------
+ * @package lydia
+ * @version 1.0
+ */
+
+/**
+* About
+* ---------
+* @since 1.0
+*/
+
+    The Gentleman's Journal was created by BMAS
+    LYDIA framework was authored by BMAS
+
+    BMAS agency ltd
+    bmas.agency
+    A digital marketing agency in London
+    info [at] bmas.agency
+    +44 (0) 207 736 8732
+    London, United Kingdom
+
+/**
+ * Project Authors
+ * ---------
+ * @since 1.0
+ */
+
+    ALEXANDER HAWKINGS-BYASS
+    Director and Co-Founder
+    bmas.agency
+    alexnader [at] bmas.agency
+    @AHawkingsByass
+    London, United Kingdom
+
+/**
+ * Lydia Framework Authors
+ * ---------
+ * @since 1.0
+ */
+
+    ALEXANDER HAWKINGS-BYASS
+    Director and Co-Founder
+    bmas.agency
+    alexnader [at] bmas.agency
+    @AHawkingsByass
+    London, United Kingdom
+
+/**
+ * Website Information
+ * ---------
+ * @since 1.0
+ */
+
+    Language : English (UK)
+    Standards : HTML5 / CSS3 / PHP / MySQL
+    Components : SCSS / jQuery / Gulp / NodeJs / NPM / Timber
+    Software : Sublime Text 3 / Wordpress / Adobe Creative Cloud Suite / Sketch / Zeplin
+
+// - * - Per Ardua Ad Infinitum - * - //

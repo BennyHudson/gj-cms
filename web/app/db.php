@@ -1,1 +1,0 @@
-/Users/hudsonb/development/gj-cms/web/app/plugins/query-monitor/wp-content/db.php
